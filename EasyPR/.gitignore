@@ -1,0 +1,36 @@
+.idea/
+_build/
+resources/image/tmp/
+*.suo
+*.sdf
+*.opensdf
+*.exe
+*.dll
+*.ilk
+*.lib
+*.pdb
+demo
+experi
+/tmp
+
+
+#ignore thumbnails created by windows
+Thumbs.db
+#Ignore files build by Visual Studio
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.tlb
+*.tlh
+*.bak
+[Bb]in
+[Dd]ebug*/
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*

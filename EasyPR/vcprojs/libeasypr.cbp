@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="libeasypr" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug x64">
+				<Option output="easypr" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS" />
+					<Add directory="%OPENCV%/include" />
+					<Add directory="$(SolutionDir)include" />
+				</Compiler>
+			</Target>
+			<Target title="Release x64">
+				<Option output="easypr" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS" />
+					<Add directory="C:/Users/Micooz/Documents/opencv3/build/include" />
+					<Add directory="$(SolutionDir)include" />
+				</Compiler>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="easypr" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS" />
+					<Add directory="C:/Users/Micooz/Documents/opencv3/build/include" />
+					<Add directory="$(SolutionDir)include" />
+				</Compiler>
+			</Target>
+			<Target title="Debug Win32">
+				<Option output="easypr" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS" />
+					<Add directory="%OPENCV%/include" />
+					<Add directory="$(SolutionDir)include" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="../LICENSE" />
+		<Unit filename="../include/easypr.h" />
+		<Unit filename="../include/easypr/api.hpp" />
+		<Unit filename="../include/easypr/config.h" />
+		<Unit filename="../include/easypr/core/chars_identify.h" />
+		<Unit filename="../include/easypr/core/chars_recognise.h" />
+		<Unit filename="../include/easypr/core/chars_segment.h" />
+		<Unit filename="../include/easypr/core/core_func.h" />
+		<Unit filename="../include/easypr/core/feature.h" />
+		<Unit filename="../include/easypr/core/plate.h" />
+		<Unit filename="../include/easypr/core/plate_detect.h" />
+		<Unit filename="../include/easypr/core/plate_judge.h" />
+		<Unit filename="../include/easypr/core/plate_locate.h" />
+		<Unit filename="../include/easypr/core/plate_recognize.h" />
+		<Unit filename="../include/easypr/preprocess/deface.h" />
+		<Unit filename="../include/easypr/preprocess/gdts.h" />
+		<Unit filename="../include/easypr/preprocess/mc_data.h" />
+		<Unit filename="../include/easypr/train/ann_train.h" />
+		<Unit filename="../include/easypr/train/svm_train.h" />
+		<Unit filename="../include/easypr/train/train.h" />
+		<Unit filename="../include/easypr/util/program_options.h" />
+		<Unit filename="../include/easypr/util/switch.hpp" />
+		<Unit filename="../include/easypr/util/util.h" />
+		<Unit filename="../src/core/chars_identify.cpp" />
+		<Unit filename="../src/core/chars_recognise.cpp" />
+		<Unit filename="../src/core/chars_segment.cpp" />
+		<Unit filename="../src/core/core_func.cpp" />
+		<Unit filename="../src/core/feature.cpp" />
+		<Unit filename="../src/core/plate.cpp" />
+		<Unit filename="../src/core/plate_detect.cpp" />
+		<Unit filename="../src/core/plate_judge.cpp" />
+		<Unit filename="../src/core/plate_locate.cpp" />
+		<Unit filename="../src/core/plate_recognize.cpp" />
+		<Unit filename="../src/preprocess/deface.cpp" />
+		<Unit filename="../src/preprocess/gdts.cpp" />
+		<Unit filename="../src/preprocess/mc_data.cpp" />
+		<Unit filename="../src/train/ann_train.cpp" />
+		<Unit filename="../src/train/svm_train.cpp" />
+		<Unit filename="../src/train/train.cpp" />
+		<Unit filename="../src/util/kv.cpp" />
+		<Unit filename="../src/util/program_options.cpp" />
+		<Unit filename="../src/util/util.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

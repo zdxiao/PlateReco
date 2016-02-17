@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="PlateReco" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/PlateReco" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../../include" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/PlateReco" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="../../src/core/chars_identify.cpp" />
+		<Unit filename="../../src/core/chars_recognise.cpp" />
+		<Unit filename="../../src/core/chars_segment.cpp" />
+		<Unit filename="../../src/core/core_func.cpp" />
+		<Unit filename="../../src/core/feature.cpp" />
+		<Unit filename="../../src/core/plate.cpp" />
+		<Unit filename="../../src/core/plate_detect.cpp" />
+		<Unit filename="../../src/core/plate_judge.cpp" />
+		<Unit filename="../../src/core/plate_locate.cpp" />
+		<Unit filename="../../src/core/plate_recognize.cpp" />
+		<Unit filename="../../src/core/xzdImageProcess.cpp" />
+		<Unit filename="../../src/preprocess/deface.cpp" />
+		<Unit filename="../../src/preprocess/gdts.cpp" />
+		<Unit filename="../../src/preprocess/mc_data.cpp" />
+		<Unit filename="../../src/train/ann_train.cpp" />
+		<Unit filename="../../src/train/svm_train.cpp" />
+		<Unit filename="../../src/train/train.cpp" />
+		<Unit filename="../../src/util/kv.cpp" />
+		<Unit filename="../../src/util/program_options.cpp" />
+		<Unit filename="../../src/util/util.cpp" />
+		<Unit filename="../../test/plateRecoTest.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
