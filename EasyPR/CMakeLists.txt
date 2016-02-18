@@ -47,6 +47,7 @@ add_library(easypr STATIC ${SOURCE_FILES})
 
 # test cases
 add_executable(plateRecoXzd test/plateRecoTest.cpp)
+# add_executable(plateRecoXzd test/plateJudgeTest.cpp)
 
 # link
 target_link_libraries(plateRecoXzd ${OpenCV_LIBS} easypr ${OpenCV_LIBS})

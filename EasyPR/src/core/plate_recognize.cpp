@@ -1,5 +1,6 @@
 #include "easypr/core/plate_recognize.h"
 #include "easypr/config.h"
+int realPlateCounter = 0;
 
 namespace easypr {
 
@@ -39,11 +40,15 @@ int CPlateRecognize::plateRecognize(Mat src,
       if (resultCR == 0) {
         std::string license = plateType + ":" + plateIdentify;
         licenseVec.push_back(license);
-		  if(getPDDebug())
+		  if(true)
 		  {
 			imshow("plate", plate);
 			std::cout << license << std::endl;
-			waitKey();
+			char tmpStr[50];
+			sprintf(tmpStr, "resources/image/realPlates0218/%04d.jpg", realPlateCounter);
+			utils::imwrite(tmpStr, plate);
+			realPlateCounter++;
+			//waitKey();
 		  }
       }
     }

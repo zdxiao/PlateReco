@@ -797,10 +797,12 @@ void blueWhiteMatch(const Mat &src, Mat &match)
     /// Blue && White
     Mat blueAndWhite;
     bitwise_and(seg_blue_dilate, seg_white_dilate, blueAndWhite);
+
+    Mat blueWhite_dilate = seg_blue;
     /// BlueAndWhite dilate and erode
-    dilate(blueAndWhite, blueAndWhite, se_dilate, Point(-1, -1), 5);
-    erode(blueAndWhite, blueAndWhite, se_erose, Point(-1, -1), 7);
-    dilate(blueAndWhite, blueAndWhite, se_dilate, Point(-1, -1), 4);
-    blueAndWhite.copyTo(match);
+    dilate(blueWhite_dilate, blueWhite_dilate, se_dilate, Point(-1, -1), 5);
+    erode(blueWhite_dilate, blueWhite_dilate, se_erose, Point(-1, -1), 7);
+    dilate(blueWhite_dilate, blueWhite_dilate, se_dilate, Point(-1, -1), 4);
+    blueWhite_dilate.copyTo(match);
 }
 }

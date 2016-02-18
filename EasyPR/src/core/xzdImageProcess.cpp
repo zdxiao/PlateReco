@@ -55,7 +55,7 @@ void bgr2hue(Mat gbrImg, Mat &hue, double whiteThres)
 
         for(int col = 0; col != hsv.cols; ++col)
         {
-            if(p_hsv[3 * col + 1] > whiteThres * 255)
+            if(p_hsv[3 * col + 1] > whiteThres * 255 && p_hsv[3 * col + 2] > 30)
             {
                 p_H[col] = p_hsv[3 * col];
             }

@@ -770,19 +770,19 @@ int CPlateLocate::plateColorLocate(Mat src, vector<CPlate> &candPlates,
   // 进行抗扭斜处理
 
   deskew(src, src_b, rects_color_blue, plates);
-
+/*
   // 查找黄色车牌
 
-//  colorSearch(src, YELLOW, src_b, rects_color_yellow, index);
-//  deskew(src, src_b, rects_color_yellow, plates);
-
+  colorSearch(src, YELLOW, src_b, rects_color_yellow, index);
+  deskew(src, src_b, rects_color_yellow, plates);
+*/
   for (size_t i = 0; i < plates.size(); i++) {
     candPlates.push_back(plates[i]);
     if(m_debug)
     {
         char buffer[50];
         imshow("segedPlate", plates[i].getPlateMat());
-        sprintf(buffer, "resources/image/plates0215/%04d.jpg", plate_counter);
+        sprintf(buffer, "resources/image/plates0218/%04d.jpg", plate_counter);
         ++plate_counter;
         utils::imwrite(buffer, plates[i].getPlateMat());
         waitKey();

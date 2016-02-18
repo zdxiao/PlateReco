@@ -40,11 +40,11 @@
 1454058030 source:/home/xiao/Project/PlateReco/EasyPR/src/core/chars_segment.cpp
 	"easypr/core/chars_segment.h"
 
-1455529043 source:/home/xiao/Project/PlateReco/EasyPR/src/core/core_func.cpp
+1455785250 source:/home/xiao/Project/PlateReco/EasyPR/src/core/core_func.cpp
 	"easypr/core/core_func.h"
 	"easypr/core/xzdImageProcess.h"
 
-1454058030 source:/home/xiao/Project/PlateReco/EasyPR/src/core/feature.cpp
+1455782971 source:/home/xiao/Project/PlateReco/EasyPR/src/core/feature.cpp
 	"easypr/core/feature.h"
 	"easypr/core/core_func.h"
 
@@ -57,7 +57,7 @@
 1454149450 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate.h
 	"core_func.h"
 
-1455359874 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_detect.cpp
+1455783622 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_detect.cpp
 	"easypr/core/plate_detect.h"
 	"easypr/util/util.h"
 
@@ -78,11 +78,11 @@
 	"easypr/core/plate_judge.h"
 	"easypr/config.h"
 
-1455530083 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_locate.cpp
+1455783492 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_locate.cpp
 	"easypr/core/plate_locate.h"
 	"easypr/util/util.h"
 
-1454293647 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_recognize.cpp
+1455785995 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_recognize.cpp
 	"easypr/core/plate_recognize.h"
 	"easypr/config.h"
 
@@ -214,7 +214,7 @@
 
 1454058030 /home/xiao/Project/PlateReco/EasyPR/test/plate.hpp
 
-1455593859 source:/home/xiao/Project/PlateReco/EasyPR/test/plateRecoTest.cpp
+1455786019 source:/home/xiao/Project/PlateReco/EasyPR/test/plateRecoTest.cpp
 	"easypr/core/plate_recognize.h"
 	<iostream>
 	<vector>
@@ -228,6 +228,13 @@
 	<cmath>
 	<opencv2/opencv.hpp>
 
-1455360732 source:/home/xiao/Project/PlateReco/EasyPR/src/core/xzdImageProcess.cpp
+1455784935 source:/home/xiao/Project/PlateReco/EasyPR/src/core/xzdImageProcess.cpp
 	"easypr/core/xzdImageProcess.h"
+
+1455782672 source:/home/xiao/Project/PlateReco/EasyPR/test/plateJudgeTest.cpp
+	"easypr/core/plate_recognize.h"
+	<iostream>
+	<vector>
+	<fstream>
+	<string>
 
