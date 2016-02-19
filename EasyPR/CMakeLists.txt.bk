@@ -44,9 +44,6 @@ set(SOURCE_FILES
     src/core/xzdImageProcess.cpp
 )
 add_library(easypr STATIC ${SOURCE_FILES})
-target_link_libraries(easypr /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
-
-# test cases
 
 # test cases
 add_executable(plateRecoXzd test/plateRecoTest.cpp)
@@ -55,5 +52,3 @@ add_executable(plateRecoXzd test/plateRecoTest.cpp)
 # link
 target_link_libraries(plateRecoXzd ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
 set_target_properties(plateRecoXzd PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../)
-
-
