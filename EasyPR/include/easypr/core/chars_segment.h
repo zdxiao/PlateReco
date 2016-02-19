@@ -52,7 +52,7 @@ class CCharsSegment {
 
   //! 是否开启调试模式常量，默认0代表关闭
 
-  static const int DEFAULT_DEBUG = 1;
+  static const int DEFAULT_DEBUG = 0;	//默认关闭调试
 
   //! preprocessChar所用常量
 

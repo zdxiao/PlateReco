@@ -131,6 +131,13 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
               CV_THRESH_OTSU + CV_THRESH_BINARY);
   }
 
+  if (m_debug)
+  {
+	  imshow("binary plate", img_threshold);
+	  waitKey(0);
+	  destroyWindow("binary plate");
+  }
+
   // 去除车牌上方的柳钉以及下方的横线等干扰
   // 并且也判断了是否是车牌
   // 并且在此对字符的跳变次数以及字符颜色所占的比重做了是否是车牌的判别条件
