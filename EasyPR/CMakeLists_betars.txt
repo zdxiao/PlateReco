@@ -41,14 +41,20 @@ set(SOURCE_FILES
     src/util/util.cpp
     src/util/program_options.cpp
     src/util/kv.cpp
+    src/core/xzdImageProcess.cpp
 )
 add_library(easypr STATIC ${SOURCE_FILES})
+
+
+
+
+
 target_link_libraries(easypr /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
 
 # test cases
 
 add_executable(demo test/demo.cpp)
-add_executable(main test/main.cpp)
+#add_executable(main test/main.cpp)
 
 # link
 target_link_libraries(demo ${OpenCV_LIBS} )
@@ -56,9 +62,9 @@ target_link_libraries(demo /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
 target_link_libraries(demo ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
 #set_target_properties(demo PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../)
 
-target_link_libraries(main ${OpenCV_LIBS} )
-target_link_libraries(main /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
-target_link_libraries(main ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
+#target_link_libraries(main ${OpenCV_LIBS} )
+#target_link_libraries(main /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
+#target_link_libraries(main ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
 
 
 

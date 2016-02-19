@@ -53,13 +53,48 @@ CMAKE_SOURCE_DIR = /home/xujingping/PlateReco/EasyPR
 CMAKE_BINARY_DIR = /home/xujingping/PlateReco/EasyPR
 
 #=============================================================================
+# Target rules for target CMakeFiles/demo.dir
+
+# All Build rule for target.
+CMakeFiles/demo.dir/all: CMakeFiles/easypr.dir/all
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/depend
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/xujingping/PlateReco/EasyPR/CMakeFiles  1
+	@echo "Built target demo"
+.PHONY : CMakeFiles/demo.dir/all
+
+# Include target in all.
+all: CMakeFiles/demo.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/demo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xujingping/PlateReco/EasyPR/CMakeFiles 21
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/demo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xujingping/PlateReco/EasyPR/CMakeFiles 0
+.PHONY : CMakeFiles/demo.dir/rule
+
+# Convenience name for target.
+demo: CMakeFiles/demo.dir/rule
+.PHONY : demo
+
+# clean rule for target.
+CMakeFiles/demo.dir/clean:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/clean
+.PHONY : CMakeFiles/demo.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/demo.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/easypr.dir
 
 # All Build rule for target.
 CMakeFiles/easypr.dir/all:
 	$(MAKE) -f CMakeFiles/easypr.dir/build.make CMakeFiles/easypr.dir/depend
 	$(MAKE) -f CMakeFiles/easypr.dir/build.make CMakeFiles/easypr.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/xujingping/PlateReco/EasyPR/CMakeFiles  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/xujingping/PlateReco/EasyPR/CMakeFiles  2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
 	@echo "Built target easypr"
 .PHONY : CMakeFiles/easypr.dir/all
 
@@ -85,41 +120,6 @@ CMakeFiles/easypr.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/easypr.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/plateRecoXzd.dir
-
-# All Build rule for target.
-CMakeFiles/plateRecoXzd.dir/all: CMakeFiles/easypr.dir/all
-	$(MAKE) -f CMakeFiles/plateRecoXzd.dir/build.make CMakeFiles/plateRecoXzd.dir/depend
-	$(MAKE) -f CMakeFiles/plateRecoXzd.dir/build.make CMakeFiles/plateRecoXzd.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/xujingping/PlateReco/EasyPR/CMakeFiles  21
-	@echo "Built target plateRecoXzd"
-.PHONY : CMakeFiles/plateRecoXzd.dir/all
-
-# Include target in all.
-all: CMakeFiles/plateRecoXzd.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/plateRecoXzd.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xujingping/PlateReco/EasyPR/CMakeFiles 21
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/plateRecoXzd.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xujingping/PlateReco/EasyPR/CMakeFiles 0
-.PHONY : CMakeFiles/plateRecoXzd.dir/rule
-
-# Convenience name for target.
-plateRecoXzd: CMakeFiles/plateRecoXzd.dir/rule
-.PHONY : plateRecoXzd
-
-# clean rule for target.
-CMakeFiles/plateRecoXzd.dir/clean:
-	$(MAKE) -f CMakeFiles/plateRecoXzd.dir/build.make CMakeFiles/plateRecoXzd.dir/clean
-.PHONY : CMakeFiles/plateRecoXzd.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/plateRecoXzd.dir/clean
 .PHONY : clean
 
 #=============================================================================

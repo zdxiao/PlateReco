@@ -14,7 +14,7 @@ else()
     message(STATUS "The compiler ${CMAKE_CXX_COMPILER} doesn’t support C++11. Please upgrade or use a different C++ compiler.")
 endif()
 
-set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/home/xiao/OpenCV/OpenCV/build")
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/usr/local/opt/opencv3")
 # opencv3 package required
 find_package(OpenCV 3.0.0 REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
@@ -44,16 +44,27 @@ set(SOURCE_FILES
     src/core/xzdImageProcess.cpp
 )
 add_library(easypr STATIC ${SOURCE_FILES})
+
+
+
+
+
 target_link_libraries(easypr /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
 
 # test cases
 
-# test cases
-add_executable(plateRecoXzd test/plateRecoTest.cpp)
-# add_executable(plateRecoXzd test/plateJudgeTest.cpp)
+add_executable(demo test/demo.cpp)
+#add_executable(main test/main.cpp)
 
 # link
-target_link_libraries(plateRecoXzd ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
-set_target_properties(plateRecoXzd PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../)
+target_link_libraries(demo ${OpenCV_LIBS} )
+target_link_libraries(demo /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
+target_link_libraries(demo ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
+#set_target_properties(demo PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../)
+
+#target_link_libraries(main ${OpenCV_LIBS} )
+#target_link_libraries(main /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
+#target_link_libraries(main ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
+
 
 

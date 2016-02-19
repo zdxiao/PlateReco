@@ -99,6 +99,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named demo
+
+# Build rule for target.
+demo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 demo
+.PHONY : demo
+
+# fast build rule for target.
+demo/fast:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/build
+.PHONY : demo/fast
+
+#=============================================================================
 # Target rules for targets named easypr
 
 # Build rule for target.
@@ -110,19 +123,6 @@ easypr: cmake_check_build_system
 easypr/fast:
 	$(MAKE) -f CMakeFiles/easypr.dir/build.make CMakeFiles/easypr.dir/build
 .PHONY : easypr/fast
-
-#=============================================================================
-# Target rules for targets named plateRecoXzd
-
-# Build rule for target.
-plateRecoXzd: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 plateRecoXzd
-.PHONY : plateRecoXzd
-
-# fast build rule for target.
-plateRecoXzd/fast:
-	$(MAKE) -f CMakeFiles/plateRecoXzd.dir/build.make CMakeFiles/plateRecoXzd.dir/build
-.PHONY : plateRecoXzd/fast
 
 src/core/chars_identify.o: src/core/chars_identify.cpp.o
 .PHONY : src/core/chars_identify.o
@@ -604,29 +604,29 @@ src/util/util.cpp.s:
 	$(MAKE) -f CMakeFiles/easypr.dir/build.make CMakeFiles/easypr.dir/src/util/util.cpp.s
 .PHONY : src/util/util.cpp.s
 
-test/plateRecoTest.o: test/plateRecoTest.cpp.o
-.PHONY : test/plateRecoTest.o
+test/demo.o: test/demo.cpp.o
+.PHONY : test/demo.o
 
 # target to build an object file
-test/plateRecoTest.cpp.o:
-	$(MAKE) -f CMakeFiles/plateRecoXzd.dir/build.make CMakeFiles/plateRecoXzd.dir/test/plateRecoTest.cpp.o
-.PHONY : test/plateRecoTest.cpp.o
+test/demo.cpp.o:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/demo.cpp.o
+.PHONY : test/demo.cpp.o
 
-test/plateRecoTest.i: test/plateRecoTest.cpp.i
-.PHONY : test/plateRecoTest.i
+test/demo.i: test/demo.cpp.i
+.PHONY : test/demo.i
 
 # target to preprocess a source file
-test/plateRecoTest.cpp.i:
-	$(MAKE) -f CMakeFiles/plateRecoXzd.dir/build.make CMakeFiles/plateRecoXzd.dir/test/plateRecoTest.cpp.i
-.PHONY : test/plateRecoTest.cpp.i
+test/demo.cpp.i:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/demo.cpp.i
+.PHONY : test/demo.cpp.i
 
-test/plateRecoTest.s: test/plateRecoTest.cpp.s
-.PHONY : test/plateRecoTest.s
+test/demo.s: test/demo.cpp.s
+.PHONY : test/demo.s
 
 # target to generate assembly for a file
-test/plateRecoTest.cpp.s:
-	$(MAKE) -f CMakeFiles/plateRecoXzd.dir/build.make CMakeFiles/plateRecoXzd.dir/test/plateRecoTest.cpp.s
-.PHONY : test/plateRecoTest.cpp.s
+test/demo.cpp.s:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/demo.cpp.s
+.PHONY : test/demo.cpp.s
 
 # Help Target
 help:
@@ -634,9 +634,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... demo"
 	@echo "... easypr"
 	@echo "... edit_cache"
-	@echo "... plateRecoXzd"
 	@echo "... rebuild_cache"
 	@echo "... src/core/chars_identify.o"
 	@echo "... src/core/chars_identify.i"
@@ -698,9 +698,9 @@ help:
 	@echo "... src/util/util.o"
 	@echo "... src/util/util.i"
 	@echo "... src/util/util.s"
-	@echo "... test/plateRecoTest.o"
-	@echo "... test/plateRecoTest.i"
-	@echo "... test/plateRecoTest.s"
+	@echo "... test/demo.o"
+	@echo "... test/demo.i"
+	@echo "... test/demo.s"
 .PHONY : help
 
 

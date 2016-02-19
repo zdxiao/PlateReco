@@ -1,2 +1,2 @@
+/home/xujingping/PlateReco/EasyPR/CMakeFiles/demo.dir
 /home/xujingping/PlateReco/EasyPR/CMakeFiles/easypr.dir
-/home/xujingping/PlateReco/EasyPR/CMakeFiles/plateRecoXzd.dir
