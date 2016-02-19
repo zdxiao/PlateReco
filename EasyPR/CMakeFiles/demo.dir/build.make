@@ -110,7 +110,6 @@ demo: /usr/local/lib/libopencv_cudabgsegm.so.3.0.0
 demo: /usr/local/lib/libopencv_cudaarithm.so.3.0.0
 demo: /usr/local/lib/libopencv_core.so.3.0.0
 demo: /usr/local/lib/libopencv_calib3d.so.3.0.0
-demo: /home/xujingping/EasyPR-1.4/lib/libmxnet.so
 demo: /usr/local/lib/libopencv_videostab.so.3.0.0
 demo: /usr/local/lib/libopencv_videoio.so.3.0.0
 demo: /usr/local/lib/libopencv_video.so.3.0.0

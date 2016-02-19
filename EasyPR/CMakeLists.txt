@@ -48,7 +48,7 @@ add_library(easypr STATIC ${SOURCE_FILES})
 
 
 
-
+###
 target_link_libraries(easypr /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
 
 # test cases
@@ -58,7 +58,7 @@ add_executable(demo test/demo.cpp)
 
 # link
 target_link_libraries(demo ${OpenCV_LIBS} )
-target_link_libraries(demo /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
+#target_link_libraries(demo /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
 target_link_libraries(demo ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
 #set_target_properties(demo PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../)
 
