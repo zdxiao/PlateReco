@@ -25,6 +25,7 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
 
   const int color_find_max = m_maxPlates;
 
+  std::cout << "Color Locate" << std::endl;
   m_plateLocate->plateColorLocate(src, color_Plates, index);
   PlateJudge::instance()->plateJudge(color_Plates, color_result_Plates);
 
@@ -34,9 +35,9 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
     plate.setPlateLocateType(COLOR);
     all_result_Plates.push_back(plate);
   }
-/*
-  //颜色和边界闭操作同时采用
 
+  //颜色和边界闭操作同时采用
+  std::cout << "Sobel Locate" << std::endl;
   {
     m_plateLocate->plateSobelLocate(src, sobel_Plates, index);
     PlateJudge::instance()->plateJudge(sobel_Plates, sobel_result_Plates);
@@ -50,7 +51,7 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
       all_result_Plates.push_back(plate);
     }
   }
-*/
+
 
   for (size_t i = 0; i < all_result_Plates.size(); i++) {
 

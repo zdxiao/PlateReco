@@ -99,8 +99,8 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
 
   // 进行颜色查找
 
-  //colorMatch(src, match_grey, r, false);
-  blueWhiteMatch(src, match_grey);
+  colorMatch(src, match_grey, r, false);
+  //blueWhiteMatch(src, match_grey);
 
   if (m_debug) {
 	namedWindow("match_grey", CV_WINDOW_NORMAL);
@@ -110,12 +110,12 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
   }
 
   Mat src_threshold = match_grey;
-//  threshold(match_grey, src_threshold, 0, 255,
-//            CV_THRESH_OTSU + CV_THRESH_BINARY);
-//
-//  Mat element = getStructuringElement(
-//      MORPH_RECT, Size(color_morph_width, color_morph_height));
-//  morphologyEx(src_threshold, src_threshold, MORPH_CLOSE, element);
+  threshold(match_grey, src_threshold, 0, 255,
+            CV_THRESH_OTSU + CV_THRESH_BINARY);
+
+  Mat element = getStructuringElement(
+      MORPH_RECT, Size(color_morph_width, color_morph_height));
+  morphologyEx(src_threshold, src_threshold, MORPH_CLOSE, element);
 
   src_threshold.copyTo(out);
 
@@ -137,19 +137,21 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
 
     // 需要进行大小尺寸判断
 
+
     if (!verifySizes(mr))
       itc = contours.erase(itc);
     else {
 	  	if(m_debug)
 		{
+		    Mat drawSrc = src.clone();
             Point2f vertices[4];
             mr.points(vertices);
             for(int i = 0; i < 4; ++i)
             {
-                line(src, vertices[i], vertices[(i + 1) % 4], Scalar(0, 0, 255), 3);
+                line(drawSrc, vertices[i], vertices[(i + 1) % 4], Scalar(0, 0, 255), 3);
             }
             namedWindow("locate", CV_WINDOW_NORMAL);
-            imshow("locate", src);
+            imshow("locate", drawSrc);
             cout << "Size is OK!" << endl;
             waitKey();
 		}
@@ -194,6 +196,20 @@ int CPlateLocate::sobelFrtSearch(const Mat &src,
       float area = mr.size.height * mr.size.width;
       float r = (float) mr.size.width / (float) mr.size.height;
       if (r < 1) r = (float) mr.size.height / (float) mr.size.width;
+	  	if(m_debug)
+		{
+		    Mat drawSrc = src.clone();
+            Point2f vertices[4];
+            mr.points(vertices);
+            for(int i = 0; i < 4; ++i)
+            {
+                line(drawSrc, vertices[i], vertices[(i + 1) % 4], Scalar(0, 255, 0), 3);
+            }
+            namedWindow("locate", CV_WINDOW_NORMAL);
+            imshow("locate", drawSrc);
+            cout << "Size is OK!" << endl;
+            waitKey();
+		}
     }
 
     ++itc;
@@ -770,18 +786,18 @@ int CPlateLocate::plateColorLocate(Mat src, vector<CPlate> &candPlates,
   // 进行抗扭斜处理
 
   deskew(src, src_b, rects_color_blue, plates);
-/*
+
   // 查找黄色车牌
 
   colorSearch(src, YELLOW, src_b, rects_color_yellow, index);
   deskew(src, src_b, rects_color_yellow, plates);
-*/
+
   for (size_t i = 0; i < plates.size(); i++) {
     candPlates.push_back(plates[i]);
     if(m_debug)
     {
         char buffer[50];
-        imshow("segedPlate", plates[i].getPlateMat());
+        imshow("ColorSegedPlate", plates[i].getPlateMat());
         sprintf(buffer, "resources/image/plates0218/%04d.jpg", plate_counter);
         ++plate_counter;
         utils::imwrite(buffer, plates[i].getPlateMat());

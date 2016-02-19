@@ -53,6 +53,7 @@
 		<Unit filename="../../src/util/kv.cpp" />
 		<Unit filename="../../src/util/program_options.cpp" />
 		<Unit filename="../../src/util/util.cpp" />
+		<Unit filename="../../test/plateJudgeTest.cpp" />
 		<Unit filename="../../test/plateRecoTest.cpp" />
 		<Extensions>
 			<code_completion />
