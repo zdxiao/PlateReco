@@ -15,6 +15,7 @@ class CharsIdentify {
 
   std::pair<std::string, std::string> identify(cv::Mat input);
   std::pair<std::string, std::string> identify2(cv::Mat input);
+  std::pair<std::string, std::string> identify3(cv::Mat input);
 
  private:
   CharsIdentify();

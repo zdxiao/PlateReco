@@ -57,6 +57,7 @@ CMakeFiles/easypr.dir/src/core/chars_identify.cpp.o
  include/easypr/core/chars_identify.h
  include/easypr/core/core_func.h
  include/easypr/util/kv.h
+ include/mxnet/c_predict_api.h
 CMakeFiles/easypr.dir/src/core/chars_recognise.cpp.o
  /home/xujingping/PlateReco/EasyPR/src/core/chars_recognise.cpp
  /usr/local/include/opencv/cxcore.h
@@ -116,6 +117,7 @@ CMakeFiles/easypr.dir/src/core/chars_recognise.cpp.o
  include/easypr/core/core_func.h
  include/easypr/util/kv.h
  include/easypr/util/util.h
+ include/mxnet/c_predict_api.h
 CMakeFiles/easypr.dir/src/core/chars_segment.cpp.o
  /home/xujingping/PlateReco/EasyPR/src/core/chars_segment.cpp
  /usr/local/include/opencv/cxcore.h
@@ -572,6 +574,7 @@ CMakeFiles/easypr.dir/src/core/plate_recognize.cpp.o
  include/easypr/core/plate_recognize.h
  include/easypr/util/kv.h
  include/easypr/util/util.h
+ include/mxnet/c_predict_api.h
 CMakeFiles/easypr.dir/src/core/xzdImageProcess.cpp.o
  /home/xujingping/PlateReco/EasyPR/src/core/xzdImageProcess.cpp
  /usr/local/include/opencv/cxcore.h
@@ -854,6 +857,7 @@ CMakeFiles/easypr.dir/src/train/ann_train.cpp.o
  include/easypr/train/train.h
  include/easypr/util/kv.h
  include/easypr/util/util.h
+ include/mxnet/c_predict_api.h
 CMakeFiles/easypr.dir/src/train/svm_train.cpp.o
  /home/xujingping/PlateReco/EasyPR/src/train/svm_train.cpp
  /usr/local/include/opencv/cxcore.h

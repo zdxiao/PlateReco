@@ -6,9 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/xujingping/PlateReco/EasyPR/src/core/xzdImageProcess.cpp
-easypr/core/xzdImageProcess.h
-/home/xujingping/PlateReco/EasyPR/src/core/easypr/core/xzdImageProcess.h
+/home/xujingping/PlateReco/EasyPR/src/core/chars_identify.cpp
+stdio.h
+-
+mxnet/c_predict_api.h
+/home/xujingping/PlateReco/EasyPR/src/core/mxnet/c_predict_api.h
+iostream
+-
+fstream
+-
+string
+-
+vector
+-
+easypr/core/chars_identify.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/core/chars_identify.h
+easypr/config.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/config.h
+easypr/core/core_func.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/core/core_func.h
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h
@@ -448,15 +464,27 @@ opencv2/opencv.hpp
 opencv2/core/core_c.h
 /usr/local/include/opencv2/videoio/opencv2/core/core_c.h
 
-include/easypr/core/xzdImageProcess.h
-vector
--
-iostream
--
-ctime
--
-cmath
+include/easypr/config.h
+
+include/easypr/core/chars_identify.h
+easypr/util/kv.h
+include/easypr/core/easypr/util/kv.h
+mxnet/c_predict_api.h
+include/easypr/core/mxnet/c_predict_api.h
+memory
 -
 opencv2/opencv.hpp
 -
+
+include/easypr/core/core_func.h
+opencv2/opencv.hpp
+-
+
+include/easypr/util/kv.h
+map
+-
+string
+-
+
+include/mxnet/c_predict_api.h
 

@@ -56,6 +56,7 @@ CMakeFiles/easypr.dir/src/core/chars_identify.cpp.o: include/easypr/config.h
 CMakeFiles/easypr.dir/src/core/chars_identify.cpp.o: include/easypr/core/chars_identify.h
 CMakeFiles/easypr.dir/src/core/chars_identify.cpp.o: include/easypr/core/core_func.h
 CMakeFiles/easypr.dir/src/core/chars_identify.cpp.o: include/easypr/util/kv.h
+CMakeFiles/easypr.dir/src/core/chars_identify.cpp.o: include/mxnet/c_predict_api.h
 
 CMakeFiles/easypr.dir/src/core/chars_recognise.cpp.o: src/core/chars_recognise.cpp
 CMakeFiles/easypr.dir/src/core/chars_recognise.cpp.o: /usr/local/include/opencv/cxcore.h
@@ -115,6 +116,7 @@ CMakeFiles/easypr.dir/src/core/chars_recognise.cpp.o: include/easypr/core/chars_
 CMakeFiles/easypr.dir/src/core/chars_recognise.cpp.o: include/easypr/core/core_func.h
 CMakeFiles/easypr.dir/src/core/chars_recognise.cpp.o: include/easypr/util/kv.h
 CMakeFiles/easypr.dir/src/core/chars_recognise.cpp.o: include/easypr/util/util.h
+CMakeFiles/easypr.dir/src/core/chars_recognise.cpp.o: include/mxnet/c_predict_api.h
 
 CMakeFiles/easypr.dir/src/core/chars_segment.cpp.o: src/core/chars_segment.cpp
 CMakeFiles/easypr.dir/src/core/chars_segment.cpp.o: /usr/local/include/opencv/cxcore.h
@@ -571,6 +573,7 @@ CMakeFiles/easypr.dir/src/core/plate_recognize.cpp.o: include/easypr/core/plate_
 CMakeFiles/easypr.dir/src/core/plate_recognize.cpp.o: include/easypr/core/plate_recognize.h
 CMakeFiles/easypr.dir/src/core/plate_recognize.cpp.o: include/easypr/util/kv.h
 CMakeFiles/easypr.dir/src/core/plate_recognize.cpp.o: include/easypr/util/util.h
+CMakeFiles/easypr.dir/src/core/plate_recognize.cpp.o: include/mxnet/c_predict_api.h
 
 CMakeFiles/easypr.dir/src/core/xzdImageProcess.cpp.o: src/core/xzdImageProcess.cpp
 CMakeFiles/easypr.dir/src/core/xzdImageProcess.cpp.o: /usr/local/include/opencv/cxcore.h
@@ -853,6 +856,7 @@ CMakeFiles/easypr.dir/src/train/ann_train.cpp.o: include/easypr/train/ann_train.
 CMakeFiles/easypr.dir/src/train/ann_train.cpp.o: include/easypr/train/train.h
 CMakeFiles/easypr.dir/src/train/ann_train.cpp.o: include/easypr/util/kv.h
 CMakeFiles/easypr.dir/src/train/ann_train.cpp.o: include/easypr/util/util.h
+CMakeFiles/easypr.dir/src/train/ann_train.cpp.o: include/mxnet/c_predict_api.h
 
 CMakeFiles/easypr.dir/src/train/svm_train.cpp.o: src/train/svm_train.cpp
 CMakeFiles/easypr.dir/src/train/svm_train.cpp.o: /usr/local/include/opencv/cxcore.h

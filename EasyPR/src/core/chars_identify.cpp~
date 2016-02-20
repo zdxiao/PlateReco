@@ -173,8 +173,8 @@ namespace easypr {
 	CharsIdentify::CharsIdentify() {
 		//init
 		// Models path for your model, you have to modify it
-		BufferFile json_data("./models/chars2_net.json");
-		BufferFile param_data("./models/chars2_net.params");
+		BufferFile json_data("./models/lenet.json");
+		BufferFile param_data("./models/chars_lenet-0-0100.params");
 		synset = LoadSynset("./models/synset.txt");
 		// Parameters
 		dev_type = 1;  // 1: cpu, 2: gpu
@@ -212,8 +212,8 @@ namespace easypr {
 
 		/* Chinese recog*/
 		// Models path for your model, you have to modify it
-		BufferFile json_data2("./models/charsZH_net.json");
-		BufferFile param_data2("./models/charsZH_net.params");
+		BufferFile json_data2("./models/lenet_zh.json");
+		BufferFile param_data2("./models/charsZH_lenet-0-0100.params");
 		synset2 = LoadSynset("./models/synset_zh.txt");
 		// Parameters
 		dev_type = 1;  // 1: cpu, 2: gpu
@@ -336,49 +336,5 @@ namespace easypr {
 		    std::string province = kv_->get(s);
 		    return std::make_pair(s, province);
 		return std::make_pair(province,province);
-	}
- std::pair<std::string, std::string> CharsIdentify::identify3(cv::Mat input) {
-		cv::Mat feature = features(input, kPredictSize);
-
-		// Just a big enough memory 1000x1000x3
-		int image_size = width * height * channels;
-		std::vector<mx_float> image_data = std::vector<mx_float>(image_size);
-		GetMeanFile(input, image_data.data(), channels, cv::Size(width, height));
-		 //-- Set Input Image
-       MXPredSetInput(out, "data", image_data.data(), image_size);
-	   //-- Do Predict Forward
-	   MXPredForward(out);
-
-	   mx_uint output_index = 0;
-
-	   mx_uint *shape = 0;
-	   mx_uint shape_len;
-
-	   //-- Get Output Result
-	   MXPredGetOutputShape(out, output_index, &shape, &shape_len);
-
-	   size_t size = 1;
-	   for (mx_uint i = 0; i < shape_len; ++i) size *= shape[i];
-
-	   std::vector<float> data(size);
-
-	   MXPredGetOutput(out, output_index, &(data[0]), size);
-
-	   float best_accuracy = 0.0;
-	   int best_idx = 0;
-
-	   for (int i = 0; i < static_cast<int>(data.size()); i++) {
-		   //    printf("Accuracy[%d] = %.8f\n", i, data[i]);
-                if(i==0||i>9){
-		   if (data[i] > best_accuracy) {
-			   best_accuracy = data[i];
-			   best_idx = i;
-		   }
-                }
-	   }
-          
-           auto index=static_cast<int>(best_idx);
-           index=index==0?65:index;
-           return std::make_pair(kChars[index], kChars[index]);
 	}
 }
