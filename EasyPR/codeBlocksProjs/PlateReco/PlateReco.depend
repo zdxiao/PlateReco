@@ -78,11 +78,11 @@
 	"easypr/core/plate_judge.h"
 	"easypr/config.h"
 
-1455846357 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_locate.cpp
+1455893754 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_locate.cpp
 	"easypr/core/plate_locate.h"
 	"easypr/util/util.h"
 
-1455845870 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_recognize.cpp
+1455894728 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_recognize.cpp
 	"easypr/core/plate_recognize.h"
 	"easypr/config.h"
 
@@ -214,7 +214,7 @@
 
 1454058030 /home/xiao/Project/PlateReco/EasyPR/test/plate.hpp
 
-1455845628 source:/home/xiao/Project/PlateReco/EasyPR/test/plateRecoTest.cpp
+1455893987 source:/home/xiao/Project/PlateReco/EasyPR/test/plateRecoTest.cpp
 	"easypr/core/plate_recognize.h"
 	<iostream>
 	<vector>

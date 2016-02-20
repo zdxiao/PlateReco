@@ -25,7 +25,7 @@ int main(int argc, char**argv)
 //		CPlateDetect cpd;
         CPlateRecognize cpr;
 //		cpd.setPDDebug(true);
-        cpr.setDebug(true);
+        cpr.setDebug(false);
 		vector<CPlate> resultVec;
 		vector<string> licenseVec;
 //		cpd.plateDetect(img, resultVec);

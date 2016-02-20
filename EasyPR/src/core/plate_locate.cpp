@@ -3,6 +3,9 @@
 
 int plate_counter = 0;
 
+//#define DEBUG_COLORSEGMENT
+//#define DEBUG_SOBELSEGMENT
+
 using namespace std;
 
 namespace easypr {
@@ -102,12 +105,12 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
   colorMatch(src, match_grey, r, false);
   //blueWhiteMatch(src, match_grey);
 
-  if (m_debug) {
+  #ifdef DEBUG_COLORSEGMENT
 	namedWindow("match_grey", CV_WINDOW_NORMAL);
 	imshow("match_grey", match_grey);
 	//waitKey();
     utils::imwrite("resources/image/tmp/match_grey.jpg", match_grey);
-  }
+  #endif
 
   Mat src_threshold = match_grey;
   threshold(match_grey, src_threshold, 0, 255,
@@ -141,6 +144,8 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
     if (!verifySizes(mr))
       itc = contours.erase(itc);
     else {
+    /*
+#ifdef DEBUG_COLORSEGMENT
 	  	if(m_debug)
 		{
 		    Mat drawSrc = src.clone();
@@ -155,6 +160,8 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
             cout << "Size is OK!" << endl;
             waitKey();
 		}
+#endif
+*/
       ++itc;
       outRects.push_back(mr);
     }
@@ -196,6 +203,8 @@ int CPlateLocate::sobelFrtSearch(const Mat &src,
       float area = mr.size.height * mr.size.width;
       float r = (float) mr.size.width / (float) mr.size.height;
       if (r < 1) r = (float) mr.size.height / (float) mr.size.width;
+/*
+  #ifdef DEBUG_SOBELSEGMENT
 	  	if(m_debug)
 		{
 		    Mat drawSrc = src.clone();
@@ -210,6 +219,8 @@ int CPlateLocate::sobelFrtSearch(const Mat &src,
             cout << "Size is OK!" << endl;
             waitKey();
 		}
+    #endif
+*/
     }
 
     ++itc;
@@ -794,6 +805,7 @@ int CPlateLocate::plateColorLocate(Mat src, vector<CPlate> &candPlates,
 
   for (size_t i = 0; i < plates.size(); i++) {
     candPlates.push_back(plates[i]);
+#ifdef DEBUG_COLORSEGMENT
     if(m_debug)
     {
         char buffer[50];
@@ -803,6 +815,7 @@ int CPlateLocate::plateColorLocate(Mat src, vector<CPlate> &candPlates,
         utils::imwrite(buffer, plates[i].getPlateMat());
         waitKey();
     }
+#endif
   }
   return 0;
 }
@@ -950,7 +963,22 @@ int CPlateLocate::plateSobelLocate(Mat src, vector<CPlate> &candPlates,
 
   deskew(src, src_b, rects_sobel, plates);
 
-  for (size_t i = 0; i < plates.size(); i++) candPlates.push_back(plates[i]);
+  for (size_t i = 0; i < plates.size(); i++)
+  {
+    candPlates.push_back(plates[i]);
+    #ifdef DEBUG_SOBELSEGMENT
+    if(m_debug)
+    {
+        char buffer[50];
+        imshow("SobelSegedPlate", plates[i].getPlateMat());
+        sprintf(buffer, "resources/image/plates0218/%04d.jpg", plate_counter);
+        ++plate_counter;
+        utils::imwrite(buffer, plates[i].getPlateMat());
+        waitKey();
+    }
+    #endif
+  }
+
 
   return 0;
 }
