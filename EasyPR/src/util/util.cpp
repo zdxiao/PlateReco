@@ -61,8 +61,9 @@ std::string Utils::getFileName(const std::string &path,
                                const bool postfix /* = false */) {
   if (!path.empty()) {
     size_t last_slash = utils::get_last_slash(path);
-    size_t last_dot = path.find_last_of('.');
-
+    //size_t last_dot = path.find_last_of('.');
+    size_t last_dot = path.find_first_of('.');
+    
     if (last_dot < last_slash || last_dot == std::string::npos) {
       // not found the right dot of the postfix,
       // return the file name directly
