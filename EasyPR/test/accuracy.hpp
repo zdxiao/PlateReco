@@ -101,7 +101,7 @@ int accuracyTest(const char* test_path) {
       if (num == 0) {
         cout << kv->get("empty_plate") << endl;
         if (plateLicense != kv->get("empty_plate")) {
-          not_recognized_files.push_back(plateLicense);
+          not_recognized_files.push_back(filepath);
           count_norecogin++;
         }
       } else if (num > 1) {
@@ -229,6 +229,11 @@ int accuracyTest(const char* test_path) {
     myfile << kv->get("seconds") << ":" << seconds << kv->get("sec") << ",  ";
     myfile << kv->get("seconds_average") << ":" << avgsec << kv->get("sec")
         << endl;
+
+    for (auto it = not_recognized_files.begin(); it != not_recognized_files.end();
+       ++it) {
+        myfile << *it << endl;
+    }
     myfile.close();
   } else {
     cout << "Unable to open file";

@@ -11,11 +11,10 @@ using namespace easypr;
 int main(int argc, char**argv)
 {
 	cout << "hello world!" << endl;
-	ifstream listFile("list3.txt");
-	while(1)
+	ifstream listFile("notRecoLists.txt");
+    string line;
+	while(getline(listFile, line))
 	{
-		string line;
-		getline(listFile, line);
 		cout << line << endl;
 		line = "../2015_12_09/" + line;
 		//line = "./resources/image/general_test/" + line;

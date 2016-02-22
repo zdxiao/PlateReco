@@ -30,7 +30,7 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
   #ifdef DEBUG_LOCATE_PLATE
   std::cout << "Color Locate" << std::endl;
   #endif
-/*
+
   m_plateLocate->plateColorLocate(src, color_Plates, index);
   #ifdef DEBUG_LOCATE_PLATE
   for(auto iter = color_Plates.begin(); iter != color_Plates.end(); ++iter)
@@ -54,7 +54,7 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
     plate.setPlateLocateType(COLOR);
     all_result_Plates.push_back(plate);
   }
-*/
+
   //颜色和边界闭操作同时采用
   #ifdef DEBUG_LOCATE_PLATE
   std::cout << "Sobel Locate" << std::endl;

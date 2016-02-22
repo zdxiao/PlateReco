@@ -4,7 +4,7 @@
 int plate_counter = 0;
 
 //#define DEBUG_COLORSEGMENT
-#define DEBUG_SOBELSEGMENT
+//#define DEBUG_SOBELSEGMENT
 
 using namespace std;
 
@@ -121,6 +121,13 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
   Mat element = getStructuringElement(
       MORPH_RECT, Size(color_morph_width, color_morph_height));
   morphologyEx(src_threshold, src_threshold, MORPH_CLOSE, element);
+
+  #ifdef DEBUG_COLORSEGMENT
+	namedWindow("color morph", CV_WINDOW_NORMAL);
+	imshow("color morph", src_threshold);
+	//waitKey();
+    utils::imwrite("resources/image/tmp/match_grey.jpg", match_grey);
+  #endif
 
   src_threshold.copyTo(out);
 
@@ -945,7 +952,7 @@ int CPlateLocate::plateSobelLocate(Mat src, vector<CPlate> &candPlates,
 
     sobelSecSearchPart(bound_mat, refpoint, rects_sobel);
   }
-/*
+
   for (size_t i = 0; i < bound_rects.size(); i++) {
     Rect_<float> bound_rect = bound_rects[i];
     Point2f refpoint(bound_rect.x, bound_rect.y);
@@ -966,7 +973,7 @@ int CPlateLocate::plateSobelLocate(Mat src, vector<CPlate> &candPlates,
     sobelSecSearch(bound_mat, refpoint, rects_sobel);
     // sobelSecSearchPart(bound_mat, refpoint, rects_sobel);
   }
-  */
+/**/
 
   Mat src_b;
   sobelOper(src, src_b, 3, 10, 3);
