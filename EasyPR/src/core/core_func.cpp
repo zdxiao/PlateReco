@@ -441,8 +441,8 @@ bool clearLiuDing(Mat &img) {
   if (iCount * 1.0 / img.rows <= 0.40) {
 
     //满足条件的跳变的行数也要在一定的阈值内
-	  //db
-	  std::cout << "jump small than 10 times" << std::endl;
+	  ////db
+	  //std::cout << "jump small than 10 times" << std::endl;
     return false;
   }
 
@@ -450,8 +450,8 @@ bool clearLiuDing(Mat &img) {
 
   if (whiteCount * 1.0 / (img.rows * img.cols) < 0.15 ||
       whiteCount * 1.0 / (img.rows * img.cols) > 0.55) {
-	  //db
-	  std::cout << "white too much or too less" << std::endl;
+	  ////db
+	  //std::cout << "white too much or too less" << std::endl;
     return false;
   }
 

@@ -46,7 +46,9 @@ bool CCharsSegment::verifyCharSizes(Mat r, int& rSize) {
 	  charAspect > minAspect)
   {
 	  rSize = (int)(charAspect/(aspect*1.2));
-	  cout << charAspect << "rSize:" << rSize << endl;
+	  if (m_debug){
+		  cout << charAspect << "rSize:" << rSize << endl;
+	  }
 	  return true;
   }
   else
@@ -182,7 +184,6 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
 
   vector<vector<Point> >::iterator itc = contours.begin();
   vector<Rect> vecRect;
-  vector<int> vecRectSize;
 
   // 将不符合特定尺寸的字符块排除出去
 
@@ -197,35 +198,26 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
 			int width = mr.width / rSize;
 			for (int idx = 0; idx < rSize; idx++){
 				Rect smallerRect(mr.x+idx*width, mr.y, width, mr.height);
-				int pushflag = 1;
-				if (itc + 1 != contours.end())
-				{
-					Rect nextRect = boundingRect(Mat(*(itc + 1)));
-					int interval = nextRect.x - smallerRect.x;
-					if (interval < width / 2)
-						pushflag = 0;
-				}
-				if (pushflag == 1)
-					vecRect.push_back(smallerRect);
-				if (m_debug)
-				{
-					cout << "--> check contour" << endl;
-					Mat Roi(img_threshold, smallerRect);
-					imshow("ctr", Roi);
-					waitKey(0);
-					destroyWindow("ctr");
-				}
+				vecRect.push_back(smallerRect);
+				//if (m_debug)
+				//{
+				//	cout << "--> check contour" << endl;
+				//	Mat Roi(img_threshold, smallerRect);
+				//	imshow("ctr", Roi);
+				//	waitKey(0);
+				//	destroyWindow("ctr");
+				//}
 			}
 			rSize = 0;
 		}
 		else{
-			if (m_debug)
-			{
-				cout << "--> check contour" << endl;
-				imshow("ctr", auxRoi);
-				waitKey(0);
-				destroyWindow("ctr");
-			}
+			//if (m_debug)
+			//{
+			//	cout << "--> check contour" << endl;
+			//	imshow("ctr", auxRoi);
+			//	waitKey(0);
+			//	destroyWindow("ctr");
+			//}
 			vecRect.push_back(mr);
 		}
 	}
@@ -249,6 +241,37 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
   vector<Rect> sortedRect(vecRect);
   std::sort(sortedRect.begin(), sortedRect.end(),
             [](const Rect& r1, const Rect& r2) { return r1.x < r2.x; });
+
+  // eliminate split rect from sortedRect vertor, if it is unnecessary
+  for (auto idx = 0; idx < sortedRect.size(); idx++)
+  {
+	  Rect currRect = *(sortedRect.begin()+idx);
+	  if (m_debug)
+	  {
+		  cout << "--> check contour" << endl;
+		  Mat Roi(img_threshold, currRect);
+		  imshow("ctr", Roi);
+		  waitKey(0);
+		  destroyWindow("ctr");
+	  }
+	  int interval = 0;
+	  int removeId = -1;
+	  int hitflag = 0;
+	  for (auto idy = idx + 1; idy < sortedRect.size(); idy++)
+	  {
+		  Rect compareRect = *(sortedRect.begin() + idy);
+		  interval = compareRect.x - currRect.x;
+		  if (interval < currRect.width/2){
+			  hitflag = 1;
+			  removeId = compareRect.width > currRect.width ? idy : idx;
+			  break;
+		  }
+	  }
+	  if (hitflag == 1){
+		  sortedRect.erase(sortedRect.begin() + removeId);
+		  idx--;
+	  }
+  }
 
   size_t specIndex = 0;
 
