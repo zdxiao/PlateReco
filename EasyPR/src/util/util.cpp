@@ -60,7 +60,8 @@ long Utils::getTimestamp() {
 std::string Utils::getFileName(const std::string &path,
                                const bool postfix /* = false */) {
   if (!path.empty()) {
-    size_t last_slash = utils::get_last_slash(path);
+    //size_t last_slash = utils::get_last_slash(path);
+    size_t last_slash = path.find_last_of('_');
     size_t last_dot = path.find_last_of('.');
 
     if (last_dot < last_slash || last_dot == std::string::npos) {

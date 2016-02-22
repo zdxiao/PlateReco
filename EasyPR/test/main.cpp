@@ -341,7 +341,7 @@ void command_line_handler(int argc, const char* argv[]) {
       });
 }
 
-int main1(int argc, const char* argv[]) {
+int main(int argc, const char* argv[]) {
   std::shared_ptr<easypr::Kv> kv(new easypr::Kv);
   kv->load("etc/chinese_mapping");
 

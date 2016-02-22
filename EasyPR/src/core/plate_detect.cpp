@@ -1,8 +1,8 @@
 #include "easypr/core/plate_detect.h"
 #include "easypr/util/util.h"
 
-#define DEBUG_LOCATE_PLATE
-#define DEBUG_SAVE_LOCATE_PLATES
+//#define DEBUG_LOCATE_PLATE
+//#define DEBUG_SAVE_LOCATE_PLATES
 int locatedPlatesCounter = 0;
 
 namespace easypr {
@@ -27,8 +27,10 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
   //如果颜色查找找到n个以上（包含n个）的车牌，就不再进行Sobel查找了。
 
   const int color_find_max = m_maxPlates;
-
+  #ifdef DEBUG_LOCATE_PLATE
   std::cout << "Color Locate" << std::endl;
+  #endif
+/*
   m_plateLocate->plateColorLocate(src, color_Plates, index);
   #ifdef DEBUG_LOCATE_PLATE
   for(auto iter = color_Plates.begin(); iter != color_Plates.end(); ++iter)
@@ -52,9 +54,11 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
     plate.setPlateLocateType(COLOR);
     all_result_Plates.push_back(plate);
   }
-
+*/
   //颜色和边界闭操作同时采用
+  #ifdef DEBUG_LOCATE_PLATE
   std::cout << "Sobel Locate" << std::endl;
+  #endif
   {
     m_plateLocate->plateSobelLocate(src, sobel_Plates, index);
   #ifdef DEBUG_LOCATE_PLATE
@@ -71,6 +75,7 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
     #endif
   }
   #endif
+
     PlateJudge::instance()->plateJudge(sobel_Plates, sobel_result_Plates);
 
     for (size_t i = 0; i < sobel_result_Plates.size(); i++) {

@@ -41,14 +41,12 @@ set(SOURCE_FILES
     src/util/util.cpp
     src/util/program_options.cpp
     src/util/kv.cpp
-    src/core/xzdImageProcess.cpp
 )
 add_library(easypr STATIC ${SOURCE_FILES})
 
 # test cases
-add_executable(plateRecoXzd test/plateRecoTest.cpp)
-# add_executable(plateRecoXzd test/plateJudgeTest.cpp)
+add_executable(demo test/main.cpp)
 
 # link
-target_link_libraries(plateRecoXzd ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
-set_target_properties(plateRecoXzd PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../)
+target_link_libraries(demo ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
+set_target_properties(demo PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../)

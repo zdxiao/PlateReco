@@ -40,7 +40,7 @@
 1454058030 source:/home/xiao/Project/PlateReco/EasyPR/src/core/chars_segment.cpp
 	"easypr/core/chars_segment.h"
 
-1455785250 source:/home/xiao/Project/PlateReco/EasyPR/src/core/core_func.cpp
+1456126068 source:/home/xiao/Project/PlateReco/EasyPR/src/core/core_func.cpp
 	"easypr/core/core_func.h"
 	"easypr/core/xzdImageProcess.h"
 
@@ -57,7 +57,7 @@
 1454149450 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate.h
 	"core_func.h"
 
-1455846566 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_detect.cpp
+1456119246 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_detect.cpp
 	"easypr/core/plate_detect.h"
 	"easypr/util/util.h"
 
@@ -65,7 +65,7 @@
 	"easypr/core/plate_locate.h"
 	"easypr/core/plate_judge.h"
 
-1455507324 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_locate.h
+1456130981 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_locate.h
 	"easypr/core/plate.h"
 	"easypr/core/core_func.h"
 
@@ -78,11 +78,11 @@
 	"easypr/core/plate_judge.h"
 	"easypr/config.h"
 
-1455893754 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_locate.cpp
+1456120035 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_locate.cpp
 	"easypr/core/plate_locate.h"
 	"easypr/util/util.h"
 
-1455894728 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_recognize.cpp
+1456048369 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_recognize.cpp
 	"easypr/core/plate_recognize.h"
 	"easypr/config.h"
 
@@ -161,7 +161,7 @@
 	<initializer_list>
 	<stdarg.h>
 
-1454058030 source:/home/xiao/Project/PlateReco/EasyPR/src/util/util.cpp
+1456060554 source:/home/xiao/Project/PlateReco/EasyPR/src/util/util.cpp
 	"easypr/util/util.h"
 	<string>
 	<windows.h>
@@ -175,7 +175,7 @@
 	<list>
 	<opencv2/highgui/highgui.hpp>
 
-1455355470 source:/home/xiao/Project/PlateReco/EasyPR/test/main.cpp
+1456048218 source:/home/xiao/Project/PlateReco/EasyPR/test/main.cpp
 	"easypr.h"
 	"easypr/util/switch.hpp"
 	"accuracy.hpp"
@@ -203,7 +203,7 @@
 	<functional>
 	<map>
 
-1454058030 /home/xiao/Project/PlateReco/EasyPR/test/accuracy.hpp
+1456062878 /home/xiao/Project/PlateReco/EasyPR/test/accuracy.hpp
 	<easypr.h>
 	<ctime>
 	<fstream>
@@ -214,7 +214,7 @@
 
 1454058030 /home/xiao/Project/PlateReco/EasyPR/test/plate.hpp
 
-1455893987 source:/home/xiao/Project/PlateReco/EasyPR/test/plateRecoTest.cpp
+1456064813 source:/home/xiao/Project/PlateReco/EasyPR/test/plateRecoTest.cpp
 	"easypr/core/plate_recognize.h"
 	<iostream>
 	<vector>
@@ -237,4 +237,8 @@
 	<vector>
 	<fstream>
 	<string>
+
+1455963934 source:/home/xiao/Project/PlateReco/EasyPR/test/svmTrainTest.cpp
+	"easypr/train/svm_train.h"
+	<iostream>
 

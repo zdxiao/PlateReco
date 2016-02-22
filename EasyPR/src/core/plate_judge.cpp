@@ -20,8 +20,13 @@ int PlateJudge::plateJudge(const Mat &inMat, int &result) {
   Mat features;
   getHistogramFeatures(inMat, features);
 
+  imshow("inMat", inMat);
+
   float response = svm_->predict(features);
   result = (int) response;
+
+  if(result == 1) imshow("true plate", inMat);
+  waitKey();
 
   return 0;
 }

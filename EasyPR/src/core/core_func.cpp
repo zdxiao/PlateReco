@@ -217,6 +217,7 @@ bool bFindLeftRightBound1(Mat &bound_threshold, int &posLeft, int &posRight) {
   return false;
 }
 
+// 取span × row的滑块，分别从左右往里滑动，当滑块内白色点占有一定比例时，认为左右边界
 bool bFindLeftRightBound(Mat &bound_threshold, int &posLeft, int &posRight) {
 
   //从两边寻找边界

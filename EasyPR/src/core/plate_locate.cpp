@@ -4,7 +4,7 @@
 int plate_counter = 0;
 
 //#define DEBUG_COLORSEGMENT
-//#define DEBUG_SOBELSEGMENT
+#define DEBUG_SOBELSEGMENT
 
 using namespace std;
 
@@ -72,12 +72,14 @@ bool CPlateLocate::verifySizes(RotatedRect mr) {
   float rmin = aspect - aspect * error;
   float rmax = aspect + aspect * error;
 
+  //cout << "rmin" << rmin << "rmax" << rmax << endl;
+
   float area = mr.size.height * mr.size.width;
   float r = (float) mr.size.width / (float) mr.size.height;
   if (r < 1) r = (float) mr.size.height / (float) mr.size.width;
 
-  // cout << "area:" << area << endl;
-  // cout << "r:" << r << endl;
+//  cout << "area:" << area << endl;
+//  cout << "r:" << r << endl;
 
   if ((area < min || area > max) || (r < rmin || r > rmax))
   {
@@ -113,8 +115,8 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
   #endif
 
   Mat src_threshold = match_grey;
-  threshold(match_grey, src_threshold, 0, 255,
-            CV_THRESH_OTSU + CV_THRESH_BINARY);
+//  threshold(match_grey, src_threshold, 0, 255,
+//            CV_THRESH_OTSU + CV_THRESH_BINARY);
 
   Mat element = getStructuringElement(
       MORPH_RECT, Size(color_morph_width, color_morph_height));
@@ -174,14 +176,20 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
 //! 不限制大小和形状，获取的BoundRect进入下一步
 
 int CPlateLocate::sobelFrtSearch(const Mat &src,
-                                 vector<Rect_<float>> &outRects) {
+                                 vector<Rect_<float>> &outRects, vector<RotatedRect> &rects_sobel) {
   Mat src_threshold;
 
   // soble操作，得到二值图像
 
   sobelOper(src, src_threshold, m_GaussianBlurSize, m_MorphSizeWidth,
             m_MorphSizeHeight);
-
+#ifdef DEBUG_SOBELSEGMENT
+  if(m_debug)
+  {
+      imshow("sobel first threshold", src_threshold);
+      waitKey();
+  }
+#endif
   vector<vector<Point>> contours;
   findContours(src_threshold,
                contours,               // a vector of contours
@@ -199,20 +207,21 @@ int CPlateLocate::sobelFrtSearch(const Mat &src,
 
     if (verifySizes(mr)) {
       first_rects.push_back(mr);
+      rects_sobel.push_back(mr);
 
       float area = mr.size.height * mr.size.width;
       float r = (float) mr.size.width / (float) mr.size.height;
       if (r < 1) r = (float) mr.size.height / (float) mr.size.width;
-/*
+
   #ifdef DEBUG_SOBELSEGMENT
 	  	if(m_debug)
 		{
-		    Mat drawSrc = src.clone();
+		    Mat drawSrc = src;
             Point2f vertices[4];
             mr.points(vertices);
             for(int i = 0; i < 4; ++i)
             {
-                line(drawSrc, vertices[i], vertices[(i + 1) % 4], Scalar(0, 255, 0), 3);
+                line(drawSrc, vertices[i], vertices[(i + 1) % 4], Scalar(0, 255, 0), 1);
             }
             namedWindow("locate", CV_WINDOW_NORMAL);
             imshow("locate", drawSrc);
@@ -220,7 +229,7 @@ int CPlateLocate::sobelFrtSearch(const Mat &src,
             waitKey();
 		}
     #endif
-*/
+
     }
 
     ++itc;
@@ -271,7 +280,7 @@ int CPlateLocate::sobelSecSearchPart(Mat &bound, Point2f refpoint,
   if (bFindLeftRightBound(tempBoundThread, posLeft, posRight)) {
 
     //找到两个边界后进行连接修补处理
-
+    // 再图像中间行划一条线，从posLeft列 到 posRight列，连接整个车牌字母区域
     if (posRight != 0 && posLeft != 0 && posLeft < posRight) {
       int posY = int(bound_threshold.rows * 0.5);
       for (int i = posLeft + (int) (bound_threshold.rows * 0.1);
@@ -283,7 +292,7 @@ int CPlateLocate::sobelSecSearchPart(Mat &bound, Point2f refpoint,
     utils::imwrite("resources/image/tmp/repaireimg1.jpg", bound_threshold);
 
     //两边的区域不要
-
+    // 在posLeft列与posRight列划两条黑线，隔离左右非车牌区域
     for (int i = 0; i < bound_threshold.rows; i++) {
       bound_threshold.data[i * bound_threshold.cols + posLeft] = 0;
       bound_threshold.data[i * bound_threshold.cols + posRight] = 0;
@@ -462,6 +471,7 @@ void DeleteNotArea(Mat &inmat) {
 
   int top = 0;
   int bottom = img_threshold.rows - 1;
+
   clearLiuDing(img_threshold, top, bottom);
   if (bFindLeftRightBound1(img_threshold, posLeft, posRight)) {
     inmat = inmat(Rect(posLeft, top, w - posLeft, bottom - top));
@@ -884,7 +894,7 @@ int CPlateLocate::plateSobelLocate(Mat src, vector<CPlate> &candPlates,
 
   // Sobel第一次粗略搜索
 
-  sobelFrtSearch(src, bound_rects);
+  sobelFrtSearch(src, bound_rects, rects_sobel);
 
   vector<Rect_<float>> bound_rects_part;
 
@@ -892,11 +902,12 @@ int CPlateLocate::plateSobelLocate(Mat src, vector<CPlate> &candPlates,
 
   for (size_t i = 0; i < bound_rects.size(); i++) {
     float fRatio = bound_rects[i].width * 1.0f / bound_rects[i].height;
-    if (fRatio < 3.0 && fRatio > 1.0 && bound_rects[i].height < 120) {
+    if (fRatio < 3 && fRatio > 1.0 && bound_rects[i].height < 120) {
       Rect_<float> itemRect = bound_rects[i];
 
       //宽度过小，进行扩展
-
+      /// 如果扩展行，使得行列比例为4 (车牌长宽比)，左右伸展比例为 （2 - fRatio/2）,
+      ///      不应该为(4 - fRatio) by xzd/
       itemRect.x = itemRect.x - itemRect.height * (4 - fRatio);
       if (itemRect.x < 0) {
         itemRect.x = 0;
@@ -934,7 +945,7 @@ int CPlateLocate::plateSobelLocate(Mat src, vector<CPlate> &candPlates,
 
     sobelSecSearchPart(bound_mat, refpoint, rects_sobel);
   }
-
+/*
   for (size_t i = 0; i < bound_rects.size(); i++) {
     Rect_<float> bound_rect = bound_rects[i];
     Point2f refpoint(bound_rect.x, bound_rect.y);
@@ -950,17 +961,17 @@ int CPlateLocate::plateSobelLocate(Mat src, vector<CPlate> &candPlates,
     Rect_<float> safe_bound_rect(x, y, width, height);
     Mat bound_mat = src(safe_bound_rect);
 
-    // Sobel第二次精细搜索
 
+    // Sobel第二次精细搜索
     sobelSecSearch(bound_mat, refpoint, rects_sobel);
     // sobelSecSearchPart(bound_mat, refpoint, rects_sobel);
   }
+  */
 
   Mat src_b;
   sobelOper(src, src_b, 3, 10, 3);
 
   // 进行抗扭斜处理
-
   deskew(src, src_b, rects_sobel, plates);
 
   for (size_t i = 0; i < plates.size(); i++)
