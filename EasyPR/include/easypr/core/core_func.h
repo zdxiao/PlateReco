@@ -19,7 +19,7 @@ enum LocateType { SOBEL, COLOR, OTHER };
 //! 输出灰度图（只有0和255两个值，255代表匹配，0代表不匹配）
 
 Mat colorMatch(const Mat& src, Mat& match, const Color r,
-               const bool adaptive_minsv);
+               const bool adaptive_minsv, int MinBlue = 100);
 
 /// blue and white color match
 void blueWhiteMatch(const Mat& src, Mat& match);
@@ -29,7 +29,7 @@ void blueWhiteMatch(const Mat& src, Mat& match);
 //! 返回true或fasle
 
 bool plateColorJudge(const Mat& src, const Color r, const bool adaptive_minsv,
-                     float& percent);
+                     float& percent, int MinBlue = 100);
 
 bool bFindLeftRightBound(Mat& bound_threshold, int& posLeft, int& posRight);
 bool bFindLeftRightBound1(Mat& bound_threshold, int& posLeft, int& posRight);
@@ -45,7 +45,7 @@ void clearLiuDing(Mat mask, int& top, int& bottom);
 
 //! 获得车牌颜色
 
-Color getPlateType(const Mat& src, const bool adaptive_minsv);
+Color getPlateType(const Mat& src, const bool adaptive_minsv,int MinBlue = 100);
 
 //! 直方图均衡
 

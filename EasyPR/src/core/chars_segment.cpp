@@ -95,7 +95,7 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
 
   // 判断车牌颜色以此确认threshold方法
 
-  Color plateType = getPlateType(tmpMat, true);
+  Color plateType = getPlateType(tmpMat, true, 60);
 
   Mat input_grey;
   cvtColor(input, input_grey, CV_BGR2GRAY);

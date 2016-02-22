@@ -14,7 +14,7 @@ namespace easypr {
 //! 输出灰度图（只有0和255两个值，255代表匹配，0代表不匹配）
 
 Mat colorMatch(const Mat &src, Mat &match, const Color r,
-               const bool adaptive_minsv) {
+               const bool adaptive_minsv, int MinBlue) {
 
   // S和V的最小值由adaptive_minsv这个bool值判断
   // 如果为true，则最小值取决于H值，按比例衰减
@@ -28,7 +28,7 @@ Mat colorMatch(const Mat &src, Mat &match, const Color r,
 
   // blue的H范围
 
-  const int min_blue = 60;  // 100
+  const int min_blue = MinBlue;  // 100
   const int max_blue = 140;  // 140
 
   // yellow的H范围
@@ -318,13 +318,13 @@ bool bFindLeftRightBound2(Mat &bound_threshold, int &posLeft, int &posRight) {
 //! 返回true或fasle
 
 bool plateColorJudge(const Mat &src, const Color r, const bool adaptive_minsv,
-                     float &percent) {
+                     float &percent, int MinBlue) {
   // 判断阈值
 
   const float thresh = 0.45f;
 
   Mat src_gray;
-  colorMatch(src, src_gray, r, adaptive_minsv);
+  colorMatch(src, src_gray, r, adaptive_minsv, MinBlue);
 
   percent =
       float(countNonZero(src_gray)) / float(src_gray.rows * src_gray.cols);
@@ -338,7 +338,7 @@ bool plateColorJudge(const Mat &src, const Color r, const bool adaptive_minsv,
 
 //判断车牌的类型
 
-Color getPlateType(const Mat &src, const bool adaptive_minsv) {
+Color getPlateType(const Mat &src, const bool adaptive_minsv, int MinBlue) {
   float max_percent = 0;
   Color max_color = UNKNOWN;
 
@@ -346,7 +346,7 @@ Color getPlateType(const Mat &src, const bool adaptive_minsv) {
   float yellow_percent = 0;
   float white_percent = 0;
 
-  if (plateColorJudge(src, BLUE, adaptive_minsv, blue_percent) == true) {
+  if (plateColorJudge(src, BLUE, adaptive_minsv, blue_percent,MinBlue) == true) {
     // cout << "BLUE" << endl;
     return BLUE;
   } else if (plateColorJudge(src, YELLOW, adaptive_minsv, yellow_percent) ==
