@@ -15,7 +15,7 @@ class CCharsSegment {
 
   //! 字符尺寸验证
 
-  bool verifyCharSizes(Mat r);
+  bool verifyCharSizes(Mat r, int& rSize);
 
   //! 字符预处理
 

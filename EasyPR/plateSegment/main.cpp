@@ -3,7 +3,7 @@
 				Author:		    Qi Gao
 				Creat Date:	    2016/02/19
 				Email:		    gaoqi@mail.bnu.edu.cn
-				Last Modify:	2016/02/19
+				Last Modify:	2016/02/21
 */
 /*********************************************************************/
 
@@ -15,6 +15,8 @@
 using namespace std;
 using namespace cv;
 using namespace easypr;
+
+int dbg = 1; // 1-¿ªÆôdebug 0-¹Ø±Õdebug
 
 void combineImg(Mat plate, vector<Mat> blocks, Mat& result)
 {
@@ -39,12 +41,12 @@ void combineImg(Mat plate, vector<Mat> blocks, Mat& result)
 	}
 }
 
-bool judgeSegment(Mat img)
+bool judgeSegment(Mat img,int debug_mode)
 {
 	vector<Mat> resultVec;
 	CCharsSegment plate;
 
-	plate.setDebug(1);
+	plate.setDebug(debug_mode);
 
 	int result = plate.charsSegment(img, resultVec);
 	if (result == 0) {
@@ -65,9 +67,9 @@ bool judgeSegment(Mat img)
 	return false;
 }
 
-void testSeg()
+void testSeg(int debug_mode)
 {
-	string rootDir("A:\\WorkPlace\\CPLUS\\TN_ALPR\\seg_test_160219");
+	string rootDir("A:\\WorkPlace\\CPLUS\\TN_ALPR\\test_160221");
 	Mat img, imgH;
 	ifstream infile(rootDir + "\\list.txt");
 	string filename;
@@ -83,12 +85,12 @@ void testSeg()
 	}
 
 	int TotalCnt = 0, FailCnt = 0;
-	while (getline(infile, filename))
+	while (getline(infile, filename)&&TotalCnt<100)
 	{
 		string imgName = rootDir + "\\" + filename;
 		img = imread(imgName.c_str());
 
-		if (!judgeSegment(img))
+		if (!judgeSegment(img,debug_mode))
 		{
 			outfile << filename << endl;
 			FailCnt++;
@@ -103,7 +105,11 @@ void testSeg()
 
 int main(int argc, char** argv)
 {
-	testSeg();
+	cout << "Input debug mode:" << endl;
+	cout << "                  0 - test " << endl;
+	cout << "                  1 - debug " << endl;
+	cin >> dbg;
+	testSeg(dbg);
 	cout << "Press any key..." << endl;
 	int a;
 	cin >> a;

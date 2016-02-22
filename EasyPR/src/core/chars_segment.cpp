@@ -22,7 +22,7 @@ CCharsSegment::CCharsSegment() {
 
 //! 字符尺寸验证
 
-bool CCharsSegment::verifyCharSizes(Mat r) {
+bool CCharsSegment::verifyCharSizes(Mat r, int& rSize) {
   // Char sizes 45x90
   float aspect = 45.0f / 90.0f;
   float charAspect = (float)r.cols / (float)r.rows;
@@ -42,6 +42,13 @@ bool CCharsSegment::verifyCharSizes(Mat r) {
   if (percPixels <= 1 && charAspect > minAspect && charAspect < maxAspect &&
       r.rows >= minHeight && r.rows < maxHeight)
     return true;
+  else if (percPixels <= 1 && r.rows >= minHeight && r.rows < maxHeight &&
+	  charAspect > minAspect)
+  {
+	  rSize = (int)(charAspect/(aspect*1.2));
+	  cout << charAspect << "rSize:" << rSize << endl;
+	  return true;
+  }
   else
     return false;
 }
@@ -98,7 +105,7 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
   // TODO：使用MSER来提取这些轮廓
 
   if (BLUE == plateType) {
-    // cout << "BLUE" << endl;
+     //cout << "BLUE" << endl;
     img_threshold = input_grey.clone();
 
     int w = input_grey.cols;
@@ -109,7 +116,7 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
     threshold(input_grey, img_threshold, threadHoldV, 255, CV_THRESH_BINARY);
 
   } else if (YELLOW == plateType) {
-    // cout << "YELLOW" << endl;
+     //cout << "YELLOW" << endl;
     img_threshold = input_grey.clone();
     int w = input_grey.cols;
     int h = input_grey.rows;
@@ -121,7 +128,7 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
               CV_THRESH_BINARY_INV);
 
   } else if (WHITE == plateType) {
-    // cout << "WHITE" << endl;
+     //cout << "WHITE" << endl;
 
     threshold(input_grey, img_threshold, 10, 255,
               CV_THRESH_OTSU + CV_THRESH_BINARY_INV);
@@ -133,9 +140,10 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
 
   if (m_debug)
   {
+	  cout << "Binary stage" << endl;
+	  imshow("origin plate",input_grey);
 	  imshow("binary plate", img_threshold);
 	  waitKey(0);
-	  destroyWindow("binary plate");
   }
 
   // 去除车牌上方的柳钉以及下方的横线等干扰
@@ -143,7 +151,23 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
   // 并且在此对字符的跳变次数以及字符颜色所占的比重做了是否是车牌的判别条件
   // 如果不是车牌，返回ErrorCode=0x02
 
-  if (!clearLiuDing(img_threshold)) return 0x02;
+	  if (!clearLiuDing(img_threshold)) 
+	  {
+		  if (m_debug)
+		  {
+			  cout << "Fail at clear Maoding...press any key to continue" << endl;
+			  waitKey(0);
+		  }
+		  return 0x02;
+	  }
+
+
+  if (m_debug)
+  {
+	  cout << "Clear maoding" << endl;
+	  imshow("cleared", img_threshold);
+	  waitKey(0);
+  }
 
   // 在二值化图像中提取轮廓
 
@@ -158,6 +182,7 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
 
   vector<vector<Point> >::iterator itc = contours.begin();
   vector<Rect> vecRect;
+  vector<int> vecRectSize;
 
   // 将不符合特定尺寸的字符块排除出去
 
@@ -165,13 +190,58 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
     Rect mr = boundingRect(Mat(*itc));
     Mat auxRoi(img_threshold, mr);
 
-    if (verifyCharSizes(auxRoi)) vecRect.push_back(mr);
+	int rSize;
+	if (verifyCharSizes(auxRoi, rSize))
+	{
+		if (rSize > 1){
+			int width = mr.width / rSize;
+			for (int idx = 0; idx < rSize; idx++){
+				Rect smallerRect(mr.x+idx*width, mr.y, width, mr.height);
+				int pushflag = 1;
+				if (itc + 1 != contours.end())
+				{
+					Rect nextRect = boundingRect(Mat(*(itc + 1)));
+					int interval = nextRect.x - smallerRect.x;
+					if (interval < width / 2)
+						pushflag = 0;
+				}
+				if (pushflag == 1)
+					vecRect.push_back(smallerRect);
+				if (m_debug)
+				{
+					cout << "--> check contour" << endl;
+					Mat Roi(img_threshold, smallerRect);
+					imshow("ctr", Roi);
+					waitKey(0);
+					destroyWindow("ctr");
+				}
+			}
+			rSize = 0;
+		}
+		else{
+			if (m_debug)
+			{
+				cout << "--> check contour" << endl;
+				imshow("ctr", auxRoi);
+				waitKey(0);
+				destroyWindow("ctr");
+			}
+			vecRect.push_back(mr);
+		}
+	}
     ++itc;
   }
 
   // 如果找不到任何字符块，则返回ErrorCode=0x03
 
-  if (vecRect.size() == 0) return 0x03;
+  if (vecRect.size() == 0){
+	  if (m_debug)
+	  {
+		  cout << "Fail at contour check...press any key to continue" << endl;
+		  waitKey(0);
+	  }
+	  return 0x03;
+  }
 
   // 对符合尺寸的图块按照从左到右进行排序;
   // 直接使用stl的sort方法，更有效率
@@ -193,8 +263,13 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
   Rect chineseRect;
   if (specIndex < sortedRect.size())
     chineseRect = GetChineseRect(sortedRect[specIndex]);
-  else
+  else{
+	  if (m_debug){
+		  cout << "fail at get chinese rect...press any key to continue." << endl;
+		  waitKey(0);
+	  }
     return 0x04;
+  }
 
   //新建一个全新的排序Rect
   //将中文字符Rect第一个加进来，因为它肯定是最左边的
@@ -204,7 +279,13 @@ int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
   newSortedRect.push_back(chineseRect);
   RebuildRect(sortedRect, newSortedRect, specIndex);
 
-  if (newSortedRect.size() == 0) return 0x05;
+  if (newSortedRect.size() == 0) {
+	  if (m_debug){
+		  cout << "fail, none of number rect is detected...press any key to continue." << endl;
+		  waitKey(0);
+	  }
+	  return 0x05;
+  }
 
   // 开始截取每个字符
 
