@@ -30,7 +30,7 @@ static const char *kChars[] = {
   "S", "T", "U",
   "V", "W", "X",
   "Y", "Z",
-  /*  24  */
+/*  24  */
   "zh_cuan" , "zh_e"    , "zh_gan"  ,
   "zh_gan1" , "zh_gui"  , "zh_gui1" ,
   "zh_hei"  , "zh_hu"   , "zh_ji"   ,
@@ -41,7 +41,8 @@ static const char *kChars[] = {
   "zh_sx"   , "zh_wan"  , "zh_xiang",
   "zh_xin"  , "zh_yu"   , "zh_yu1"  ,
   "zh_yue"  , "zh_yun"  , "zh_zang" ,
-  "zh_zhe"
+  "zh_zhe"  ,
+  "O"
   /*  31  */
 };
 

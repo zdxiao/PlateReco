@@ -1,0 +1,2 @@
+/home/xiao/Project/PlateReco/EasyPR/CMakeFiles/demo.dir
+/home/xiao/Project/PlateReco/EasyPR/CMakeFiles/easypr.dir

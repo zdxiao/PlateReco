@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html style="" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation Guide — mxnet 0.5.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="Installation%20Guide%20%E2%80%94%20mxnet%200.5.0%20documentation_files/sphinx_rtd_theme.css" type="text/css">
+  
+    <link rel="stylesheet" href="Installation%20Guide%20%E2%80%94%20mxnet%200.5.0%20documentation_files/readthedocs-doc-embed.css" type="text/css">
+  
+
+  
+    <link rel="top" title="mxnet 0.5.0 documentation" href="http://mxnet.readthedocs.org/en/latest/index.html">
+        <link rel="next" title="MXNet Python Package" href="http://mxnet.readthedocs.org/en/latest/python/index.html">
+        <link rel="prev" title="MXNet Documentation" href="http://mxnet.readthedocs.org/en/latest/index.html">
+ 
+<!-- RTD Extra Head -->
+
+    
+    
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://mxnet.readthedocs.org/en/latest/build.html">
+<script src="Installation%20Guide%20%E2%80%94%20mxnet%200.5.0%20documentation_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "mxnet",
+    version: "latest",
+    language: "en",
+    page: "build",
+    builder: "sphinx",
+    theme: "sphinx_rtd_theme",
+    docroot: "/doc/",
+    
+    source_suffix: ".rst",
+    
+    api_host: "https://readthedocs.org/",
+    commit: "a1b07486"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "mxnet";
+  var page_name = "build";
+  var html_theme = "sphinx_rtd_theme";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+<!-- end RTD <extrahead> -->
+
+
+  
+  <script src="Installation%20Guide%20%E2%80%94%20mxnet%200.5.0%20documentation_files/modernizr.js"></script>
+
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">.MathJax_Preview .MJXc-math {color: inherit!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXc-script {font-size: .8em}
+.MJXc-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXc-bold {font-weight: bold}
+.MJXc-italic {font-style: italic}
+.MJXc-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-largeop {font-size: 150%}
+.MJXc-largeop.MJXc-int {vertical-align: -.2em}
+.MJXc-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXc-display {display: block; text-align: center; margin: 1em 0}
+.MJXc-math span {display: inline-block}
+.MJXc-box {display: block!important; text-align: center}
+.MJXc-box:after {content: " "}
+.MJXc-rule {display: block!important; margin-top: .1em}
+.MJXc-char {display: block!important}
+.MJXc-mo {margin: 0 .15em}
+.MJXc-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXc-denom {display: inline-table!important; width: 100%}
+.MJXc-denom > * {display: table-row!important}
+.MJXc-surd {vertical-align: top}
+.MJXc-surd > * {display: block!important}
+.MJXc-script-box > *  {display: table!important; height: 50%}
+.MJXc-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXc-script-box > *:last-child > * {vertical-align: bottom}
+.MJXc-script-box > * > * > * {display: block!important}
+.MJXc-mphantom {visibility: hidden}
+.MJXc-munderover {display: inline-table!important}
+.MJXc-over {display: inline-block!important; text-align: center}
+.MJXc-over > * {display: block!important}
+.MJXc-munderover > * {display: table-row!important}
+.MJXc-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXc-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXc-mtr {display: table-row!important}
+.MJXc-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXc-mtr > .MJXc-mtd:first-child {padding-left: 0}
+.MJXc-mtr:first-child > .MJXc-mtd {padding-top: 0}
+.MJXc-mlabeledtr {display: table-row!important}
+.MJXc-mlabeledtr > .MJXc-mtd:first-child {padding-left: 0}
+.MJXc-mlabeledtr:first-child > .MJXc-mtd {padding-top: 0}
+.MJXc-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXc-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXc-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXc-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXc-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXc-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXc-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXc-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXc-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXc-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXc-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_CHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body class="wy-body-for-nav" role="document"><div style="display: none;" id="MathJax_Message"></div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="http://mxnet.readthedocs.org/en/latest/index.html" class="icon icon-home"> mxnet
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input name="q" placeholder="Search docs" type="text">
+    <input name="check_keywords" value="yes" type="hidden">
+    <input name="area" value="default" type="hidden">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href=""><span class="toctree-expand"></span>Build and Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#contents">Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-the-shared-library"><span class="toctree-expand"></span>Build the Shared Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#building-on-ubuntu-debian">Building on Ubuntu/Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-on-osx">Building on OSX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-on-windows">Building on Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-pre-built-packages-on-windows">Installing pre-built packages on Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customized-building"><span class="toctree-expand"></span>Customized Building</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#building-with-intel-mkl-support">Building with Intel MKL Support</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#python-package-installation">Python Package Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#r-package-installation">R Package Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-images">Docker Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trouble-shooting"><span class="toctree-expand"></span>Trouble Shooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#compile-failed-after-git-pull">Compile failed after git pull</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compile-failed-after-config-mk-is-modified">Compile failed after config.mk is modified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#still-get-the-error-message-after-re-installation">Still get the error message after re-installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/python/index.html">Python Package Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/R-package/index.html">R Package Document</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/dmlc/MXNet.jl">MXNet.jl Julia Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/pretrained.html">Pretrained Model Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/distributed_training.html">Distributed Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/overview_zh.html">MXNet Overview in Chinese</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/developer-guide/index.html">Developer Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/env_var.html">Environment Variables for MXNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/contribute.html">Contributor Guideline</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://mxnet.readthedocs.org/en/latest/doxygen">Doxygen Version of C++ API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/program_model.html">Programming Models for Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/developer-guide/note_engine.html">Dependency Engine for Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/developer-guide/note_memory.html">Squeeze the Memory Consumption of Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/developer-guide/note_data_loading.html">Efficient Data Loading Module for Deep Learning</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/tutorial/imagenet_full.html">Training Deep Net on 14 Million Images on A Single Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/tutorial/new_op_howto.html">How to Create New Operations (Layers)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/tutorial/smart_device.html">Deep Learning in a Single File for Smart Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://mxnet.readthedocs.org/en/latest/tutorial/bucketing.html">Bucketing for Variable-length Sequence Training</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    <div class="wy-menu rst-pro"><div class="rst-pro-about"><a href="http://docs.readthedocs.org/en/latest/sponsors.html#sponsorship-information"><i class="fa fa-info-circle"></i></a></div><span>Thanks for supporting Read the Docs!</span></div><div class="rst-pro-wrapper"></div></nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="http://mxnet.readthedocs.org/en/latest/index.html">mxnet</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="http://mxnet.readthedocs.org/en/latest/index.html">Docs</a> »</li>
+      
+    <li>Installation Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/dmlc/mxnet/blob/master/doc/build.rst" class="fa fa-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation-guide">
+<span id="installation-guide"></span><h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h1>
+<p>This page gives instructions of how to build and install the MXNet package from
+scratch on various systems. It consists of two steps:</p>
+<ol class="simple">
+<li>First build the shared library from the C++ codes (<code class="docutils literal"><span class="pre">libmxnet.so</span></code> for linux,
+<code class="docutils literal"><span class="pre">libmxnet.dylib</span></code> for osx and <code class="docutils literal"><span class="pre">libmxnet.dll</span></code> for windows).</li>
+<li>Then install the language packages (e.g. Python package).</li>
+</ol>
+<p>Please refer to <a class="reference external" href="#frequently-asked-questions">FAQ</a> if you have any problems during installation. If the instructions do not work for you, please feel free
+to ask questions at <a class="reference external" href="https://github.com/dmlc/mxnet/issues">mxnet/issues</a>, or
+even better to send pull request if you can fix the problem.</p>
+<div class="section" id="contents">
+<span id="contents"></span><h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="#build-mxnet-library">Build the Shared Library</a><ul>
+<li><a class="reference external" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference external" href="#building-on-ubuntu-debian">Building on Ubuntu/Debian</a></li>
+<li><a class="reference external" href="#building-on-osx">Building on OSX</a></li>
+<li><a class="reference external" href="#building-on-windows">Building on Windows</a></li>
+<li><a class="reference external" href="#installing-pre-built-packages-on-windows">Installing pre-built packages on Windows</a></li>
+<li><a class="reference external" href="#customized-building">Customized Building</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#python-package-installation">Python Package Installation</a></li>
+<li><a class="reference external" href="#r-package-installation">R Package Installation</a></li>
+<li><a class="reference external" href="#docker-images">Docker Images</a></li>
+<li><a class="reference external" href="#trouble-shooting">Trouble Shooting</a></li>
+</ul>
+</div>
+<div class="section" id="build-the-shared-library">
+<span id="build-the-shared-library"></span><h2>Build the Shared Library<a class="headerlink" href="#build-the-shared-library" title="Permalink to this headline">¶</a></h2>
+<p>Our goal is to build the shared library:</p>
+<ul class="simple">
+<li>On Linux/OSX the target library is <code class="docutils literal"><span class="pre">libmxnet.so</span></code></li>
+<li>On Windows the target libary is <code class="docutils literal"><span class="pre">libmxnet.dll</span></code></li>
+</ul>
+<p>The minimal building requirement is</p>
+<ul class="simple">
+<li>A recent c++ compiler supporting C++ 11 such as <code class="docutils literal"><span class="pre">g++</span> <span class="pre">&gt;=</span> <span class="pre">4.8</span></code> or <code class="docutils literal"><span class="pre">clang</span></code></li>
+<li>A BLAS library, such as <code class="docutils literal"><span class="pre">libblas</span></code>, <code class="docutils literal"><span class="pre">atlas</span></code>, <code class="docutils literal"><span class="pre">openblas</span></code> or <code class="docutils literal"><span class="pre">intel</span> <span class="pre">mkl</span></code></li>
+</ul>
+<p>Optional libraries</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">CUDA</span> <span class="pre">Toolkit</span> <span class="pre">&gt;=</span> <span class="pre">v7.0</span></code> to run on nvidia GPUs<ul>
+<li>Requires GPU with support for <code class="docutils literal"><span class="pre">Compute</span> <span class="pre">Capability</span> <span class="pre">&gt;=</span> <span class="pre">2.0</span></code></li>
+</ul>
+</li>
+<li>CUDNN to accelerate the GPU computation</li>
+<li>opencv for image augmentation</li>
+</ul>
+<p>We can edit <code class="docutils literal"><span class="pre">make/config.mk</span></code> to change the compile options, and then build by
+<code class="docutils literal"><span class="pre">make</span></code>. If everything goes well, we can go the
+<a class="reference external" href="#install-language-packages">language package installation</a> step.</p>
+<p>On the remaining of this section, we provide instructions to install the
+dependencies and build mxnet from scratch for various systems.</p>
+<div class="section" id="building-on-ubuntu-debian">
+<span id="building-on-ubuntu-debian"></span><h3>Building on Ubuntu/Debian<a class="headerlink" href="#building-on-ubuntu-debian" title="Permalink to this headline">¶</a></h3>
+<p>On Ubuntu &gt;= 13.10, one can install the dependencies by</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get update
+sudo apt-get install -y build-essential git libatlas-base-dev libopencv-dev
+</pre></div>
+</div>
+<p>Then build mxnet</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone --recursive https://github.com/dmlc/mxnet
+<span class="nb">cd </span>mxnet<span class="p">;</span> make -j4
+</pre></div>
+</div>
+</div>
+<div class="section" id="building-on-osx">
+<span id="building-on-osx"></span><h3>Building on OSX<a class="headerlink" href="#building-on-osx" title="Permalink to this headline">¶</a></h3>
+<p>On OSX, we can install the dependencies by</p>
+<div class="highlight-bash"><div class="highlight"><pre>brew update
+brew tap homebrew/science
+brew info opencv
+brew install opencv
+</pre></div>
+</div>
+<p>Then build mxnet</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone --recursive https://github.com/dmlc/mxnet
+<span class="nb">cd </span>mxnet<span class="p">;</span> cp make/osx.mk ./config.mk<span class="p">;</span> make -j4
+</pre></div>
+</div>
+<p>Troubleshooting:</p>
+<p>Some users experience the link error <code class="docutils literal"><span class="pre">ld:</span> <span class="pre">library</span> <span class="pre">not</span> <span class="pre">found</span> <span class="pre">for</span> <span class="pre">-lgomp</span></code>, indicating that the GNU implementation of OpenMP is not in the library path of operating system.</p>
+<p>To resolve this issue, run the following commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist # this creates the locate database if it does not exist
+
+locate libgomp.dylib #copy the path which is generated by this command, say path1
+
+ln -s path1 /usr/local/lib/libgomp.dylib
+</pre></div>
+</div>
+<p>then run <code class="docutils literal"><span class="pre">make</span> <span class="pre">-j4</span></code> again.</p>
+</div>
+<div class="section" id="building-on-windows">
+<span id="building-on-windows"></span><h3>Building on Windows<a class="headerlink" href="#building-on-windows" title="Permalink to this headline">¶</a></h3>
+<p>First, enable Visual Studio 2013 to support more C++11 features.</p>
+<ul class="simple">
+<li>Download and install <a class="reference external" href="http://www.microsoft.com/en-us/download/details.aspx?id=41151">Visual C++ Compiler Nov 2013 CTP</a>.</li>
+<li>Copy all files in <code class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Microsoft</span> <span class="pre">Visual</span> <span class="pre">C++</span> <span class="pre">Compiler</span> <span class="pre">Nov</span> <span class="pre">2013</span> <span class="pre">CTP</span></code> (or the folder where you extracted the zip archive) to <code class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Microsoft</span> <span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">12.0\VC</span></code> and overwrite all existed files. Don’t forget to backup the original files before copying.</li>
+</ul>
+<p>Second, fetch the third-party libraries, including <a class="reference external" href="http://sourceforge.net/projects/opencvlibrary/files/opencv-win/3.0.0/opencv-3.0.0.exe/download">OpenCV</a>, <a class="reference external" href="https://developer.nvidia.com/cudnn">CuDNN</a> and <a class="reference external" href="http://sourceforge.net/projects/openblas/files/v0.2.14/">OpenBlas</a>(ignore this if you have MKL).</p>
+<ul class="simple">
+<li>NOTICE: You need to register as a NVIDIA community user to get the download link of CuDNN.</li>
+</ul>
+<p>Finally, use CMake to create a Visual Studio solution in <code class="docutils literal"><span class="pre">./build/</span></code>.
+ During configuration, you may need to set the path of each third-party 
+library, until no error is reported. Open the solution and compile, you 
+will get a <code class="docutils literal"><span class="pre">mxnet.dll</span></code> in <code class="docutils literal"><span class="pre">./build/Release</span></code> or <code class="docutils literal"><span class="pre">./build/Debug</span></code>.</p>
+</div>
+<div class="section" id="installing-pre-built-packages-on-windows">
+<span id="installing-pre-built-packages-on-windows"></span><h3>Installing pre-built packages on Windows<a class="headerlink" href="#installing-pre-built-packages-on-windows" title="Permalink to this headline">¶</a></h3>
+<p>Mxnet also provides pre-built packages on Windows. The pre-built 
+package includes pre-build MxNet library, the dependent thrid-party 
+libraries, a sample C++ solution in Visual Studio and the Python install
+ script.</p>
+<p>You can download the packages from the <a class="reference external" href="https://github.com/dmlc/mxnet/releases">Releases tab</a>
+ of MxNet. There are two variants provided: one with GPU support (using 
+CUDA and CUDNN v3) and one without GPU support. You can choose one that 
+fits your hardward configuration.</p>
+<p>After download, unpack the package into a folder, say D:\MxNet, then 
+install the package by double clicking the setupenv.cmd inside the 
+folder. It will setup environmental variables needed by MxNet. After 
+that, you should be able to usee the provided VS solution to build C++ 
+programs, or to <a class="reference external" href="#python-package-installation">install Python package</a>.</p>
+</div>
+<div class="section" id="customized-building">
+<span id="customized-building"></span><h3>Customized Building<a class="headerlink" href="#customized-building" title="Permalink to this headline">¶</a></h3>
+<p>The configuration of mxnet can be modified by <code class="docutils literal"><span class="pre">config.mk</span></code></p>
+<ul class="simple">
+<li>modify the compiling options such as compilers, CUDA, CUDNN, Intel MKL,
+various distributed filesystem such as HDFS/Amazon S3/...</li>
+<li>First copy <a class="reference external" href="https://github.com/dmlc/mxnet/tree/master/make/config.mk">make/config.mk</a> to the project root, on which
+any local modification will be ignored by git, then modify the according flags.</li>
+</ul>
+<div class="section" id="building-with-intel-mkl-support">
+<span id="building-with-intel-mkl-support"></span><h4>Building with Intel MKL Support<a class="headerlink" href="#building-with-intel-mkl-support" title="Permalink to this headline">¶</a></h4>
+<p>First, <code class="docutils literal"><span class="pre">source</span> <span class="pre">/path/to/intel/bin/compilervars.sh</span></code> to automatically set environment variables. Then, edit <a class="reference external" href="https://github.com/dmlc/mxnet/tree/master/make/config.mk">make/config.mk</a>, let <code class="docutils literal"><span class="pre">USE_BLAS</span> <span class="pre">=</span> <span class="pre">mkl</span></code>. <code class="docutils literal"><span class="pre">USE_INTEL_PATH</span> <span class="pre">=</span> <span class="pre">NONE</span></code> is usually not necessary to be modified.</p>
+</div>
+</div>
+</div>
+<div class="section" id="python-package-installation">
+<span id="python-package-installation"></span><h2>Python Package Installation<a class="headerlink" href="#python-package-installation" title="Permalink to this headline">¶</a></h2>
+<p>The python package is located at <a class="reference external" href="https://github.com/dmlc/mxnet/tree/master/python/mxnet">python/mxnet</a>. It requires
+<code class="docutils literal"><span class="pre">python&gt;=2.7</span></code> and <code class="docutils literal"><span class="pre">numpy</span></code>. To install the latter, if <code class="docutils literal"><span class="pre">pip</span></code> is available, then</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo pip install numpy
+</pre></div>
+</div>
+<p>otherwise use your package manager, e.g.</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install python-numpy <span class="c"># for debian</span>
+sudo yum install python-numpy <span class="c"># for redhat</span>
+</pre></div>
+</div>
+<p>To have a quick test of the python package, we can train
+a MLP on the mnist dataset:</p>
+<div class="highlight-bash"><div class="highlight"><pre>python example/image-classification/train_mnist.py
+</pre></div>
+</div>
+<p>or train a convolution neural network using GPU 0 if we set <code class="docutils literal"><span class="pre">USE_CUDA=1</span></code> during
+compiling:</p>
+<div class="highlight-bash"><div class="highlight"><pre>python example/image-classification/train_mnist.py --network lenet --gpus 0
+</pre></div>
+</div>
+<p>There are several ways to install the package:</p>
+<ol>
+<li><p class="first">Install system-wide, which requires root permission</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>python<span class="p">;</span> sudo python setup.py install
+</pre></div>
+</div>
+<p>You will however need Python <code class="docutils literal"><span class="pre">distutils</span></code> module for this to
+work. It is often part of the core python package or it can be installed using your
+package manager, e.g. in Debian use</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install python-setuptools
+</pre></div>
+</div>
+<p><em>NOTE: If you recompiled mxnet, then you need to reinstall mxnet again to
+make the new library take effect</em></p>
+</li>
+<li><p class="first">Only set the environment variable <code class="docutils literal"><span class="pre">PYTHONPATH</span></code> to tell python where to find
+the library. For example, assume we cloned <code class="docutils literal"><span class="pre">mxnet</span></code> on the home directory
+<code class="docutils literal"><span class="pre">~</span></code>. then we can added the following line in <code class="docutils literal"><span class="pre">~/.bashrc</span></code>
+It is <strong><em>recommended for developers</em></strong> who may 
+change the codes. The changes will be immediately reflected once you 
+pulled the code and rebuild the project (no need to call <code class="docutils literal"><span class="pre">setup</span></code> again)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">PYTHONPATH</span><span class="o">=</span>~/mxnet/python
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install only for the current user.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>python<span class="p">;</span> python setup.py develop --user
+</pre></div>
+</div>
+</li>
+<li><p class="first">Copy the package into the working directory which contains the mxnet
+application programs. In this approach we don’t need to change the system,
+and therefore is recommended for distributed training.</p>
+<p>Assume we are on the working directory, and <code class="docutils literal"><span class="pre">mxnet</span></code> is cloned on the home
+directory <code class="docutils literal"><span class="pre">~</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre>cp -r ~/mxnet/python/mxnet .
+cp ~/mxnet/lib/libmxnet.so mxnet/
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="r-package-installation">
+<span id="r-package-installation"></span><h2>R Package Installation<a class="headerlink" href="#r-package-installation" title="Permalink to this headline">¶</a></h2>
+<p>For Windows/Mac users, we provide pre-built binary package using CPU.
+You can install weekly updated package directly in R console:</p>
+<div class="highlight-r"><div class="highlight"><pre>install.packages<span class="p">(</span><span class="s">"drat"</span><span class="p">,</span> repos<span class="o">=</span><span class="s">"https://cran.rstudio.com"</span><span class="p">)</span>
+drat<span class="o">:::</span>addRepo<span class="p">(</span><span class="s">"dmlc"</span><span class="p">)</span>
+install.packages<span class="p">(</span><span class="s">"mxnet"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To install the R package. First finish the <a class="reference external" href="#build-mxnet-library">Build MXNet Library</a> step.
+Then use the following command to install dependencies and build the package at root folder</p>
+<div class="highlight-bash"><div class="highlight"><pre>Rscript -e <span class="s2">"install.packages('devtools', repo = 'https://cran.rstudio.com')"</span>
+<span class="nb">cd </span>R-package
+Rscript -e <span class="s2">"library(devtools); library(methods); options(repos=c(CRAN='https://cran.rstudio.com')); install_deps(dependencies = TRUE)"</span>
+<span class="nb">cd</span> ..
+make rpkg
+</pre></div>
+</div>
+<p>Now you should have the R package as a tar.gz file and you can 
+install it as a normal package by (the version number might be 
+different)</p>
+<div class="highlight-bash"><div class="highlight"><pre>R CMD INSTALL mxnet_0.5.tar.gz
+</pre></div>
+</div>
+<p>To install the package using GPU on Windows without building the 
+package from scratch. Note that you need a couple of programs installed 
+already:</p>
+<ul class="simple">
+<li>You’ll need the <a class="reference external" href="https://developer.nvidia.com/cuda-toolkit">CUDA Toolkit</a>. This depends on Visual Studio, and a free compatible version would be <a class="reference external" href="https://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx">Visual Studio Community 2013</a>.
+ For instructions and compatibility checks, read 
+http://docs.nvidia.com/cuda/cuda-getting-started-guide-for-microsoft-windows/
+ .</li>
+<li>You will also need to register as a developer at nvidia and download CUDNN V3, https://developer.nvidia.com/cudnn .</li>
+</ul>
+<ol class="simple">
+<li>Download the mxnet package as a ZIP from the Github repository 
+https://github.com/dmlc/mxnet and unpack it. You will be editing the <code class="docutils literal"><span class="pre">/mxnet/R-package</span></code> folder.</li>
+<li>Download the most recent GPU-enabled package from the <a class="reference external" href="https://github.com/dmlc/mxnet/releases">Releases tab</a>. Unzip this file so you have a folder <code class="docutils literal"><span class="pre">/nocudnn</span></code>.
+ Note that this file and the folder you’ll save it in will be used for 
+future reference and not directly for installing the package. Only some 
+files will be copied from it into the <code class="docutils literal"><span class="pre">R-package</span></code> folder.</li>
+</ol>
+<p>(Note: you now have 2 folders we’re working with, possibly in different locations, that we’ll reference with <code class="docutils literal"><span class="pre">R-package/</span></code> and <code class="docutils literal"><span class="pre">nocudnn/</span></code>.)</p>
+<ol class="simple">
+<li>Download CUDNN V3 from https://developer.nvidia.com/cudnn. Unpack the .zip file and you’ll see 3 folders, <code class="docutils literal"><span class="pre">/bin</span></code>, <code class="docutils literal"><span class="pre">/include</span></code>, <code class="docutils literal"><span class="pre">/lib</span></code>. Copy and replace these 3 folders into <code class="docutils literal"><span class="pre">nocudnn/3rdparty/cudnn/</span></code>, or unpack the .zip file there directly.</li>
+<li>Create the folder <code class="docutils literal"><span class="pre">R-package/inst/libs/x64</span></code>. We only support 64-bit operating system now, so you need the x64 folder;</li>
+<li>Put dll files in <code class="docutils literal"><span class="pre">R-package/inst/libs/x64</span></code>.</li>
+</ol>
+<p>The first dll file you need is <code class="docutils literal"><span class="pre">nocudnn/lib/libmxnet.dll</span></code>. The other dll files you need are the ones in all 4 subfolders of <code class="docutils literal"><span class="pre">nocudnn/3rdparty/</span></code>, for the <code class="docutils literal"><span class="pre">cudnn</span></code> and <code class="docutils literal"><span class="pre">openblas</span></code> you’ll need to look in the <code class="docutils literal"><span class="pre">/bin</span></code> folders. There should be 11 dll files now in <code class="docutils literal"><span class="pre">R-package/inst/libs/x64</span></code>.</p>
+<ol class="simple">
+<li>Copy the folder <code class="docutils literal"><span class="pre">nocudnn/include/</span></code> to <code class="docutils literal"><span class="pre">R-package/inst/</span></code>. So now you should have a folder <code class="docutils literal"><span class="pre">R-package/inst/include/</span></code> with 3 subfolders.</li>
+<li>Run <code class="docutils literal"><span class="pre">R</span> <span class="pre">CMD</span> <span class="pre">INSTALL</span> <span class="pre">--no-multiarch</span> <span class="pre">R-package</span></code>. Make sure that R is added to your PATH in Environment Variables. Running the command <code class="docutils literal"><span class="pre">Where</span> <span class="pre">R</span></code> in Command Prompt should return the location.</li>
+</ol>
+<p>Note on Library Build:</p>
+<p>We isolate the library build with Rcpp end to maximize the portability</p>
+<ul class="simple">
+<li>MSVC is needed on windows to build the mxnet library, because of CUDA compatiblity issue of toolchains.</li>
+</ul>
+</div>
+<div class="section" id="docker-images">
+<span id="docker-images"></span><h2>Docker Images<a class="headerlink" href="#docker-images" title="Permalink to this headline">¶</a></h2>
+<p>Builds of MXNet are available as <a class="reference external" href="https://www.docker.com/whatisdocker">Docker</a> images:
+<a class="reference external" href="https://hub.docker.com/r/kaixhin/mxnet/">MXNet Docker (CPU)</a> or <a class="reference external" href="https://hub.docker.com/r/kaixhin/cuda-mxnet/">MXNet Docker (CUDA)</a>.
+These are updated on a weekly basis with the latest builds of MXNet. Examples of running bash in a Docker container
+are as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># CPU only docker</span>
+sudo docker run -it kaixhin/mxnet
+
+OR
+<span class="c"># CPU enabled docker</span>
+sudo docker run -it --device /dev/nvidiactl --device /dev/nvidia-uvm --device /dev/nvidia0 kaixhin/cuda-mxnet:latest
+</pre></div>
+</div>
+<p>For a guide to Docker, see the <a class="reference external" href="https://docs.docker.com/userguide/">official docs</a>. For more details on how to use the
+MXNet Docker images, including requirements for CUDA support, consult the <a class="reference external" href="https://github.com/Kaixhin/dockerfiles">source project</a>.</p>
+</div>
+<div class="section" id="trouble-shooting">
+<span id="trouble-shooting"></span><h2>Trouble Shooting<a class="headerlink" href="#trouble-shooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="compile-failed-after-git-pull">
+<span id="compile-failed-after-git-pull"></span><h3>Compile failed after git pull<a class="headerlink" href="#compile-failed-after-git-pull" title="Permalink to this headline">¶</a></h3>
+<p>Please first update the submodules, clean all and recompile:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git submodule update <span class="o">&amp;&amp;</span> make clean_all <span class="o">&amp;&amp;</span> make -j4
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-failed-after-config-mk-is-modified">
+<span id="compile-failed-after-config-mk-is-modified"></span><h3>Compile failed after config.mk is modified<a class="headerlink" href="#compile-failed-after-config-mk-is-modified" title="Permalink to this headline">¶</a></h3>
+<p>This often happens if <code class="docutils literal"><span class="pre">USE_CUDA</span></code> or <code class="docutils literal"><span class="pre">USE_DIST_KVSTORE</span></code> has been changed. You
+need to clean all first:</p>
+<div class="highlight-python"><div class="highlight"><pre>```bash
+make clean_all &amp;&amp; make -j4
+```
+</pre></div>
+</div>
+</div>
+<div class="section" id="still-get-the-error-message-after-re-installation">
+<span id="still-get-the-error-message-after-re-installation"></span><h3>Still get the error message after re-installation<a class="headerlink" href="#still-get-the-error-message-after-re-installation" title="Permalink to this headline">¶</a></h3>
+<p>e.g. <code class="docutils literal"><span class="pre">compile</span> <span class="pre">with</span> <span class="pre">USE_DIST_KVSTORE=1</span> <span class="pre">to</span> <span class="pre">use</span> <span class="pre">dist</span></code> after recomplied with <code class="docutils literal"><span class="pre">USE_DIST_KVSTORE=1</span></code>**</p>
+<p>It is often because mxnet is failed to load the new built library. If you
+installed mxnet system-widely, e.g. <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code>, then you need
+to reinstall the package again.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="http://mxnet.readthedocs.org/en/latest/python/index.html" class="btn btn-neutral float-right" title="MXNet Python Package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="http://mxnet.readthedocs.org/en/latest/index.html" class="btn btn-neutral" title="MXNet Documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2015, mxnet developers.
+      
+        <span class="commit">
+          Revision <code>a1b07486</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="http://mxnet.readthedocs.org/en/latest/build.html">latest</a></dd>
+         </strong> 
+        
+        
+        <dd><a href="http://mxnet.readthedocs.org/en/stable/build.html">stable</a></dd>
+        
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="http://readthedocs.org/projects/mxnet/downloads/htmlzip/latest/">HTML</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="http://readthedocs.org/projects/mxnet/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/mxnet/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/mxnet/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/dmlc/mxnet/blob/master/doc/build.rst">View</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/dmlc/mxnet/edit/master/doc/build.rst">Edit</a>
+        </dd>
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/mxnet/search/" method="get">
+              <input name="q" placeholder="Search docs" type="text">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.5.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="Installation%20Guide%20%E2%80%94%20mxnet%200.5.0%20documentation_files/jquery-2.js"></script>
+      <script type="text/javascript" src="Installation%20Guide%20%E2%80%94%20mxnet%200.5.0%20documentation_files/jquery-migrate-1.js"></script>
+      <script type="text/javascript" src="Installation%20Guide%20%E2%80%94%20mxnet%200.5.0%20documentation_files/underscore.js"></script>
+      <script type="text/javascript" src="Installation%20Guide%20%E2%80%94%20mxnet%200.5.0%20documentation_files/doctools.js"></script>
+      <script type="text/javascript" src="Installation%20Guide%20%E2%80%94%20mxnet%200.5.0%20documentation_files/readthedocs-doc-embed.js"></script>
+      <script type="text/javascript" src="Installation%20Guide%20%E2%80%94%20mxnet%200.5.0%20documentation_files/MathJax.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+
+</body></html>
