@@ -153,16 +153,16 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
     if (!verifySizes(mr))
       itc = contours.erase(itc);
     else {
-    /*
+
 #ifdef DEBUG_COLORSEGMENT
 	  	if(m_debug)
 		{
-		    Mat drawSrc = src.clone();
+		    Mat drawSrc = src;
             Point2f vertices[4];
             mr.points(vertices);
             for(int i = 0; i < 4; ++i)
             {
-                line(drawSrc, vertices[i], vertices[(i + 1) % 4], Scalar(0, 0, 255), 3);
+                line(drawSrc, vertices[i], vertices[(i + 1) % 4], Scalar(0, 0, 255), 1);
             }
             namedWindow("locate", CV_WINDOW_NORMAL);
             imshow("locate", drawSrc);
@@ -170,7 +170,7 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
             waitKey();
 		}
 #endif
-*/
+
       ++itc;
       outRects.push_back(mr);
     }
@@ -909,23 +909,23 @@ int CPlateLocate::plateSobelLocate(Mat src, vector<CPlate> &candPlates,
 
   for (size_t i = 0; i < bound_rects.size(); i++) {
     float fRatio = bound_rects[i].width * 1.0f / bound_rects[i].height;
-    if (fRatio < 3 && fRatio > 1.0 && bound_rects[i].height < 120) {
+    if (fRatio < 4 && fRatio > 1.0 && bound_rects[i].height < 120) {
       Rect_<float> itemRect = bound_rects[i];
 
       //宽度过小，进行扩展
       /// 如果扩展行，使得行列比例为4 (车牌长宽比)，左右伸展比例为 （2 - fRatio/2）,
       ///      不应该为(4 - fRatio) by xzd/
-      itemRect.x = itemRect.x - itemRect.height * (4 - fRatio);
+      itemRect.x = itemRect.x - itemRect.height * (5 - fRatio);
       if (itemRect.x < 0) {
         itemRect.x = 0;
       }
-      itemRect.width = itemRect.width + itemRect.height * 2 * (4 - fRatio);
+      itemRect.width = itemRect.width + itemRect.height * 2 * (5 - fRatio);
       if (itemRect.width + itemRect.x >= src.cols) {
         itemRect.width = src.cols - itemRect.x;
       }
 
-      itemRect.y = itemRect.y - itemRect.height * 0.08f;
-      itemRect.height = itemRect.height * 1.16f;
+      itemRect.y = itemRect.y - itemRect.height * 0.1f;
+      itemRect.height = itemRect.height * 1.2f;
 
       bound_rects_part.push_back(itemRect);
     }

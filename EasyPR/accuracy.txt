@@ -1622,3 +1622,207 @@ resources/image/native_test/0648082408_赣NLE713.jpg
 resources/image/native_test/0549010808_京QB1L15.jpg
 resources/image/native_test/0703363908_京QDC321.jpg
 resources/image/native_test/1110567908_京N8MH61.jpg
+2016-02-23 15:47:53
+总图片数:305,  未识出图片:18,  定位率:94.0984%  
+平均字符差距:0.700348,  完全匹配数:233,  完全匹配率:81.1847%  
+总时间:39秒,  平均执行时间:0.127869秒
+resources/image/native_test/0723373708_京KE8035.jpg
+resources/image/native_test/0717423708_京FH1071.jpg
+resources/image/native_test/0655299908_京BQ0092.jpg
+resources/image/native_test/0748576208_京BT1354.jpg
+resources/image/native_test/0813124508_京LA5355.jpg
+resources/image/native_test/0453358508_冀F19311.jpg
+resources/image/native_test/0157317608_京Q5EM56.jpg
+resources/image/native_test/0743241208_京M16923.jpg
+resources/image/native_test/0626239408_京FP9521.jpg
+resources/image/native_test/1006514608_京PB7B53.jpg
+resources/image/native_test/0639483908_京BR4863.jpg
+resources/image/native_test/0715376508_京J23263.jpg
+resources/image/native_test/1009258408_京JD1785.jpg
+resources/image/native_test/0643327208_京PQL135.jpg
+resources/image/native_test/0648082408_赣NLE713.jpg
+resources/image/native_test/0549010808_京QB1L15.jpg
+resources/image/native_test/0703363908_京QDC321.jpg
+resources/image/native_test/1110567908_京N8MH61.jpg
+2016-02-23 15:51:45
+总图片数:305,  未识出图片:17,  定位率:94.4262%  
+平均字符差距:0.65625,  完全匹配数:234,  完全匹配率:81.25%  
+总时间:40秒,  平均执行时间:0.131148秒
+resources/image/native_test/0723373708_京KE8035.jpg
+resources/image/native_test/0717423708_京FH1071.jpg
+resources/image/native_test/0655299908_京BQ0092.jpg
+resources/image/native_test/0748576208_京BT1354.jpg
+resources/image/native_test/0453358508_冀F19311.jpg
+resources/image/native_test/0157317608_京Q5EM56.jpg
+resources/image/native_test/0743241208_京M16923.jpg
+resources/image/native_test/0626239408_京FP9521.jpg
+resources/image/native_test/1006514608_京PB7B53.jpg
+resources/image/native_test/0639483908_京BR4863.jpg
+resources/image/native_test/0715376508_京J23263.jpg
+resources/image/native_test/1009258408_京JD1785.jpg
+resources/image/native_test/0643327208_京PQL135.jpg
+resources/image/native_test/0648082408_赣NLE713.jpg
+resources/image/native_test/0549010808_京QB1L15.jpg
+resources/image/native_test/0703363908_京QDC321.jpg
+resources/image/native_test/1110567908_京N8MH61.jpg
+2016-02-23 15:53:39
+总图片数:305,  未识出图片:21,  定位率:93.1148%  
+平均字符差距:0.570423,  完全匹配数:234,  完全匹配率:82.3944%  
+总时间:37秒,  平均执行时间:0.121311秒
+resources/image/native_test/0742234008_京QEY803.jpg
+resources/image/native_test/0723373708_京KE8035.jpg
+resources/image/native_test/0704020808_京P1TP67.jpg
+resources/image/native_test/0717423708_京FH1071.jpg
+resources/image/native_test/0655299908_京BQ0092.jpg
+resources/image/native_test/0748576208_京BT1354.jpg
+resources/image/native_test/0453358508_冀F19311.jpg
+resources/image/native_test/0157317608_京Q5EM56.jpg
+resources/image/native_test/0743241208_京M16923.jpg
+resources/image/native_test/0626239408_京FP9521.jpg
+resources/image/native_test/1006514608_京PB7B53.jpg
+resources/image/native_test/0639483908_京BR4863.jpg
+resources/image/native_test/0715376508_京J23263.jpg
+resources/image/native_test/1009258408_京JD1785.jpg
+resources/image/native_test/0709587208_京PYH207.jpg
+resources/image/native_test/0707479908_京Q3UW35.jpg
+resources/image/native_test/0643327208_京PQL135.jpg
+resources/image/native_test/0648082408_赣NLE713.jpg
+resources/image/native_test/0549010808_京QB1L15.jpg
+resources/image/native_test/0703363908_京QDC321.jpg
+resources/image/native_test/1110567908_京N8MH61.jpg
+2016-02-23 16:40:41
+总图片数:305,  未识出图片:14,  定位率:95.4098%  
+平均字符差距:0.642612,  完全匹配数:234,  完全匹配率:80.4124%  
+总时间:38秒,  平均执行时间:0.12459秒
+resources/image/native_test/0742234008_京QEY803.jpg
+resources/image/native_test/0723373708_京KE8035.jpg
+resources/image/native_test/0655299908_京BQ0092.jpg
+resources/image/native_test/0748576208_京BT1354.jpg
+resources/image/native_test/0453358508_冀F19311.jpg
+resources/image/native_test/0157317608_京Q5EM56.jpg
+resources/image/native_test/0743241208_京M16923.jpg
+resources/image/native_test/0626239408_京FP9521.jpg
+resources/image/native_test/0715376508_京J23263.jpg
+resources/image/native_test/0709587208_京PYH207.jpg
+resources/image/native_test/0643327208_京PQL135.jpg
+resources/image/native_test/0648082408_赣NLE713.jpg
+resources/image/native_test/0549010808_京QB1L15.jpg
+resources/image/native_test/0727225708_京NHB915.jpg
+2016-02-23 16:45:08
+总图片数:305,  未识出图片:21,  定位率:93.1148%  
+平均字符差距:0.570423,  完全匹配数:234,  完全匹配率:82.3944%  
+总时间:37秒,  平均执行时间:0.121311秒
+resources/image/native_test/0742234008_京QEY803.jpg
+resources/image/native_test/0723373708_京KE8035.jpg
+resources/image/native_test/0704020808_京P1TP67.jpg
+resources/image/native_test/0717423708_京FH1071.jpg
+resources/image/native_test/0655299908_京BQ0092.jpg
+resources/image/native_test/0748576208_京BT1354.jpg
+resources/image/native_test/0453358508_冀F19311.jpg
+resources/image/native_test/0157317608_京Q5EM56.jpg
+resources/image/native_test/0743241208_京M16923.jpg
+resources/image/native_test/0626239408_京FP9521.jpg
+resources/image/native_test/1006514608_京PB7B53.jpg
+resources/image/native_test/0639483908_京BR4863.jpg
+resources/image/native_test/0715376508_京J23263.jpg
+resources/image/native_test/1009258408_京JD1785.jpg
+resources/image/native_test/0709587208_京PYH207.jpg
+resources/image/native_test/0707479908_京Q3UW35.jpg
+resources/image/native_test/0643327208_京PQL135.jpg
+resources/image/native_test/0648082408_赣NLE713.jpg
+resources/image/native_test/0549010808_京QB1L15.jpg
+resources/image/native_test/0703363908_京QDC321.jpg
+resources/image/native_test/1110567908_京N8MH61.jpg
+2016-02-23 16:50:56
+总图片数:305,  未识出图片:19,  定位率:93.7705%  
+平均字符差距:0.531469,  完全匹配数:240,  完全匹配率:83.9161%  
+总时间:39秒,  平均执行时间:0.127869秒
+resources/image/native_test/0742234008_京QEY803.jpg
+resources/image/native_test/0723373708_京KE8035.jpg
+resources/image/native_test/0704020808_京P1TP67.jpg
+resources/image/native_test/0655299908_京BQ0092.jpg
+resources/image/native_test/0453358508_冀F19311.jpg
+resources/image/native_test/0157317608_京Q5EM56.jpg
+resources/image/native_test/0743241208_京M16923.jpg
+resources/image/native_test/0626239408_京FP9521.jpg
+resources/image/native_test/1006514608_京PB7B53.jpg
+resources/image/native_test/0639483908_京BR4863.jpg
+resources/image/native_test/0715376508_京J23263.jpg
+resources/image/native_test/1009258408_京JD1785.jpg
+resources/image/native_test/0709587208_京PYH207.jpg
+resources/image/native_test/0707479908_京Q3UW35.jpg
+resources/image/native_test/0643327208_京PQL135.jpg
+resources/image/native_test/0648082408_赣NLE713.jpg
+resources/image/native_test/0549010808_京QB1L15.jpg
+resources/image/native_test/0703363908_京QDC321.jpg
+resources/image/native_test/1110567908_京N8MH61.jpg
+2016-02-23 16:57:50
+总图片数:305,  未识出图片:19,  定位率:93.7705%  
+平均字符差距:0.524476,  完全匹配数:240,  完全匹配率:83.9161%  
+总时间:45秒,  平均执行时间:0.147541秒
+resources/image/native_test/0742234008_京QEY803.jpg
+resources/image/native_test/0723373708_京KE8035.jpg
+resources/image/native_test/0704020808_京P1TP67.jpg
+resources/image/native_test/0655299908_京BQ0092.jpg
+resources/image/native_test/0453358508_冀F19311.jpg
+resources/image/native_test/0157317608_京Q5EM56.jpg
+resources/image/native_test/0743241208_京M16923.jpg
+resources/image/native_test/0626239408_京FP9521.jpg
+resources/image/native_test/1006514608_京PB7B53.jpg
+resources/image/native_test/0639483908_京BR4863.jpg
+resources/image/native_test/0715376508_京J23263.jpg
+resources/image/native_test/1009258408_京JD1785.jpg
+resources/image/native_test/0709587208_京PYH207.jpg
+resources/image/native_test/0707479908_京Q3UW35.jpg
+resources/image/native_test/0643327208_京PQL135.jpg
+resources/image/native_test/0648082408_赣NLE713.jpg
+resources/image/native_test/0549010808_京QB1L15.jpg
+resources/image/native_test/0703363908_京QDC321.jpg
+resources/image/native_test/1110567908_京N8MH61.jpg
+2016-02-23 17:01:40
+总图片数:305,  未识出图片:20,  定位率:93.4426%  
+平均字符差距:0.557895,  完全匹配数:239,  完全匹配率:83.8596%  
+总时间:38秒,  平均执行时间:0.12459秒
+resources/image/native_test/0742234008_京QEY803.jpg
+resources/image/native_test/0723373708_京KE8035.jpg
+resources/image/native_test/0704020808_京P1TP67.jpg
+resources/image/native_test/0655299908_京BQ0092.jpg
+resources/image/native_test/0813124508_京LA5355.jpg
+resources/image/native_test/0453358508_冀F19311.jpg
+resources/image/native_test/0157317608_京Q5EM56.jpg
+resources/image/native_test/0743241208_京M16923.jpg
+resources/image/native_test/0626239408_京FP9521.jpg
+resources/image/native_test/1006514608_京PB7B53.jpg
+resources/image/native_test/0639483908_京BR4863.jpg
+resources/image/native_test/0715376508_京J23263.jpg
+resources/image/native_test/1009258408_京JD1785.jpg
+resources/image/native_test/0709587208_京PYH207.jpg
+resources/image/native_test/0707479908_京Q3UW35.jpg
+resources/image/native_test/0643327208_京PQL135.jpg
+resources/image/native_test/0648082408_赣NLE713.jpg
+resources/image/native_test/0549010808_京QB1L15.jpg
+resources/image/native_test/0703363908_京QDC321.jpg
+resources/image/native_test/1110567908_京N8MH61.jpg
+2016-02-23 17:03:16
+总图片数:305,  未识出图片:19,  定位率:93.7705%  
+平均字符差距:0.555944,  完全匹配数:240,  完全匹配率:83.9161%  
+总时间:39秒,  平均执行时间:0.127869秒
+resources/image/native_test/0742234008_京QEY803.jpg
+resources/image/native_test/0723373708_京KE8035.jpg
+resources/image/native_test/0704020808_京P1TP67.jpg
+resources/image/native_test/0655299908_京BQ0092.jpg
+resources/image/native_test/0453358508_冀F19311.jpg
+resources/image/native_test/0157317608_京Q5EM56.jpg
+resources/image/native_test/0743241208_京M16923.jpg
+resources/image/native_test/0626239408_京FP9521.jpg
+resources/image/native_test/1006514608_京PB7B53.jpg
+resources/image/native_test/0639483908_京BR4863.jpg
+resources/image/native_test/0715376508_京J23263.jpg
+resources/image/native_test/1009258408_京JD1785.jpg
+resources/image/native_test/0709587208_京PYH207.jpg
+resources/image/native_test/0707479908_京Q3UW35.jpg
+resources/image/native_test/0643327208_京PQL135.jpg
+resources/image/native_test/0648082408_赣NLE713.jpg
+resources/image/native_test/0549010808_京QB1L15.jpg
+resources/image/native_test/0703363908_京QDC321.jpg
+resources/image/native_test/1110567908_京N8MH61.jpg

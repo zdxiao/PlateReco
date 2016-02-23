@@ -3,6 +3,7 @@
 
 //#define DEBUG_LOCATE_PLATE
 //#define DEBUG_SAVE_LOCATE_PLATES
+//#define DEBUG_COLOR_RESULT
 int locatedPlatesCounter = 0;
 
 namespace easypr {
@@ -50,6 +51,11 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
 
   for (size_t i = 0; i < color_result_Plates.size(); i++) {
     CPlate plate = color_result_Plates[i];
+
+    #ifdef DEBUG_COLOR_RESULT
+    imshow("color result", plate.getPlateMat());
+    waitKey();
+    #endif
 
     plate.setPlateLocateType(COLOR);
     all_result_Plates.push_back(plate);

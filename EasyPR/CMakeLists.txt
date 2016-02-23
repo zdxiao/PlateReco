@@ -55,7 +55,6 @@ target_link_libraries(easypr /home/xiao/Project/PlateReco/EasyPR/lib/libmxnet.so
 
 #add_executable(demo test/plateRecoTest.cpp)
 add_executable(demo test/main.cpp)
-
 # link
 target_link_libraries(demo ${OpenCV_LIBS} )
 target_link_libraries(demo /home/xiao/Project/PlateReco/EasyPR/lib/libmxnet.so)

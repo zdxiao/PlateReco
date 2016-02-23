@@ -148,7 +148,7 @@ class CPlateLocate {
   //! verifySize所用常量
 
   static const int DEFAULT_VERIFY_MIN = 10;   // 3
-  static const int DEFAULT_VERIFY_MAX = 100;  // 20
+  static const int DEFAULT_VERIFY_MAX = 80;  // 20
 
   //! 角度判断所用常量
 
