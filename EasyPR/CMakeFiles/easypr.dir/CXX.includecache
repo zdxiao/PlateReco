@@ -6,6 +6,7 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
 /home/xiao/Project/PlateReco/EasyPR/src/core/chars_identify.cpp
 stdio.h
 -
@@ -168,23 +169,53 @@ list
 opencv2/highgui/highgui.hpp
 -
 
+=======
+>>>>>>> origin/betars
 /home/xujingping/PlateReco/EasyPR/src/core/chars_recognise.cpp
 easypr/core/chars_recognise.h
 /home/xujingping/PlateReco/EasyPR/src/core/easypr/core/chars_recognise.h
 easypr/util/util.h
 /home/xujingping/PlateReco/EasyPR/src/core/easypr/util/util.h
 
-/home/xujingping/PlateReco/EasyPR/src/core/plate_judge.cpp
-easypr/core/plate_judge.h
-/home/xujingping/PlateReco/EasyPR/src/core/easypr/core/plate_judge.h
-easypr/config.h
-/home/xujingping/PlateReco/EasyPR/src/core/easypr/config.h
+/home/xujingping/PlateReco/EasyPR/src/core/plate_detect.cpp
+easypr/core/plate_detect.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/core/plate_detect.h
+easypr/util/util.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/util/util.h
+
+/home/xujingping/PlateReco/EasyPR/src/core/plate_locate.cpp
+easypr/core/plate_locate.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/core/plate_locate.h
+easypr/util/util.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/util/util.h
 
 /home/xujingping/PlateReco/EasyPR/src/core/plate_recognize.cpp
 easypr/core/plate_recognize.h
 /home/xujingping/PlateReco/EasyPR/src/core/easypr/core/plate_recognize.h
 easypr/config.h
 /home/xujingping/PlateReco/EasyPR/src/core/easypr/config.h
+
+/home/xujingping/PlateReco/EasyPR/src/preprocess/gdts.cpp
+easypr/preprocess/gdts.h
+/home/xujingping/PlateReco/EasyPR/src/preprocess/easypr/preprocess/gdts.h
+easypr/preprocess/deface.h
+/home/xujingping/PlateReco/EasyPR/src/preprocess/easypr/preprocess/deface.h
+easypr/util/util.h
+/home/xujingping/PlateReco/EasyPR/src/preprocess/easypr/util/util.h
+
+/home/xujingping/PlateReco/EasyPR/src/preprocess/mc_data.cpp
+easypr/preprocess/mc_data.h
+/home/xujingping/PlateReco/EasyPR/src/preprocess/easypr/preprocess/mc_data.h
+ctime
+-
+easypr/core/plate_judge.h
+/home/xujingping/PlateReco/EasyPR/src/preprocess/easypr/core/plate_judge.h
+easypr/core/plate_locate.h
+/home/xujingping/PlateReco/EasyPR/src/preprocess/easypr/core/plate_locate.h
+easypr/util/util.h
+/home/xujingping/PlateReco/EasyPR/src/preprocess/easypr/util/util.h
+io.h
+-
 
 /home/xujingping/PlateReco/EasyPR/src/train/ann_train.cpp
 easypr/train/ann_train.h
@@ -206,6 +237,38 @@ easypr/core/feature.h
 easypr/util/util.h
 /home/xujingping/PlateReco/EasyPR/src/train/easypr/util/util.h
 ctime
+-
+
+/home/xujingping/PlateReco/EasyPR/src/util/kv.cpp
+easypr/util/kv.h
+/home/xujingping/PlateReco/EasyPR/src/util/easypr/util/kv.h
+easypr/util/util.h
+/home/xujingping/PlateReco/EasyPR/src/util/easypr/util/util.h
+
+/home/xujingping/PlateReco/EasyPR/src/util/util.cpp
+easypr/util/util.h
+/home/xujingping/PlateReco/EasyPR/src/util/easypr/util/util.h
+string
+-
+windows.h
+-
+direct.h
+-
+io.h
+-
+cstring
+-
+dirent.h
+-
+sys/stat.h
+-
+unistd.h
+-
+sys/timeb.h
+-
+list
+-
+opencv2/highgui/highgui.hpp
 -
 
 /usr/local/include/opencv/cxcore.h
@@ -717,6 +780,7 @@ easypr/core/chars_recognise.h
 include/easypr/core/easypr/core/chars_recognise.h
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 include/easypr/core/xzdImageProcess.h
 vector
 -
@@ -729,6 +793,8 @@ cmath
 opencv2/opencv.hpp
 -
 
+=======
+>>>>>>> origin/betars
 include/easypr/preprocess/deface.h
 opencv2/opencv.hpp
 -
@@ -741,6 +807,9 @@ include/easypr/preprocess/mc_data.h
 string
 -
 
+<<<<<<< HEAD
+=======
+>>>>>>> origin/betars
 =======
 >>>>>>> origin/betars
 include/easypr/train/ann_train.h

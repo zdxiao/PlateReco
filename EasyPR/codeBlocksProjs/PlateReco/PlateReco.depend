@@ -10,7 +10,7 @@
 	"easypr/config.h"
 	"easypr/core/core_func.h"
 
-1456155481 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_identify.h
+1456233964 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_identify.h
 	"easypr/util/kv.h"
 	"mxnet/c_predict_api.h"
 	<memory>
@@ -20,7 +20,7 @@
 	<map>
 	<string>
 
-1456155481 /home/xiao/Project/PlateReco/EasyPR/include/easypr/config.h
+1456233964 /home/xiao/Project/PlateReco/EasyPR/include/easypr/config.h
 
 1456199439 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/core_func.h
 	<opencv2/opencv.hpp>
@@ -29,7 +29,7 @@
 	"easypr/core/chars_recognise.h"
 	"easypr/util/util.h"
 
-1454058030 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_recognise.h
+1456233964 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_recognise.h
 	"easypr/core/chars_segment.h"
 	"easypr/core/chars_identify.h"
 	"easypr/util/util.h"
@@ -37,7 +37,7 @@
 1456199439 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_segment.h
 	"easypr/core/core_func.h"
 
-1454058030 /home/xiao/Project/PlateReco/EasyPR/include/easypr/util/util.h
+1456241540 /home/xiao/Project/PlateReco/EasyPR/include/easypr/util/util.h
 	<fstream>
 	<iostream>
 	<string>
@@ -68,11 +68,11 @@
 	"easypr/core/plate_detect.h"
 	"easypr/util/util.h"
 
-1454058030 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_detect.h
+1456229843 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_detect.h
 	"easypr/core/plate_locate.h"
 	"easypr/core/plate_judge.h"
 
-1456213926 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_locate.h
+1456218137 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_locate.h
 	"easypr/core/plate.h"
 	"easypr/core/core_func.h"
 
@@ -93,7 +93,7 @@
 	"easypr/core/plate_recognize.h"
 	"easypr/config.h"
 
-1454058030 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_recognize.h
+1456241540 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_recognize.h
 	"easypr/core/plate_detect.h"
 	"easypr/core/chars_recognise.h"
 
