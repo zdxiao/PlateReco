@@ -289,7 +289,57 @@ namespace easypr {
            auto index=static_cast<int>(best_idx);
            return std::make_pair(kChars[index], kChars[index]);
 	}
+/************************************************************************/
 
+
+
+std::pair<std::string, std::string> CharsIdentify::identify(cv::Mat input, double& prob) {
+		cv::Mat feature = features(input, kPredictSize);
+
+		// Just a big enough memory 1000x1000x3
+		int image_size = width * height * channels;
+		std::vector<mx_float> image_data = std::vector<mx_float>(image_size);
+		GetMeanFile(input, image_data.data(), channels, cv::Size(width, height));
+		 //-- Set Input Image
+       MXPredSetInput(out, "data", image_data.data(), image_size);
+	   //-- Do Predict Forward
+	   MXPredForward(out);
+
+	   mx_uint output_index = 0;
+
+	   mx_uint *shape = 0;
+	   mx_uint shape_len;
+
+	   //-- Get Output Result
+	   MXPredGetOutputShape(out, output_index, &shape, &shape_len);
+
+	   size_t size = 1;
+	   for (mx_uint i = 0; i < shape_len; ++i) size *= shape[i];
+
+	   std::vector<float> data(size);
+
+	   MXPredGetOutput(out, output_index, &(data[0]), size);
+
+	   float best_accuracy = 0.0;
+	   int best_idx = 0;
+
+	   for (int i = 0; i < static_cast<int>(data.size()); i++) {
+		   //    printf("Accuracy[%d] = %.8f\n", i, data[i]);
+
+		   if (data[i] > best_accuracy) {
+			   best_accuracy = data[i];
+			   best_idx = i;
+		   }
+	   }
+           
+           prob=best_accuracy;
+           auto index=static_cast<int>(best_idx);
+           return std::make_pair(kChars[index], kChars[index]);
+	}
+
+
+
+/*************************************************************************/
 	std::pair<std::string, std::string> CharsIdentify::identify2(cv::Mat input) {
 		cv::Mat feature = features(input, kPredictSize);
 
@@ -330,6 +380,7 @@ namespace easypr {
 			       // std::cout<<synset[best_idx].c_str(); 
                    // best_idx=data.size();
                     best_idx=best_idx>31?31:best_idx;
+               //     int index=static_cast<int>(27+34);//best_idx+34;
                     int index=static_cast<int>(best_idx+34);//best_idx+34;
 		    const char* key = kChars[index];
 		    std::string s = key;
@@ -337,6 +388,62 @@ namespace easypr {
 		    return std::make_pair(s, province);
 		return std::make_pair(province,province);
 	}
+
+/***********************************************************************************/
+
+
+std::pair<std::string, std::string> CharsIdentify::identify2(cv::Mat input,double& prob) {
+		cv::Mat feature = features(input, kPredictSize);
+
+		// Just a big enough memory 1000x1000x3
+		int image_size = width * height * channels;
+		std::vector<mx_float> image_data = std::vector<mx_float>(image_size);
+		GetMeanFile(input, image_data.data(), channels, cv::Size(width, height));
+		//-- Set Input Image
+		MXPredSetInput(out2, "data", image_data.data(), image_size);
+		//-- Do Predict Forward
+		MXPredForward(out2);
+
+		mx_uint output_index = 0;
+
+		mx_uint *shape = 0;
+		mx_uint shape_len;
+
+		//-- Get Output Result
+		MXPredGetOutputShape(out2, output_index, &shape, &shape_len);
+
+		size_t size = 1;
+		for (mx_uint i = 0; i < shape_len; ++i) size *= shape[i];
+
+		std::vector<float> data(size);
+
+		MXPredGetOutput(out2, output_index, &(data[0]), size);
+
+		float best_accuracy = 0.0;
+		int best_idx = 0;
+
+		for (int i = 0; i < static_cast<int>(data.size()); i++) {
+			//    printf("Accuracy[%d] = %.8f\n", i, data[i]);
+			if (data[i] > best_accuracy) {
+				best_accuracy = data[i];
+				best_idx = i;
+			}
+		}
+                    prob=best_accuracy;
+			       // std::cout<<synset[best_idx].c_str(); 
+                   // best_idx=data.size();
+                    best_idx=best_idx>31?31:best_idx;
+               //     int index=static_cast<int>(27+34);//best_idx+34;
+                    int index=static_cast<int>(best_idx+34);//best_idx+34;
+		    const char* key = kChars[index];
+		    std::string s = key;
+		    std::string province = kv_->get(s);
+		    //return std::make_pair(s, province);
+
+		return std::make_pair(province,province);
+	}
+/**************************************/
+
  std::pair<std::string, std::string> CharsIdentify::identify3(cv::Mat input) {
 		cv::Mat feature = features(input, kPredictSize);
 
@@ -375,7 +482,53 @@ namespace easypr {
 			   best_idx = i;
 		   }
                 }
+	   }          
+           auto index=static_cast<int>(best_idx);
+           index=index==0?65:index;
+           return std::make_pair(kChars[index], kChars[index]);
+	}
+
+/***************************************/
+ std::pair<std::string, std::string> CharsIdentify::identify3(cv::Mat input,double &prob) {
+		cv::Mat feature = features(input, kPredictSize);
+
+		// Just a big enough memory 1000x1000x3
+		int image_size = width * height * channels;
+		std::vector<mx_float> image_data = std::vector<mx_float>(image_size);
+		GetMeanFile(input, image_data.data(), channels, cv::Size(width, height));
+		 //-- Set Input Image
+       MXPredSetInput(out, "data", image_data.data(), image_size);
+	   //-- Do Predict Forward
+	   MXPredForward(out);
+
+	   mx_uint output_index = 0;
+
+	   mx_uint *shape = 0;
+	   mx_uint shape_len;
+
+	   //-- Get Output Result
+	   MXPredGetOutputShape(out, output_index, &shape, &shape_len);
+
+	   size_t size = 1;
+	   for (mx_uint i = 0; i < shape_len; ++i) size *= shape[i];
+
+	   std::vector<float> data(size);
+
+	   MXPredGetOutput(out, output_index, &(data[0]), size);
+
+	   float best_accuracy = 0.0;
+	   int best_idx = 0;
+
+	   for (int i = 0; i < static_cast<int>(data.size()); i++) {
+		   //    printf("Accuracy[%d] = %.8f\n", i, data[i]);
+                if(i==0||i>9){
+		   if (data[i] > best_accuracy) {
+			   best_accuracy = data[i];
+			   best_idx = i;
+		   }
+                }
 	   }
+         prob=best_accuracy;
           
            auto index=static_cast<int>(best_idx);
            index=index==0?65:index;

@@ -1,6 +1,5 @@
 #include "easypr/core/plate_recognize.h"
 #include "easypr/config.h"
-int realPlateCounter = 0;
 
 namespace easypr {
 
@@ -24,7 +23,8 @@ int CPlateRecognize::plateRecognize(Mat src,
     int index = 0;
 
     //依次识别每个车牌内的符号
-
+    double prob=0.0;
+    std::string license;
     for (size_t j = 0; j < num; j++) {
       CPlate item = plateVec[j];
       Mat plate = item.getPlateMat();
@@ -36,19 +36,14 @@ int CPlateRecognize::plateRecognize(Mat src,
       //获取车牌号
 
       std::string plateIdentify = "";
-      int resultCR = charsRecognise(plate, plateIdentify);
+      double tmp=0.0;
+      int resultCR = charsRecognise(plate, plateIdentify,tmp);
       if (resultCR == 0) {
-        std::string license = plateType + ":" + plateIdentify;
-        licenseVec.push_back(license);
-		  if(getPDDebug())
-		  {
-			imshow("plate", plate);
-			std::cout << license << std::endl;
-			waitKey();
-		  }
+        std::string licensetmp = plateType + ":" + plateIdentify;
+        if(tmp>prob) {prob=tmp;license=licensetmp;}
       }
     }
-
+   if(prob>0.01) licenseVec.push_back(license);
     //完整识别过程到此结束
 
     //如果是Debug模式，则还需要将定位的图片显示在原图左上角
