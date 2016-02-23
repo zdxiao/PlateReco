@@ -676,32 +676,32 @@ src/util/util.cpp.s:
 	$(MAKE) -f CMakeFiles/easypr.dir/build.make CMakeFiles/easypr.dir/src/util/util.cpp.s
 .PHONY : src/util/util.cpp.s
 
-test/main.o: test/main.cpp.o
+test/plateRecoTest.o: test/plateRecoTest.cpp.o
 
-.PHONY : test/main.o
+.PHONY : test/plateRecoTest.o
 
 # target to build an object file
-test/main.cpp.o:
-	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/main.cpp.o
-.PHONY : test/main.cpp.o
+test/plateRecoTest.cpp.o:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/plateRecoTest.cpp.o
+.PHONY : test/plateRecoTest.cpp.o
 
-test/main.i: test/main.cpp.i
+test/plateRecoTest.i: test/plateRecoTest.cpp.i
 
-.PHONY : test/main.i
+.PHONY : test/plateRecoTest.i
 
 # target to preprocess a source file
-test/main.cpp.i:
-	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/main.cpp.i
-.PHONY : test/main.cpp.i
+test/plateRecoTest.cpp.i:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/plateRecoTest.cpp.i
+.PHONY : test/plateRecoTest.cpp.i
 
-test/main.s: test/main.cpp.s
+test/plateRecoTest.s: test/plateRecoTest.cpp.s
 
-.PHONY : test/main.s
+.PHONY : test/plateRecoTest.s
 
 # target to generate assembly for a file
-test/main.cpp.s:
-	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/main.cpp.s
-.PHONY : test/main.cpp.s
+test/plateRecoTest.cpp.s:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/plateRecoTest.cpp.s
+.PHONY : test/plateRecoTest.cpp.s
 
 # Help Target
 help:
@@ -773,9 +773,9 @@ help:
 	@echo "... src/util/util.o"
 	@echo "... src/util/util.i"
 	@echo "... src/util/util.s"
-	@echo "... test/main.o"
-	@echo "... test/main.i"
-	@echo "... test/main.s"
+	@echo "... test/plateRecoTest.o"
+	@echo "... test/plateRecoTest.i"
+	@echo "... test/plateRecoTest.s"
 .PHONY : help
 
 

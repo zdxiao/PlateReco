@@ -57,38 +57,38 @@ include CMakeFiles/demo.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/demo.dir/flags.make
 
-CMakeFiles/demo.dir/test/main.cpp.o: CMakeFiles/demo.dir/flags.make
-CMakeFiles/demo.dir/test/main.cpp.o: test/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiao/Project/PlateReco/EasyPR/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/demo.dir/test/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/demo.dir/test/main.cpp.o -c /home/xiao/Project/PlateReco/EasyPR/test/main.cpp
+CMakeFiles/demo.dir/test/plateRecoTest.cpp.o: CMakeFiles/demo.dir/flags.make
+CMakeFiles/demo.dir/test/plateRecoTest.cpp.o: test/plateRecoTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiao/Project/PlateReco/EasyPR/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/demo.dir/test/plateRecoTest.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/demo.dir/test/plateRecoTest.cpp.o -c /home/xiao/Project/PlateReco/EasyPR/test/plateRecoTest.cpp
 
-CMakeFiles/demo.dir/test/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/demo.dir/test/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiao/Project/PlateReco/EasyPR/test/main.cpp > CMakeFiles/demo.dir/test/main.cpp.i
+CMakeFiles/demo.dir/test/plateRecoTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/demo.dir/test/plateRecoTest.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiao/Project/PlateReco/EasyPR/test/plateRecoTest.cpp > CMakeFiles/demo.dir/test/plateRecoTest.cpp.i
 
-CMakeFiles/demo.dir/test/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/demo.dir/test/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiao/Project/PlateReco/EasyPR/test/main.cpp -o CMakeFiles/demo.dir/test/main.cpp.s
+CMakeFiles/demo.dir/test/plateRecoTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/demo.dir/test/plateRecoTest.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiao/Project/PlateReco/EasyPR/test/plateRecoTest.cpp -o CMakeFiles/demo.dir/test/plateRecoTest.cpp.s
 
-CMakeFiles/demo.dir/test/main.cpp.o.requires:
+CMakeFiles/demo.dir/test/plateRecoTest.cpp.o.requires:
 
-.PHONY : CMakeFiles/demo.dir/test/main.cpp.o.requires
+.PHONY : CMakeFiles/demo.dir/test/plateRecoTest.cpp.o.requires
 
-CMakeFiles/demo.dir/test/main.cpp.o.provides: CMakeFiles/demo.dir/test/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/main.cpp.o.provides.build
-.PHONY : CMakeFiles/demo.dir/test/main.cpp.o.provides
+CMakeFiles/demo.dir/test/plateRecoTest.cpp.o.provides: CMakeFiles/demo.dir/test/plateRecoTest.cpp.o.requires
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/plateRecoTest.cpp.o.provides.build
+.PHONY : CMakeFiles/demo.dir/test/plateRecoTest.cpp.o.provides
 
-CMakeFiles/demo.dir/test/main.cpp.o.provides.build: CMakeFiles/demo.dir/test/main.cpp.o
+CMakeFiles/demo.dir/test/plateRecoTest.cpp.o.provides.build: CMakeFiles/demo.dir/test/plateRecoTest.cpp.o
 
 
 # Object files for target demo
 demo_OBJECTS = \
-"CMakeFiles/demo.dir/test/main.cpp.o"
+"CMakeFiles/demo.dir/test/plateRecoTest.cpp.o"
 
 # External object files for target demo
 demo_EXTERNAL_OBJECTS =
 
-/home/xiao/Project/PlateReco/demo: CMakeFiles/demo.dir/test/main.cpp.o
+/home/xiao/Project/PlateReco/demo: CMakeFiles/demo.dir/test/plateRecoTest.cpp.o
 /home/xiao/Project/PlateReco/demo: CMakeFiles/demo.dir/build.make
 /home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_hal.a
 /home/xiao/Project/PlateReco/demo: lib/libmxnet.so
@@ -123,7 +123,7 @@ CMakeFiles/demo.dir/build: /home/xiao/Project/PlateReco/demo
 
 .PHONY : CMakeFiles/demo.dir/build
 
-CMakeFiles/demo.dir/requires: CMakeFiles/demo.dir/test/main.cpp.o.requires
+CMakeFiles/demo.dir/requires: CMakeFiles/demo.dir/test/plateRecoTest.cpp.o.requires
 
 .PHONY : CMakeFiles/demo.dir/requires
 
