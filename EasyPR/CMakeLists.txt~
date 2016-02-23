@@ -49,7 +49,7 @@ add_library(easypr STATIC ${SOURCE_FILES})
 
 
 ###
-target_link_libraries(easypr lib/libmxnet.so)
+target_link_libraries(easypr /home/xujingping/EasyPR-1.4/lib/libmxnet.so)
 
 # test cases
 

@@ -14,7 +14,7 @@ else()
     message(STATUS "The compiler ${CMAKE_CXX_COMPILER} doesn’t support C++11. Please upgrade or use a different C++ compiler.")
 endif()
 
-set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/usr/local/opt/opencv3")
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} )
 # opencv3 package required
 find_package(OpenCV 3.0.0 REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
