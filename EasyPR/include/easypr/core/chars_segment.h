@@ -23,7 +23,7 @@ class CCharsSegment {
 
   //! 根据特殊车牌来构造猜测中文字符的位置和大小
 
-  Rect GetChineseRect(const Rect rectSpe);
+  Rect GetChineseRect(const Rect rectSpe, std::vector<Rect>& sortedRect, int index);
 
   //! 找出指示城市的字符的Rect，例如苏A7003X，就是A的位置
 
@@ -39,6 +39,9 @@ class CCharsSegment {
   //! 将Rect按位置从左到右进行排序
 
   int SortRect(const std::vector<Rect>& vecRect, std::vector<Rect>& out);
+
+  // 拉长最后一个字符框高度
+  void stretchingLastChar(std::vector<Rect>& vecSortedRect);
 
   //! 设置变量
 

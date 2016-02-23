@@ -41,7 +41,7 @@ void combineImg(Mat plate, vector<Mat> blocks, Mat& result)
 	}
 }
 
-bool judgeSegment(Mat img,int debug_mode)
+bool judgeSegment(Mat img, int debug_mode, string filename)
 {
 	vector<Mat> resultVec;
 	CCharsSegment plate;
@@ -49,8 +49,8 @@ bool judgeSegment(Mat img,int debug_mode)
 	plate.setDebug(debug_mode);
 
 	int result = plate.charsSegment(img, resultVec);
+	Mat res;
 	if (result == 0) {
-		Mat res;
 		combineImg(img, resultVec, res);
 		
 		imshow("chars_segment", res);
@@ -63,13 +63,16 @@ bool judgeSegment(Mat img,int debug_mode)
 			cout << "success" << endl;
 			return true;
 		}
+
 	}
+	filename = "A:\\WorkPlace\\CPLUS\\TN_ALPR\\plateData0220\\has\\result" + filename;
+	imwrite(filename, res);
 	return false;
 }
 
 void testSeg(int debug_mode)
 {
-	string rootDir("A:\\WorkPlace\\CPLUS\\TN_ALPR\\test_160221");
+	string rootDir("A:\\WorkPlace\\CPLUS\\TN_ALPR\\plateData0220\\has");
 	Mat img, imgH;
 	ifstream infile(rootDir + "\\list.txt");
 	string filename;
@@ -90,7 +93,7 @@ void testSeg(int debug_mode)
 		string imgName = rootDir + "\\" + filename;
 		img = imread(imgName.c_str());
 
-		if (!judgeSegment(img,debug_mode))
+		if (!judgeSegment(img,debug_mode,filename))
 		{
 			outfile << filename << endl;
 			FailCnt++;
@@ -106,8 +109,8 @@ void testSeg(int debug_mode)
 int main(int argc, char** argv)
 {
 	cout << "Input debug mode:" << endl;
-	cout << "                  0 - test " << endl;
-	cout << "                  1 - debug " << endl;
+	cout << "    0 - test " << endl;
+	cout << "    1 - debug " << endl;
 	cin >> dbg;
 	testSeg(dbg);
 	cout << "Press any key..." << endl;

@@ -371,7 +371,7 @@ Color getPlateType(const Mat &src, const bool adaptive_minsv, int MinBlue) {
 }
 
 void clearLiuDingOnly(Mat &img) {
-  const int x = 7;
+  const int x = 5/*7*/;
   Mat jump = Mat::zeros(1, img.rows, CV_32F);
   for (int i = 0; i < img.rows; i++) {
     int jumpCount = 0;
@@ -409,12 +409,15 @@ bool clearLiuDing(Mat &img) {
     int jumpCount = 0;
 
     for (int j = 2; j < img.cols - 3; j++) {
-		//加入窗口判别机制，让跳变更具特异性
-	  if (img.at<char>(i, j - 2) == img.at<char>(i, j-1)  && 
-		  img.at<char>(i, j - 1) == img.at<char>(i, j)    &&
-		  img.at<char>(i, j)     != img.at<char>(i, j + 1)&&
-		  img.at<char>(i, j + 1) == img.at<char>(i, j + 2)&&
-		  img.at<char>(i, j + 2) == img.at<char>(i, j + 3))
+		// gq:加入窗口判别机制，让跳变更具特异性
+	  //if (img.at<char>(i, j - 2) == img.at<char>(i, j-1)  && 
+		 // img.at<char>(i, j - 1) == img.at<char>(i, j)    &&
+		 // img.at<char>(i, j)     != img.at<char>(i, j + 1)&&
+		 // img.at<char>(i, j + 1) == img.at<char>(i, j + 2)&&
+		 // img.at<char>(i, j + 2) == img.at<char>(i, j + 3))
+		 // jumpCount++;
+		// 原方案
+		if (img.at<char>(i, j) != img.at<char>(i, j + 1))
 		  jumpCount++;
 
       if (img.at<uchar>(i, j) == 255) {
@@ -428,10 +431,8 @@ bool clearLiuDing(Mat &img) {
   int iCount = 0;
   for (int i = 0; i < img.rows; i++) {
     fJump.push_back(jump.at<float>(i));
-    if (jump.at<float>(i) >= 10/*16*/ && jump.at<float>(i) <= 45) {
-
+    if (jump.at<float>(i) >= 12/*16*/ && jump.at<float>(i) <= 45) {
       //车牌字符满足一定跳变条件
-
       iCount++;
     }
   }
@@ -441,27 +442,26 @@ bool clearLiuDing(Mat &img) {
   if (iCount * 1.0 / img.rows <= 0.40) {
 
     //满足条件的跳变的行数也要在一定的阈值内
-	  ////db
-	  //std::cout << "jump small than 10 times" << std::endl;
+	  //db
+	  //std::cout << "jump number too small" << std::endl;
     return false;
   }
 
   //不满足车牌的条件
 
-  if (whiteCount * 1.0 / (img.rows * img.cols) < 0.15 ||
-      whiteCount * 1.0 / (img.rows * img.cols) > 0.55) {
-	  ////db
-	  //std::cout << "white too much or too less" << std::endl;
+  if (whiteCount * 1.0 / (img.rows * img.cols) < 0.1 ||
+      whiteCount * 1.0 / (img.rows * img.cols) > 0.5) {
+	  //db
+	  std::cout << "white too much or too less" << std::endl;
     return false;
   }
 
   for (int i = 0; i < img.rows; i++) {
-    if (jump.at<float>(i) <= x) {
+    if (jump.at<float>(i) <= 10/*x*/) {
       for (int j = 0; j < img.cols; j++) {
 		  //8邻域扫描
 		  int env_state = 0;
-		  if (jump.at<float>(i) > 3 &&
-			  i != 0 && i != img.rows - 1 && j != 0 && j != img.cols - 1){
+		  if (i != 0 && i != img.rows - 1 && j != 0 && j != img.cols - 1){
 			  for (int id_row = i - 1; id_row <= i + 1; id_row++){
 				  for (int id_col = j - 1; id_col <= j + 1; id_col++){
 					  if (img.at<uchar>(id_row, id_col) == 255)
@@ -470,8 +470,14 @@ bool clearLiuDing(Mat &img) {
 			  }
 		  }
 		  //邻域小于5个白像素，清除当前像素
-		  if (env_state < 6)
+		  if (jump.at<float>(i) < 3 && env_state <= 9)
 			img.at<char>(i, j) = 0;
+		  else if (jump.at<float>(i) < 5 && env_state <= 5)
+			  img.at<char>(i, j) = 0;
+		  else if (jump.at<float>(i) < 7 && env_state <= 4)
+			  img.at<char>(i, j) = 0;
+		  else if (jump.at<float>(i) < 9 && env_state <= 3)
+			  img.at<char>(i, j) = 0;
       }
     }
   }
