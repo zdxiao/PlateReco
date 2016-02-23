@@ -94,7 +94,15 @@ int accuracyTest(const char* test_path) {
     cout << kv->get("original_plate") << ":" << plateLicense << endl;
 
     vector<string> plateVec;
+    /**
     int result = pr.plateRecognize(src, plateVec);
+*/
+    CPlate plateout;
+    int result = pr.plateRecognize(src, plateVec, plateout);
+
+  //  int result = pr.plateRecognize(src, plateVec);
+
+
     if (result == 0) {
       int num = plateVec.size();
 
@@ -147,8 +155,11 @@ int accuracyTest(const char* test_path) {
 
           int size = spilt_plate.size();
           if (size == 2 && spilt_plate[1] != "") {
-            int diff = utils::levenshtein_distance(plateLicense,
-                                                   spilt_plate[size - 1]);
+
+           std::string str1=plateLicense.substr(3);
+           std::string str2=spilt_plate[size - 1].substr(3);
+          // strstr1.substr(3);
+           int diff = utils::levenshtein_distance(str1,str2);
             cout << kv->get("diff") << ":" << diff << kv->get("char") << endl;
 
             if (diff == 0) {

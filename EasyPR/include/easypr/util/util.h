@@ -100,6 +100,7 @@ class Utils {
 
   template<class T>
   static unsigned int levenshtein_distance(const T &s1, const T &s2) {
+  //  s1=s1.substr(3);s2=s2.substr(3);
     const size_t len1 = s1.size(), len2 = s2.size();
     std::vector<unsigned int> col(len2 + 1), prevCol(len2 + 1);
 
