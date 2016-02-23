@@ -14,7 +14,7 @@ namespace easypr {
 //! 输出灰度图（只有0和255两个值，255代表匹配，0代表不匹配）
 
 Mat colorMatch(const Mat &src, Mat &match, const Color r,
-               const bool adaptive_minsv) {
+               const bool adaptive_minsv, int MinBlue) {
 
   // S和V的最小值由adaptive_minsv这个bool值判断
   // 如果为true，则最小值取决于H值，按比例衰减
@@ -28,7 +28,7 @@ Mat colorMatch(const Mat &src, Mat &match, const Color r,
 
   // blue的H范围
 
-  const int min_blue = 100;  // 100
+  const int min_blue = MinBlue;  // 100
   const int max_blue = 140;  // 140
 
   // yellow的H范围
@@ -319,13 +319,13 @@ bool bFindLeftRightBound2(Mat &bound_threshold, int &posLeft, int &posRight) {
 //! 返回true或fasle
 
 bool plateColorJudge(const Mat &src, const Color r, const bool adaptive_minsv,
-                     float &percent) {
+                     float &percent, int MinBlue) {
   // 判断阈值
 
   const float thresh = 0.45f;
 
   Mat src_gray;
-  colorMatch(src, src_gray, r, adaptive_minsv);
+  colorMatch(src, src_gray, r, adaptive_minsv, MinBlue);
 
   percent =
       float(countNonZero(src_gray)) / float(src_gray.rows * src_gray.cols);
@@ -339,7 +339,7 @@ bool plateColorJudge(const Mat &src, const Color r, const bool adaptive_minsv,
 
 //判断车牌的类型
 
-Color getPlateType(const Mat &src, const bool adaptive_minsv) {
+Color getPlateType(const Mat &src, const bool adaptive_minsv, int MinBlue) {
   float max_percent = 0;
   Color max_color = UNKNOWN;
 
@@ -347,7 +347,7 @@ Color getPlateType(const Mat &src, const bool adaptive_minsv) {
   float yellow_percent = 0;
   float white_percent = 0;
 
-  if (plateColorJudge(src, BLUE, adaptive_minsv, blue_percent) == true) {
+  if (plateColorJudge(src, BLUE, adaptive_minsv, blue_percent,MinBlue) == true) {
     // cout << "BLUE" << endl;
     return BLUE;
   } else if (plateColorJudge(src, YELLOW, adaptive_minsv, yellow_percent) ==
@@ -372,7 +372,7 @@ Color getPlateType(const Mat &src, const bool adaptive_minsv) {
 }
 
 void clearLiuDingOnly(Mat &img) {
-  const int x = 7;
+  const int x = 5/*7*/;
   Mat jump = Mat::zeros(1, img.rows, CV_32F);
   for (int i = 0; i < img.rows; i++) {
     int jumpCount = 0;
@@ -409,8 +409,17 @@ bool clearLiuDing(Mat &img) {
   for (int i = 0; i < img.rows; i++) {
     int jumpCount = 0;
 
-    for (int j = 0; j < img.cols - 1; j++) {
-      if (img.at<char>(i, j) != img.at<char>(i, j + 1)) jumpCount++;
+    for (int j = 2; j < img.cols - 3; j++) {
+		// gq:加入窗口判别机制，让跳变更具特异性
+	  //if (img.at<char>(i, j - 2) == img.at<char>(i, j-1)  && 
+		 // img.at<char>(i, j - 1) == img.at<char>(i, j)    &&
+		 // img.at<char>(i, j)     != img.at<char>(i, j + 1)&&
+		 // img.at<char>(i, j + 1) == img.at<char>(i, j + 2)&&
+		 // img.at<char>(i, j + 2) == img.at<char>(i, j + 3))
+		 // jumpCount++;
+		// 原方案
+		if (img.at<char>(i, j) != img.at<char>(i, j + 1))
+		  jumpCount++;
 
       if (img.at<uchar>(i, j) == 255) {
         whiteCount++;
@@ -423,10 +432,8 @@ bool clearLiuDing(Mat &img) {
   int iCount = 0;
   for (int i = 0; i < img.rows; i++) {
     fJump.push_back(jump.at<float>(i));
-    if (jump.at<float>(i) >= 16 && jump.at<float>(i) <= 45) {
-
+    if (jump.at<float>(i) >= 12/*16*/ && jump.at<float>(i) <= 45) {
       //车牌字符满足一定跳变条件
-
       iCount++;
     }
   }
@@ -436,21 +443,42 @@ bool clearLiuDing(Mat &img) {
   if (iCount * 1.0 / img.rows <= 0.40) {
 
     //满足条件的跳变的行数也要在一定的阈值内
-
+	  //db
+	  //std::cout << "jump number too small" << std::endl;
     return false;
   }
 
   //不满足车牌的条件
 
-  if (whiteCount * 1.0 / (img.rows * img.cols) < 0.15 ||
-      whiteCount * 1.0 / (img.rows * img.cols) > 0.50) {
+  if (whiteCount * 1.0 / (img.rows * img.cols) < 0.1 ||
+      whiteCount * 1.0 / (img.rows * img.cols) > 0.5) {
+	  //db
+	  std::cout << "white too much or too less" << std::endl;
     return false;
   }
 
   for (int i = 0; i < img.rows; i++) {
-    if (jump.at<float>(i) <= x) {
+    if (jump.at<float>(i) <= 10/*x*/) {
       for (int j = 0; j < img.cols; j++) {
-        img.at<char>(i, j) = 0;
+		  //8邻域扫描
+		  int env_state = 0;
+		  if (i != 0 && i != img.rows - 1 && j != 0 && j != img.cols - 1){
+			  for (int id_row = i - 1; id_row <= i + 1; id_row++){
+				  for (int id_col = j - 1; id_col <= j + 1; id_col++){
+					  if (img.at<uchar>(id_row, id_col) == 255)
+						  env_state++;
+				  }
+			  }
+		  }
+		  //邻域小于5个白像素，清除当前像素
+		  if (jump.at<float>(i) < 3 && env_state <= 9)
+			img.at<char>(i, j) = 0;
+		  else if (jump.at<float>(i) < 5 && env_state <= 5)
+			  img.at<char>(i, j) = 0;
+		  else if (jump.at<float>(i) < 7 && env_state <= 4)
+			  img.at<char>(i, j) = 0;
+		  else if (jump.at<float>(i) < 9 && env_state <= 3)
+			  img.at<char>(i, j) = 0;
       }
     }
   }

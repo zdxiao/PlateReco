@@ -86,7 +86,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%OPENCV%\include;$(SolutionDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>A:\opencv\opencv\build\include;$(SolutionDir)include</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -99,7 +99,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%OPENCV%\include;$(SolutionDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>A:\opencv\opencv\build\include;$(SolutionDir)include</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -154,6 +154,7 @@
     <ClCompile Include="..\src\core\plate_judge.cpp" />
     <ClCompile Include="..\src\core\plate_locate.cpp" />
     <ClCompile Include="..\src\core\plate_recognize.cpp" />
+    <ClCompile Include="..\src\core\xzdImageProcess.cpp" />
     <ClCompile Include="..\src\preprocess\deface.cpp" />
     <ClCompile Include="..\src\preprocess\gdts.cpp" />
     <ClCompile Include="..\src\preprocess\mc_data.cpp" />

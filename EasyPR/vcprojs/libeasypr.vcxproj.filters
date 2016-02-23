@@ -105,6 +105,9 @@
     <ClCompile Include="..\src\util\kv.cpp">
       <Filter>源文件\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\core\xzdImageProcess.cpp">
+      <Filter>头文件\easypr\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\easypr\preprocess\deface.h">
