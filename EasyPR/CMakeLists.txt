@@ -14,7 +14,9 @@ else()
     message(STATUS "The compiler ${CMAKE_CXX_COMPILER} doesn’t support C++11. Please upgrade or use a different C++ compiler.")
 endif()
 
+
 set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH})
+
 # opencv3 package required
 find_package(OpenCV 3.0.0 REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
@@ -46,15 +48,12 @@ set(SOURCE_FILES
 add_library(easypr STATIC ${SOURCE_FILES})
 
 
-
-
-
 target_link_libraries(easypr /home/xiao/Project/PlateReco/EasyPR/lib/libmxnet.so)
 
 # test cases
 
-add_executable(demo test/plateRecoTest.cpp)
-#add_executable(demo test/main.cpp)
+#add_executable(demo test/plateRecoTest.cpp)
+add_executable(demo test/main.cpp)
 # link
 target_link_libraries(demo ${OpenCV_LIBS} )
 target_link_libraries(demo /home/xiao/Project/PlateReco/EasyPR/lib/libmxnet.so)

@@ -42,7 +42,7 @@ static const char *kChars[] = {
   "zh_xin"  , "zh_yu"   , "zh_yu1"  ,
   "zh_yue"  , "zh_yun"  , "zh_zang" ,
   "zh_zhe"  ,
-  "O"
+  "O"       ,  "city"
   /*  31  */
 };
 

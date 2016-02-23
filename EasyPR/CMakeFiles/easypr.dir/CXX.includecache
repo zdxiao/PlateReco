@@ -168,6 +168,46 @@ list
 opencv2/highgui/highgui.hpp
 -
 
+/home/xujingping/PlateReco/EasyPR/src/core/chars_recognise.cpp
+easypr/core/chars_recognise.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/core/chars_recognise.h
+easypr/util/util.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/util/util.h
+
+/home/xujingping/PlateReco/EasyPR/src/core/plate_judge.cpp
+easypr/core/plate_judge.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/core/plate_judge.h
+easypr/config.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/config.h
+
+/home/xujingping/PlateReco/EasyPR/src/core/plate_recognize.cpp
+easypr/core/plate_recognize.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/core/plate_recognize.h
+easypr/config.h
+/home/xujingping/PlateReco/EasyPR/src/core/easypr/config.h
+
+/home/xujingping/PlateReco/EasyPR/src/train/ann_train.cpp
+easypr/train/ann_train.h
+/home/xujingping/PlateReco/EasyPR/src/train/easypr/train/ann_train.h
+easypr/config.h
+/home/xujingping/PlateReco/EasyPR/src/train/easypr/config.h
+easypr/core/chars_identify.h
+/home/xujingping/PlateReco/EasyPR/src/train/easypr/core/chars_identify.h
+easypr/core/core_func.h
+/home/xujingping/PlateReco/EasyPR/src/train/easypr/core/core_func.h
+easypr/util/util.h
+/home/xujingping/PlateReco/EasyPR/src/train/easypr/util/util.h
+
+/home/xujingping/PlateReco/EasyPR/src/train/svm_train.cpp
+easypr/train/svm_train.h
+/home/xujingping/PlateReco/EasyPR/src/train/easypr/train/svm_train.h
+easypr/core/feature.h
+/home/xujingping/PlateReco/EasyPR/src/train/easypr/core/feature.h
+easypr/util/util.h
+/home/xujingping/PlateReco/EasyPR/src/train/easypr/util/util.h
+ctime
+-
+
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h
 /usr/local/include/opencv/opencv2/core/core_c.h
@@ -676,6 +716,7 @@ include/easypr/core/easypr/core/plate_detect.h
 easypr/core/chars_recognise.h
 include/easypr/core/easypr/core/chars_recognise.h
 
+<<<<<<< HEAD
 include/easypr/core/xzdImageProcess.h
 vector
 -
@@ -700,6 +741,8 @@ include/easypr/preprocess/mc_data.h
 string
 -
 
+=======
+>>>>>>> origin/betars
 include/easypr/train/ann_train.h
 easypr/train/train.h
 include/easypr/train/easypr/train/train.h
@@ -722,6 +765,7 @@ map
 string
 -
 
+<<<<<<< HEAD
 include/easypr/util/program_options.h
 algorithm
 -
@@ -744,6 +788,8 @@ initializer_list
 stdarg.h
 -
 
+=======
+>>>>>>> origin/betars
 include/easypr/util/util.h
 fstream
 -

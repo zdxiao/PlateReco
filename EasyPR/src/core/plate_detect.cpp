@@ -29,25 +29,27 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
 
   const int color_find_max = m_maxPlates;
   #ifdef DEBUG_LOCATE_PLATE
-  std::cout << "Color Locate" << std::endl;
+  //std::cout << "Color Locate" << std::endl;
   #endif
 
   m_plateLocate->plateColorLocate(src, color_Plates, index);
+
+  PlateJudge::instance()->plateJudge(color_Plates, color_result_Plates);
+
   #ifdef DEBUG_LOCATE_PLATE
-  for(auto iter = color_Plates.begin(); iter != color_Plates.end(); ++iter)
+  for(auto iter = color_result_Plates.begin(); iter != color_result_Plates.end(); ++iter)
   {
     #ifndef DEBUG_SAVE_LOCATE_PLATES
     imshow("ColorLocatedPlate", (*iter).getPlateMat());
     waitKey();
     #else
     char buffer[50];
-    sprintf(buffer, "resources/image/locatePlates/%04d.jpg", locatedPlatesCounter);
+    sprintf(buffer, "resources/image/locatePlates0222/%04d.jpg", locatedPlatesCounter);
     utils::imwrite(buffer, (*iter).getPlateMat());
     locatedPlatesCounter++;
     #endif
   }
   #endif
-  PlateJudge::instance()->plateJudge(color_Plates, color_result_Plates);
 
   for (size_t i = 0; i < color_result_Plates.size(); i++) {
     CPlate plate = color_result_Plates[i];
@@ -63,26 +65,27 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
 
   //颜色和边界闭操作同时采用
   #ifdef DEBUG_LOCATE_PLATE
-  std::cout << "Sobel Locate" << std::endl;
+  //std::cout << "Sobel Locate" << std::endl;
   #endif
   {
     m_plateLocate->plateSobelLocate(src, sobel_Plates, index);
+
+    PlateJudge::instance()->plateJudge(sobel_Plates, sobel_result_Plates);
+
   #ifdef DEBUG_LOCATE_PLATE
-  for(auto iter = sobel_Plates.begin(); iter != sobel_Plates.end(); ++iter)
+  for(auto iter = sobel_result_Plates.begin(); iter != sobel_result_Plates.end(); ++iter)
   {
     #ifndef DEBUG_SAVE_LOCATE_PLATES
     imshow("SobelLocatedPlate", (*iter).getPlateMat());
     waitKey();
     #else
     char buffer[50];
-    sprintf(buffer, "resources/image/locatePlates/%04d.jpg", locatedPlatesCounter);
+    sprintf(buffer, "resources/image/locatePlates0222/%04d.jpg", locatedPlatesCounter);
     utils::imwrite(buffer, (*iter).getPlateMat());
     locatedPlatesCounter++;
     #endif
   }
   #endif
-
-    PlateJudge::instance()->plateJudge(sobel_Plates, sobel_result_Plates);
 
     for (size_t i = 0; i < sobel_result_Plates.size(); i++) {
       CPlate plate = sobel_result_Plates[i];

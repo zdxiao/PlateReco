@@ -54,6 +54,8 @@ int accuracyTest(const char* test_path) {
 
   std::list<std::string> not_recognized_files;
 
+  std::list<std::string> reco_error_files;
+
   // 总的字符差距
 
   float diff_all = 0;
@@ -132,6 +134,10 @@ int accuracyTest(const char* test_path) {
 
           match_count++;
         }
+        else
+        {
+            reco_error_files.push_back(filepath);
+        }
         diff_all = diff_all + mindiff;
       } else {
 
@@ -156,6 +162,10 @@ int accuracyTest(const char* test_path) {
               // 完全匹配
 
               match_count++;
+            }
+            else
+            {
+                reco_error_files.push_back(filepath);
             }
             diff_all = diff_all + diff;
           }
@@ -231,6 +241,11 @@ int accuracyTest(const char* test_path) {
         << endl;
 
     for (auto it = not_recognized_files.begin(); it != not_recognized_files.end();
+       ++it) {
+        myfile << *it << endl;
+    }
+    myfile << "-------------------------------------------" << endl;
+    for (auto it = reco_error_files.begin(); it != reco_error_files.end();
        ++it) {
         myfile << *it << endl;
     }
