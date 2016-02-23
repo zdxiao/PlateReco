@@ -53,14 +53,14 @@ target_link_libraries(easypr /home/xiao/Project/PlateReco/EasyPR/lib/libmxnet.so
 
 # test cases
 
-add_executable(demo test/demo.cpp)
-#add_executable(main test/main.cpp)
+#add_executable(demo test/plateRecoTest.cpp)
+add_executable(demo test/main.cpp)
 
 # link
 target_link_libraries(demo ${OpenCV_LIBS} )
 target_link_libraries(demo /home/xiao/Project/PlateReco/EasyPR/lib/libmxnet.so)
 target_link_libraries(demo ${OpenCV_LIBS} easypr ${OpenCV_LIBS})
-#set_target_properties(demo PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../)
+set_target_properties(demo PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../)
 
 #target_link_libraries(main ${OpenCV_LIBS} )
 #target_link_libraries(main /home/xujingping/EasyPR-1.4/lib/libmxnet.so)

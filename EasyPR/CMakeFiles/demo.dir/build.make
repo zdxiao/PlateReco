@@ -57,73 +57,73 @@ include CMakeFiles/demo.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/demo.dir/flags.make
 
-CMakeFiles/demo.dir/test/demo.cpp.o: CMakeFiles/demo.dir/flags.make
-CMakeFiles/demo.dir/test/demo.cpp.o: test/demo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiao/Project/PlateReco/EasyPR/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/demo.dir/test/demo.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/demo.dir/test/demo.cpp.o -c /home/xiao/Project/PlateReco/EasyPR/test/demo.cpp
+CMakeFiles/demo.dir/test/main.cpp.o: CMakeFiles/demo.dir/flags.make
+CMakeFiles/demo.dir/test/main.cpp.o: test/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiao/Project/PlateReco/EasyPR/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/demo.dir/test/main.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/demo.dir/test/main.cpp.o -c /home/xiao/Project/PlateReco/EasyPR/test/main.cpp
 
-CMakeFiles/demo.dir/test/demo.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/demo.dir/test/demo.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiao/Project/PlateReco/EasyPR/test/demo.cpp > CMakeFiles/demo.dir/test/demo.cpp.i
+CMakeFiles/demo.dir/test/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/demo.dir/test/main.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiao/Project/PlateReco/EasyPR/test/main.cpp > CMakeFiles/demo.dir/test/main.cpp.i
 
-CMakeFiles/demo.dir/test/demo.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/demo.dir/test/demo.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiao/Project/PlateReco/EasyPR/test/demo.cpp -o CMakeFiles/demo.dir/test/demo.cpp.s
+CMakeFiles/demo.dir/test/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/demo.dir/test/main.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiao/Project/PlateReco/EasyPR/test/main.cpp -o CMakeFiles/demo.dir/test/main.cpp.s
 
-CMakeFiles/demo.dir/test/demo.cpp.o.requires:
+CMakeFiles/demo.dir/test/main.cpp.o.requires:
 
-.PHONY : CMakeFiles/demo.dir/test/demo.cpp.o.requires
+.PHONY : CMakeFiles/demo.dir/test/main.cpp.o.requires
 
-CMakeFiles/demo.dir/test/demo.cpp.o.provides: CMakeFiles/demo.dir/test/demo.cpp.o.requires
-	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/demo.cpp.o.provides.build
-.PHONY : CMakeFiles/demo.dir/test/demo.cpp.o.provides
+CMakeFiles/demo.dir/test/main.cpp.o.provides: CMakeFiles/demo.dir/test/main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/main.cpp.o.provides.build
+.PHONY : CMakeFiles/demo.dir/test/main.cpp.o.provides
 
-CMakeFiles/demo.dir/test/demo.cpp.o.provides.build: CMakeFiles/demo.dir/test/demo.cpp.o
+CMakeFiles/demo.dir/test/main.cpp.o.provides.build: CMakeFiles/demo.dir/test/main.cpp.o
 
 
 # Object files for target demo
 demo_OBJECTS = \
-"CMakeFiles/demo.dir/test/demo.cpp.o"
+"CMakeFiles/demo.dir/test/main.cpp.o"
 
 # External object files for target demo
 demo_EXTERNAL_OBJECTS =
 
-demo: CMakeFiles/demo.dir/test/demo.cpp.o
-demo: CMakeFiles/demo.dir/build.make
-demo: /usr/local/lib/libopencv_hal.a
-demo: lib/libmxnet.so
-demo: /usr/local/lib/libopencv_hal.a
-demo: libeasypr.a
-demo: /usr/local/lib/libopencv_videostab.so.3.0.0
-demo: /usr/local/lib/libopencv_superres.so.3.0.0
-demo: /usr/local/lib/libopencv_stitching.so.3.0.0
-demo: /usr/local/lib/libopencv_shape.so.3.0.0
-demo: /usr/local/lib/libopencv_photo.so.3.0.0
-demo: /usr/local/lib/libopencv_objdetect.so.3.0.0
-demo: /usr/local/lib/libopencv_hal.a
-demo: /usr/local/lib/libopencv_calib3d.so.3.0.0
-demo: /usr/local/lib/libopencv_features2d.so.3.0.0
-demo: /usr/local/lib/libopencv_ml.so.3.0.0
-demo: /usr/local/lib/libopencv_highgui.so.3.0.0
-demo: /usr/local/lib/libopencv_videoio.so.3.0.0
-demo: /usr/local/lib/libopencv_imgcodecs.so.3.0.0
-demo: /usr/local/lib/libopencv_flann.so.3.0.0
-demo: /usr/local/lib/libopencv_video.so.3.0.0
-demo: /usr/local/lib/libopencv_imgproc.so.3.0.0
-demo: /usr/local/lib/libopencv_core.so.3.0.0
-demo: /usr/local/lib/libopencv_hal.a
-demo: /usr/local/share/OpenCV/3rdparty/lib/libippicv.a
-demo: lib/libmxnet.so
-demo: CMakeFiles/demo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiao/Project/PlateReco/EasyPR/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable demo"
+/home/xiao/Project/PlateReco/demo: CMakeFiles/demo.dir/test/main.cpp.o
+/home/xiao/Project/PlateReco/demo: CMakeFiles/demo.dir/build.make
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_hal.a
+/home/xiao/Project/PlateReco/demo: lib/libmxnet.so
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_hal.a
+/home/xiao/Project/PlateReco/demo: libeasypr.a
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_videostab.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_superres.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_stitching.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_shape.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_photo.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_objdetect.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_hal.a
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_calib3d.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_features2d.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_ml.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_highgui.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_videoio.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_imgcodecs.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_flann.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_video.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_imgproc.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_core.so.3.0.0
+/home/xiao/Project/PlateReco/demo: /usr/local/lib/libopencv_hal.a
+/home/xiao/Project/PlateReco/demo: /usr/local/share/OpenCV/3rdparty/lib/libippicv.a
+/home/xiao/Project/PlateReco/demo: lib/libmxnet.so
+/home/xiao/Project/PlateReco/demo: CMakeFiles/demo.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiao/Project/PlateReco/EasyPR/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/xiao/Project/PlateReco/demo"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/demo.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/demo.dir/build: demo
+CMakeFiles/demo.dir/build: /home/xiao/Project/PlateReco/demo
 
 .PHONY : CMakeFiles/demo.dir/build
 
-CMakeFiles/demo.dir/requires: CMakeFiles/demo.dir/test/demo.cpp.o.requires
+CMakeFiles/demo.dir/requires: CMakeFiles/demo.dir/test/main.cpp.o.requires
 
 .PHONY : CMakeFiles/demo.dir/requires
 

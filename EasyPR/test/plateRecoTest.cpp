@@ -16,7 +16,7 @@ int main(int argc, char**argv)
 	while(getline(listFile, line))
 	{
 		cout << line << endl;
-		line = "../2015_12_09/" + line;
+		//line = "../2015_12_09/" + line;
 		//line = "./resources/image/general_test/" + line;
 		Mat img = imread(line);
 		namedWindow("test", 0);

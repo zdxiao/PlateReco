@@ -25,7 +25,7 @@ int accuracyTest(const char* test_path) {
 
   pr.setDebug(false);
 
-  pr.setLifemode(true);
+  pr.setLifemode(false);
 
   // 设置要处理的一张图片中最多有多少车牌
 

@@ -1,11 +1,18 @@
 # depslib dependency file v1.0
-1454058030 source:/home/xiao/Project/PlateReco/EasyPR/src/core/chars_identify.cpp
+1456155481 source:/home/xiao/Project/PlateReco/EasyPR/src/core/chars_identify.cpp
+	<stdio.h>
+	"mxnet/c_predict_api.h"
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
 	"easypr/core/chars_identify.h"
 	"easypr/config.h"
 	"easypr/core/core_func.h"
 
-1454058030 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_identify.h
+1456155481 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_identify.h
 	"easypr/util/kv.h"
+	"mxnet/c_predict_api.h"
 	<memory>
 	<opencv2/opencv.hpp>
 
@@ -13,12 +20,12 @@
 	<map>
 	<string>
 
-1455503460 /home/xiao/Project/PlateReco/EasyPR/include/easypr/config.h
+1456155481 /home/xiao/Project/PlateReco/EasyPR/include/easypr/config.h
 
-1455798968 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/core_func.h
+1456199439 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/core_func.h
 	<opencv2/opencv.hpp>
 
-1454058030 source:/home/xiao/Project/PlateReco/EasyPR/src/core/chars_recognise.cpp
+1456155481 source:/home/xiao/Project/PlateReco/EasyPR/src/core/chars_recognise.cpp
 	"easypr/core/chars_recognise.h"
 	"easypr/util/util.h"
 
@@ -27,7 +34,7 @@
 	"easypr/core/chars_identify.h"
 	"easypr/util/util.h"
 
-1454058030 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_segment.h
+1456199439 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_segment.h
 	"easypr/core/core_func.h"
 
 1454058030 /home/xiao/Project/PlateReco/EasyPR/include/easypr/util/util.h
@@ -78,7 +85,7 @@
 	"easypr/core/plate_judge.h"
 	"easypr/config.h"
 
-1456149124 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_locate.cpp
+1456154144 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_locate.cpp
 	"easypr/core/plate_locate.h"
 	"easypr/util/util.h"
 
@@ -241,4 +248,6 @@
 1455963934 source:/home/xiao/Project/PlateReco/EasyPR/test/svmTrainTest.cpp
 	"easypr/train/svm_train.h"
 	<iostream>
+
+1456155481 /home/xiao/Project/PlateReco/EasyPR/include/mxnet/c_predict_api.h
 

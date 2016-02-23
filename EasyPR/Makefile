@@ -676,32 +676,32 @@ src/util/util.cpp.s:
 	$(MAKE) -f CMakeFiles/easypr.dir/build.make CMakeFiles/easypr.dir/src/util/util.cpp.s
 .PHONY : src/util/util.cpp.s
 
-test/demo.o: test/demo.cpp.o
+test/main.o: test/main.cpp.o
 
-.PHONY : test/demo.o
+.PHONY : test/main.o
 
 # target to build an object file
-test/demo.cpp.o:
-	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/demo.cpp.o
-.PHONY : test/demo.cpp.o
+test/main.cpp.o:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/main.cpp.o
+.PHONY : test/main.cpp.o
 
-test/demo.i: test/demo.cpp.i
+test/main.i: test/main.cpp.i
 
-.PHONY : test/demo.i
+.PHONY : test/main.i
 
 # target to preprocess a source file
-test/demo.cpp.i:
-	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/demo.cpp.i
-.PHONY : test/demo.cpp.i
+test/main.cpp.i:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/main.cpp.i
+.PHONY : test/main.cpp.i
 
-test/demo.s: test/demo.cpp.s
+test/main.s: test/main.cpp.s
 
-.PHONY : test/demo.s
+.PHONY : test/main.s
 
 # target to generate assembly for a file
-test/demo.cpp.s:
-	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/demo.cpp.s
-.PHONY : test/demo.cpp.s
+test/main.cpp.s:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/test/main.cpp.s
+.PHONY : test/main.cpp.s
 
 # Help Target
 help:
@@ -773,9 +773,9 @@ help:
 	@echo "... src/util/util.o"
 	@echo "... src/util/util.i"
 	@echo "... src/util/util.s"
-	@echo "... test/demo.o"
-	@echo "... test/demo.i"
-	@echo "... test/demo.s"
+	@echo "... test/main.o"
+	@echo "... test/main.i"
+	@echo "... test/main.s"
 .PHONY : help
 
 
