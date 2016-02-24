@@ -180,7 +180,7 @@ bool bFindLeftRightBound1(Mat &bound_threshold, int &posLeft, int &posRight) {
         }
       }
     }
-    if (whiteCount * 1.0 / (span * bound_threshold.rows) > 0.15) {
+    if (whiteCount * 1.0 / (span * bound_threshold.rows) > 0.06) {
       posLeft = i;
       break;
     }
@@ -411,7 +411,7 @@ bool clearLiuDing(Mat &img) {
 
     for (int j = 2; j < img.cols - 3; j++) {
 		// gq:加入窗口判别机制，让跳变更具特异性
-	  //if (img.at<char>(i, j - 2) == img.at<char>(i, j-1)  && 
+	  //if (img.at<char>(i, j - 2) == img.at<char>(i, j-1)  &&
 		 // img.at<char>(i, j - 1) == img.at<char>(i, j)    &&
 		 // img.at<char>(i, j)     != img.at<char>(i, j + 1)&&
 		 // img.at<char>(i, j + 1) == img.at<char>(i, j + 2)&&

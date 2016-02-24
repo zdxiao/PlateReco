@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="../../src/core/xzdImageProcess.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../src/core/chars_identify.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1049" topLine="0" />
+			<Cursor1 position="984" topLine="41" />
 		</Cursor>
 	</File>
 	<File name="../../src/train/train.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -11,14 +11,44 @@
 			<Cursor1 position="26" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../../test/plateJudgeTest.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../src/preprocess/mc_data.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="702" topLine="11" />
+			<Cursor1 position="3002" topLine="101" />
+		</Cursor>
+	</File>
+	<File name="../../src/core/chars_segment.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6557" topLine="208" />
+		</Cursor>
+	</File>
+	<File name="../../test/accuracy.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1909" topLine="78" />
+		</Cursor>
+	</File>
+	<File name="../../src/core/chars_recognise.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1282" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="../../src/util/util.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1544" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="../../src/core/core_func.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4923" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="../../test/plateRecoTest.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="528" topLine="3" />
+			<Cursor1 position="693" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="../../src/core/plate_detect.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="159" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="../../src/core/plate_judge.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -26,39 +56,19 @@
 			<Cursor1 position="522" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../../src/preprocess/mc_data.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../test/plateJudgeTest.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3002" topLine="101" />
-		</Cursor>
-	</File>
-	<File name="../../src/core/plate.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="26" topLine="0" />
+			<Cursor1 position="702" topLine="3" />
 		</Cursor>
 	</File>
 	<File name="../../src/core/plate_locate.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6988" topLine="231" />
+			<Cursor1 position="149" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../../src/train/svm_train.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../src/core/xzdImageProcess.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1329" topLine="34" />
-		</Cursor>
-	</File>
-	<File name="../../src/core/chars_recognise.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="943" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../../src/util/util.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1285" topLine="51" />
-		</Cursor>
-	</File>
-	<File name="../../src/core/plate_detect.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1994" topLine="54" />
+			<Cursor1 position="1049" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="../../src/preprocess/deface.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -66,34 +76,14 @@
 			<Cursor1 position="374" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../../src/core/chars_segment.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3267" topLine="107" />
-		</Cursor>
-	</File>
-	<File name="../../src/core/core_func.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2768" topLine="108" />
-		</Cursor>
-	</File>
-	<File name="../../test/svmTrainTest.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="269" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../../src/core/chars_identify.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="333" topLine="10" />
-		</Cursor>
-	</File>
 	<File name="../../test/plate.hpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="36" />
 		</Cursor>
 	</File>
-	<File name="../../test/accuracy.hpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../src/core/plate.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1718" topLine="24" />
+			<Cursor1 position="26" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="../../src/core/feature.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -101,14 +91,24 @@
 			<Cursor1 position="1170" topLine="38" />
 		</Cursor>
 	</File>
-	<File name="../../src/core/plate_recognize.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../test/svmTrainTest.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="96" topLine="76" />
+			<Cursor1 position="269" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../../src/train/svm_train.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1329" topLine="34" />
 		</Cursor>
 	</File>
 	<File name="../../src/util/program_options.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5599" topLine="472" />
+		</Cursor>
+	</File>
+	<File name="../../src/core/plate_recognize.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="888" topLine="21" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

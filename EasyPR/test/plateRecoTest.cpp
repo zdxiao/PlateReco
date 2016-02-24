@@ -19,12 +19,13 @@ int main(int argc, char**argv)
 		//line = "../2015_12_09/" + line;
 		//line = "./resources/image/general_test/" + line;
 		Mat img = imread(line);
-		//namedWindow("test", 0);
-		//imshow("test", img);
+		namedWindow("test", 0);
+		imshow("test", img);
 //		CPlateDetect cpd;
         CPlateRecognize cpr;
 //		cpd.setPDDebug(true);
-        cpr.setDebug(false);
+        cpr.setLifemode(false);
+        cpr.setDebug(true);
 		vector<CPlate> resultVec;
 		vector<string> licenseVec;
 //		cpd.plateDetect(img, resultVec);

@@ -44,7 +44,7 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
     waitKey();
     #else
     char buffer[50];
-    sprintf(buffer, "resources/image/locatePlates0222/%04d.jpg", locatedPlatesCounter);
+    sprintf(buffer, "resources/image/locatePlates0224/%04d.jpg", locatedPlatesCounter);
     utils::imwrite(buffer, (*iter).getPlateMat());
     locatedPlatesCounter++;
     #endif
@@ -80,7 +80,7 @@ int CPlateDetect::plateDetect(Mat src, std::vector<CPlate> &resultVec,
     waitKey();
     #else
     char buffer[50];
-    sprintf(buffer, "resources/image/locatePlates0222/%04d.jpg", locatedPlatesCounter);
+    sprintf(buffer, "resources/image/locatePlates0224/%04d.jpg", locatedPlatesCounter);
     utils::imwrite(buffer, (*iter).getPlateMat());
     locatedPlatesCounter++;
     #endif

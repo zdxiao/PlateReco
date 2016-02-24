@@ -157,7 +157,7 @@ int CPlateLocate::colorSearch(const Mat &src, const Color r, Mat &out,
 #ifdef DEBUG_COLORSEGMENT
 	  	if(m_debug)
 		{
-		    Mat drawSrc = src;
+		    Mat drawSrc = src.clone();
             Point2f vertices[4];
             mr.points(vertices);
             for(int i = 0; i < 4; ++i)
@@ -223,7 +223,7 @@ int CPlateLocate::sobelFrtSearch(const Mat &src,
   #ifdef DEBUG_SOBELSEGMENT
 	  	if(m_debug)
 		{
-		    Mat drawSrc = src;
+		    Mat drawSrc = src.clone();
             Point2f vertices[4];
             mr.points(vertices);
             for(int i = 0; i < 4; ++i)

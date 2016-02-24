@@ -41,25 +41,21 @@ int CPlateRecognize::plateRecognize(Mat src,
 
       std::string plateIdentify = "";
       double tmp=0.0;
+
+    #ifndef DEBUG_SAVE_PLATES
+      if(getPDDebug())
+      {
+        imshow("plate", plate);
+        std::cout << license << std::endl;
+        waitKey();
+      }
+    #endif
+
       int resultCR = charsRecognise(plate, plateIdentify,tmp);
       if (resultCR == 0) {
 
         std::string licensetmp = plateType + ":" + plateIdentify;
         if(tmp>prob) {prob=tmp;license=licensetmp;}
-
-        #ifndef DEBUG_SAVE_PLATES
-		  if(getPDDebug())
-		  {
-			imshow("plate", plate);
-			std::cout << license << std::endl;
-			waitKey();
-          }
-        #else
-            char buffer[50];
-            sprintf(buffer, "resources/image/realPlates0218/%04d.jpg", realPlateCounter);
-            ++realPlateCounter;
-            utils::imwrite(buffer, plate);
-        #endif
       }
     }
    if(prob>0.01) licenseVec.push_back(license);
