@@ -142,7 +142,7 @@ int CPlateRecognize::plateRecognize(Mat src,
       int resultCR = charsRecognise(plate, plateIdentify,tmp);
       if (resultCR == 0) {
         std::string licensetmp = plateType + ":" + plateIdentify;
-        if(tmp>prob) {prob=tmp;license=licensetmp;plateout=item;}
+        if(tmp>prob&&plateIdentify.size()==9) {prob=tmp;license=licensetmp;plateout=item;}
       }
     }
    if(prob>0.01) licenseVec.push_back(license);

@@ -68,7 +68,7 @@
 	"easypr/core/plate_detect.h"
 	"easypr/util/util.h"
 
-1456229843 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_detect.h
+1456320611 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_detect.h
 	"easypr/core/plate_locate.h"
 	"easypr/core/plate_judge.h"
 

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/demo.dir/test/plateRecoTest.cpp.o"
+  "CMakeFiles/demo.dir/test/main.cpp.o"
   "/home/xiao/Project/PlateReco/demo.pdb"
   "/home/xiao/Project/PlateReco/demo"
 )
