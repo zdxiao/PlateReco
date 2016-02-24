@@ -64,7 +64,7 @@
 1454149450 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate.h
 	"core_func.h"
 
-1456308736 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_detect.cpp
+1456314794 source:/home/xiao/Project/PlateReco/EasyPR/src/core/plate_detect.cpp
 	"easypr/core/plate_detect.h"
 	"easypr/util/util.h"
 
