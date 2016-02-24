@@ -100,7 +100,8 @@ int accuracyTest(const char* test_path) {
     int result = pr.plateRecognize(src, plateVec);
 */
     CPlate plateout;
-    int result = pr.plateRecognize(src, plateVec, plateout);
+    std::vector<Mat> matChar;
+    int result = pr.plateRecognize(src, plateVec, plateout, matChar);
 
   //  int result = pr.plateRecognize(src, plateVec);
 
@@ -158,6 +159,33 @@ int accuracyTest(const char* test_path) {
           // 计算"蓝牌:苏E7KU22"中冒号后面的车牌大小"
 
           vector<string> spilt_plate = Utils::splitString(colorplate, ':');
+
+/////////////////////maogeng////////////////////////////////////////////////////
+          char buffer[50];
+          sprintf(buffer, "resources/image/results/%s.jpg", colorplate.c_str());
+
+          Mat src_clone = src.clone();
+          Mat plate_resize = plateout.getPlateMat();
+          resize(plate_resize, plate_resize, Size(), 2, 2, CV_INTER_AREA);
+          src_clone(Rect(src.cols-400,10, 300,120)) = Scalar(255,255,255);
+          Mat imageOut = src_clone(Rect(src.cols-400+10,10+2,plate_resize.cols,plate_resize.rows));
+          addWeighted(imageOut, 0, plate_resize, 1, 0, imageOut);
+          src_clone(Rect(src.cols-400,60+plate_resize.rows, 300,70)) = Scalar(255,0,0);
+
+          for(size_t char_i = 0;char_i<matChar.size();char_i++){
+            resize(matChar[char_i], matChar[char_i], Size(), 2, 2, CV_INTER_AREA);
+            Mat imageChar = src_clone(Rect(src.cols-400+(matChar[char_i].cols+2)*char_i,90,matChar[char_i].cols,matChar[char_i].rows));
+            cvtColor(matChar[char_i],matChar[char_i],CV_GRAY2BGR);
+            matChar[char_i].copyTo(imageChar);
+            // imshow("matChar",src_clone);
+            // waitKey();
+          }
+          // cout<<matChar[0].rows<<" "<<matChar[0].cols<<endl;
+          putText( src_clone, "["+spilt_plate[1].substr(3,spilt_plate[1].size()-3)+"]", Point( src.cols-400,40+plate_resize.rows*2),CV_FONT_HERSHEY_COMPLEX, 2, Scalar(255, 255, 255), 4 );
+          // imshow("test",src_clone);
+          // waitKey();
+          utils::imwrite(buffer, src_clone);
+/////////////////////maogeng////////////////////////////////////////////////////
 
           int size = spilt_plate.size();
           if (size == 2 && spilt_plate[1] != "") {

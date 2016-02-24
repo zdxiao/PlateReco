@@ -26,6 +26,7 @@ class CCharsRecognise {
 
   int charsRecognise(cv::Mat plate, std::string& plateLicense);
   int charsRecognise(cv::Mat plate, std::string& plateLicense, double& prob);
+  int charsRecognise(Mat plate, std::string& plateLicense,double& prob, std::vector<Mat> &matChars);
 
   //! 获得车牌颜色
 

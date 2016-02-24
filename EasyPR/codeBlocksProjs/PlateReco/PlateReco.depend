@@ -29,12 +29,12 @@
 	"easypr/core/chars_recognise.h"
 	"easypr/util/util.h"
 
-1456233964 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_recognise.h
+1456326192 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_recognise.h
 	"easypr/core/chars_segment.h"
 	"easypr/core/chars_identify.h"
 	"easypr/util/util.h"
 
-1456300129 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_segment.h
+1456322362 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/chars_segment.h
 	"easypr/core/core_func.h"
 
 1456241540 /home/xiao/Project/PlateReco/EasyPR/include/easypr/util/util.h
@@ -44,10 +44,10 @@
 	<vector>
 	<opencv2/core/core.hpp>
 
-1456300144 source:/home/xiao/Project/PlateReco/EasyPR/src/core/chars_segment.cpp
+1456322362 source:/home/xiao/Project/PlateReco/EasyPR/src/core/chars_segment.cpp
 	"easypr/core/chars_segment.h"
 
-1456308428 source:/home/xiao/Project/PlateReco/EasyPR/src/core/core_func.cpp
+1456322362 source:/home/xiao/Project/PlateReco/EasyPR/src/core/core_func.cpp
 	"easypr/core/core_func.h"
 	"easypr/core/xzdImageProcess.h"
 
@@ -68,7 +68,7 @@
 	"easypr/core/plate_detect.h"
 	"easypr/util/util.h"
 
-1456320611 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_detect.h
+1456324750 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_detect.h
 	"easypr/core/plate_locate.h"
 	"easypr/core/plate_judge.h"
 
@@ -93,7 +93,7 @@
 	"easypr/core/plate_recognize.h"
 	"easypr/config.h"
 
-1456241540 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_recognize.h
+1456326192 /home/xiao/Project/PlateReco/EasyPR/include/easypr/core/plate_recognize.h
 	"easypr/core/plate_detect.h"
 	"easypr/core/chars_recognise.h"
 

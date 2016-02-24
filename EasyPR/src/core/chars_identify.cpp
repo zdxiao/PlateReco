@@ -233,11 +233,11 @@ namespace easypr {
 			input_shape_indptr,
 			input_shape_data,
 			&out2);
-		
+
 		//ann_ = ml::ANN_MLP::load<ml::ANN_MLP>(kDefaultAnnPath);
 		kv_ = std::shared_ptr<Kv>(new Kv);
 		kv_->load("etc/province_mapping");
-		
+
 	}
 
 	CharsIdentify::~CharsIdentify() {
@@ -331,7 +331,7 @@ std::pair<std::string, std::string> CharsIdentify::identify(cv::Mat input, doubl
 			   best_idx = i;
 		   }
 	   }
-           
+
            prob=best_accuracy;
            auto index=static_cast<int>(best_idx);
            return std::make_pair(kChars[index], kChars[index]);
@@ -377,7 +377,7 @@ std::pair<std::string, std::string> CharsIdentify::identify(cv::Mat input, doubl
 				best_idx = i;
 			}
 		}
-			       // std::cout<<synset[best_idx].c_str(); 
+			       // std::cout<<synset[best_idx].c_str();
                    // best_idx=data.size();
                     best_idx=best_idx>31?31:best_idx;
                //     int index=static_cast<int>(27+34);//best_idx+34;
@@ -430,7 +430,7 @@ std::pair<std::string, std::string> CharsIdentify::identify2(cv::Mat input,doubl
 			}
 		}
                     prob=best_accuracy;
-			       // std::cout<<synset[best_idx].c_str(); 
+			       // std::cout<<synset[best_idx].c_str();
                    // best_idx=data.size();
                     best_idx=best_idx>31?31:best_idx;
                //     int index=static_cast<int>(27+34);//best_idx+34;
@@ -482,7 +482,7 @@ std::pair<std::string, std::string> CharsIdentify::identify2(cv::Mat input,doubl
 			   best_idx = i;
 		   }
                 }
-	   }          
+	   }
            auto index=static_cast<int>(best_idx);
            index=index==0?65:index;
            return std::make_pair(kChars[index], kChars[index]);
@@ -529,7 +529,7 @@ std::pair<std::string, std::string> CharsIdentify::identify2(cv::Mat input,doubl
                 }
 	   }
          prob=best_accuracy;
-          
+
            auto index=static_cast<int>(best_idx);
            index=index==0?65:index;
            return std::make_pair(kChars[index], kChars[index]);
