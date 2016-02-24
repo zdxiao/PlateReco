@@ -241,7 +241,7 @@ namespace easypr {
 			Rect mr = boundingRect(Mat(*itc));
 			Mat auxRoi(img_threshold, mr);
 
-			int rSize;
+			int rSize = 0;
 			if (verifyCharSizes(auxRoi, rSize))
 			{
 				if (rSize >= 1){
@@ -384,7 +384,7 @@ namespace easypr {
 					findContours(img_rect_x,
 						ctr_x,               // a vector of contours
 						CV_RETR_EXTERNAL,       // retrieve the external contours
-						CV_CHAIN_APPROX_NONE);  // all pixels of each contours			  
+						CV_CHAIN_APPROX_NONE);  // all pixels of each contours
 					findContours(img_rect_y,
 						ctr_y,               // a vector of contours
 						CV_RETR_EXTERNAL,       // retrieve the external contours
