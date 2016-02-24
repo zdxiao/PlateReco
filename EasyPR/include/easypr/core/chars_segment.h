@@ -42,6 +42,7 @@ class CCharsSegment {
 
   // 拉长最后一个字符框高度
   void stretchingLastChar(std::vector<Rect>& vecSortedRect);
+  void stretchingLastSeven(Mat img_threshold, std::vector<Rect>& vecSortedRect);
 
   //! 设置变量
 

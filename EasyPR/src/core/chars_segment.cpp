@@ -215,7 +215,7 @@ namespace easypr {
 		element = getStructuringElement(MORPH_ELLIPSE,
 			Size(2, 2),
 			Point(1, 1));
-		Rect middleZone(0, m_theMatHeight / 3, m_theMatWidth, m_theMatHeight - m_theMatHeight / 3);
+		Rect middleZone(0, m_theMatHeight / 4, m_theMatWidth, m_theMatHeight - m_theMatHeight / 4);
 		dilate(img_threshold(middleZone), img_threshold(middleZone), element);
 		//element = getStructuringElement(MORPH_RECT,
 		//	Size(2, 2),
@@ -475,6 +475,7 @@ namespace easypr {
 
 		if (newSortedRect.size() == 7){
 			stretchingLastChar(newSortedRect);
+			stretchingLastSeven(img_threshold, newSortedRect);
 		}
 		// 开始截取每个字符
 
@@ -511,6 +512,13 @@ namespace easypr {
 			// 归一化大小
 
 			newRoi = preprocessChar(newRoi);
+
+			//腐蚀膨胀一次
+			element = getStructuringElement(MORPH_RECT,
+				Size(2, 2),
+				Point(1, 1));
+			erode(newRoi, newRoi, element);
+			dilate(newRoi, newRoi, element);
 
 			// 每个字符图块输入到下面的步骤进行处理
 
@@ -644,6 +652,19 @@ namespace easypr {
 			if (vecSortedRect.back().y < 0){ vecSortedRect.back().y = 0; }
 		}
 	}
+
+	void CCharsSegment::stretchingLastSeven(Mat img_threshold, vector<Rect>& vecSortedRect){
+		int areanonezero = cv::countNonZero(img_threshold(vecSortedRect.back()));
+		//int allarea = (vecSortedRect.back().height*vecSortedRect.back().width);
+		//cout << "allarea" << allarea << "nonezero" << areanonezero << endl;
+		if (areanonezero < 200){
+			cout << "stretch last character" << endl;
+			vecSortedRect.back().height += vecSortedRect.back().y;
+			vecSortedRect.back().y = 0;
+
+		}
+	}
+
 
 }
 
