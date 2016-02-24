@@ -10,6 +10,7 @@ namespace easypr {
 	CCharsSegment::CCharsSegment() {
 		m_LiuDingSize = DEFAULT_LIUDING_SIZE;
 		m_theMatWidth = DEFAULT_MAT_WIDTH;
+		m_theMatHeight = DEFAULT_MAT_HEIGHT;
 
 		//！车牌颜色判断参数
 
@@ -84,6 +85,17 @@ namespace easypr {
 	}
 
 	//! 字符分割与排序
+
+	int getParts(int big_num, int size_of_partion){
+		if (big_num <= 0 || size_of_partion <= 0)
+			return 1;
+		double result = big_num / size_of_partion*1.0;
+
+		if (result < 1) return 1;
+		if (result < 2.5) return 2;
+		if (result < 4.2) return 3;
+		if (result < 6) return 4;
+	}
 
 	int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
 		if (!input.data) return 0x01;
@@ -203,7 +215,8 @@ namespace easypr {
 		element = getStructuringElement(MORPH_ELLIPSE,
 			Size(2, 2),
 			Point(1, 1));
-		//dilate(img_threshold, img_threshold, element);
+		Rect middleZone(0, m_theMatHeight / 3, m_theMatWidth, m_theMatHeight - m_theMatHeight / 3);
+		dilate(img_threshold(middleZone), img_threshold(middleZone), element);
 		//element = getStructuringElement(MORPH_RECT,
 		//	Size(2, 2),
 		//	Point(1, 1));
@@ -241,7 +254,7 @@ namespace easypr {
 			Rect mr = boundingRect(Mat(*itc));
 			Mat auxRoi(img_threshold, mr);
 
-			int rSize;
+			int rSize = 0;
 			if (verifyCharSizes(auxRoi, rSize))
 			{
 				if (rSize >= 1){
@@ -278,8 +291,7 @@ namespace easypr {
 				int thisRectEnd = thisRect.x + thisRect.width;
 				int thisStartX = thisRect.x;
 
-				int parts = thisRect.width / meanWidth *1.0 > 3.5 ?
-					3 : 2;
+				int parts = getParts(thisRect.width, meanWidth);
 
 				int partionWidth = thisRect.width / parts;
 
@@ -306,7 +318,9 @@ namespace easypr {
 
 					}
 					if (saveFlag == 1)
+					{ 
 						vecRect.push_back(smallerRect);
+					}
 					thisStartX += partionWidth;
 					if (m_debug && saveFlag == 1)
 					{
@@ -535,12 +549,16 @@ namespace easypr {
 
 	int CCharsSegment::GetSpecificRect(const vector<Rect>& vecRect) {
 		vector<int> xpositions;
+		vector<int> indexGate;
+		vector<int> indexValue;
 		int maxHeight = 0;
 		int maxWidth = 0;
 		double maxRatio = 0.0;
 
 		for (size_t i = 0; i < vecRect.size(); i++) {
 			xpositions.push_back(vecRect[i].x);
+			indexValue.push_back(0);
+			indexGate.push_back(-1);
 
 			if (vecRect[i].height > maxHeight) {
 				maxHeight = vecRect[i].height;
@@ -555,6 +573,7 @@ namespace easypr {
 		}
 
 		int specIndex = 0;
+
 		for (size_t i = 0; i < vecRect.size(); i++) {
 			Rect mr = vecRect[i];
 			int midx = mr.x + mr.width / 2;
@@ -564,11 +583,26 @@ namespace easypr {
 
 			if ((mr.width > maxWidth * 0.8 || mr.height > maxHeight * 0.8) &&
 				((1.0*mr.width / mr.height) > 0.25) &&
+				(vecRect.size() - i >= 6) &&
 				(midx < int(m_theMatWidth / 7) * 2 &&
 				midx > int(m_theMatWidth / 7) * 1)) {
 				if (m_debug){
 					cout << "spec ratio" << 1.0*mr.width / mr.height << endl;
 				}
+				//满足以上条件，该字符可能为特殊字符，做以下操作
+				// 1，Gate打开
+				// 2，计算当前index的分数
+
+				indexGate[i] = 1;	// gate打开
+				//index分数——当前Rect中心和特殊字符指定位置的距离
+				indexValue[i] += int(fabs(midx - (m_theMatWidth / 14.0 * 3))); 
+				indexValue[i] += 2 * (vecRect.size() - i - 6);
+			}
+		}
+		int maxValue = 0;
+		for (size_t i = 0; i < vecRect.size(); i++){
+			if (indexGate[i] > 0 && indexValue[i] >= maxValue){
+				maxValue = indexValue[i];
 				specIndex = i;
 			}
 		}
@@ -612,3 +646,4 @@ namespace easypr {
 	}
 
 }
+

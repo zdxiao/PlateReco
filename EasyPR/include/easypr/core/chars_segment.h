@@ -67,6 +67,7 @@ class CCharsSegment {
 
   static const int DEFAULT_LIUDING_SIZE = 7;
   static const int DEFAULT_MAT_WIDTH = 136;
+  static const int DEFAULT_MAT_HEIGHT = 36;
   static const int DEFAULT_COLORTHRESHOLD = 150;
 
   //! 是否开启调试模式
@@ -86,6 +87,7 @@ class CCharsSegment {
   //！车牌大小参数
 
   int m_theMatWidth;
+  int m_theMatHeight;
 
   //！车牌颜色判断参数
 

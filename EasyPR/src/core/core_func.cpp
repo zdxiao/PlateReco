@@ -452,7 +452,7 @@ bool clearLiuDing(Mat &img) {
   if (whiteCount * 1.0 / (img.rows * img.cols) < 0.1 ||
       whiteCount * 1.0 / (img.rows * img.cols) > 0.5) {
 	  //db
-	  std::cout << "white too much or too less" << std::endl;
+	  //std::cout << "white too much or too less" << std::endl;
     return false;
   }
 
@@ -470,9 +470,9 @@ bool clearLiuDing(Mat &img) {
 			  }
 		  }
 		  //邻域小于5个白像素，清除当前像素
-		  if (jump.at<float>(i) < 3 && env_state <= 9)
+		  if (jump.at<float>(i) < 5 && env_state <= 9)
 			img.at<char>(i, j) = 0;
-		  else if (jump.at<float>(i) < 5 && env_state <= 5)
+		  else if (jump.at<float>(i) < 6 && env_state <= 5)
 			  img.at<char>(i, j) = 0;
 		  else if (jump.at<float>(i) < 7 && env_state <= 4)
 			  img.at<char>(i, j) = 0;
