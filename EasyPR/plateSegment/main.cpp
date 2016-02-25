@@ -18,6 +18,8 @@ using namespace easypr;
 
 int dbg = 1; // 1-¿ªÆôdebug 0-¹Ø±Õdebug
 
+string testPath("A:\\WorkPlace\\CPLUS\\TN_ALPR\\test0224");
+
 void combineImg(Mat plate, vector<Mat> blocks, Mat& result)
 {
 	Mat plate_grey;
@@ -65,14 +67,14 @@ bool judgeSegment(Mat img, int debug_mode, string filename)
 		}
 
 	}
-	filename = "A:\\WorkPlace\\CPLUS\\TN_ALPR\\plateData0220\\has\\result" + filename;
+	filename = testPath + "\\result\\" + filename;
 	imwrite(filename, res);
 	return false;
 }
 
 void testSeg(int debug_mode)
 {
-	string rootDir("A:\\WorkPlace\\CPLUS\\TN_ALPR\\plateData0220\\has");
+	string rootDir(testPath);
 	Mat img, imgH;
 	ifstream infile(rootDir + "\\list.txt");
 	string filename;
@@ -88,7 +90,7 @@ void testSeg(int debug_mode)
 	}
 
 	int TotalCnt = 0, FailCnt = 0;
-	while (getline(infile, filename)&&TotalCnt<100)
+	while (getline(infile, filename)&&TotalCnt<2000)
 	{
 		string imgName = rootDir + "\\" + filename;
 		img = imread(imgName.c_str());
