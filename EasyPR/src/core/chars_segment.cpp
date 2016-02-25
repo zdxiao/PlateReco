@@ -10,7 +10,6 @@ namespace easypr {
 	CCharsSegment::CCharsSegment() {
 		m_LiuDingSize = DEFAULT_LIUDING_SIZE;
 		m_theMatWidth = DEFAULT_MAT_WIDTH;
-		m_theMatHeight = DEFAULT_MAT_HEIGHT;
 
 		//！车牌颜色判断参数
 
@@ -85,17 +84,6 @@ namespace easypr {
 	}
 
 	//! 字符分割与排序
-
-	int getParts(int big_num, int size_of_partion){
-		if (big_num <= 0 || size_of_partion <= 0)
-			return 1;
-		double result = big_num / size_of_partion*1.0;
-
-		if (result < 1) return 1;
-		if (result < 2.5) return 2;
-		if (result < 4.2) return 3;
-		if (result < 6) return 4;
-	}
 
 	int CCharsSegment::charsSegment(Mat input, vector<Mat>& resultVec) {
 		if (!input.data) return 0x01;
@@ -215,8 +203,7 @@ namespace easypr {
 		element = getStructuringElement(MORPH_ELLIPSE,
 			Size(2, 2),
 			Point(1, 1));
-		Rect middleZone(0, m_theMatHeight / 4, m_theMatWidth, m_theMatHeight - m_theMatHeight / 4);
-		dilate(img_threshold(middleZone), img_threshold(middleZone), element);
+		//dilate(img_threshold, img_threshold, element);
 		//element = getStructuringElement(MORPH_RECT,
 		//	Size(2, 2),
 		//	Point(1, 1));
@@ -291,7 +278,8 @@ namespace easypr {
 				int thisRectEnd = thisRect.x + thisRect.width;
 				int thisStartX = thisRect.x;
 
-				int parts = getParts(thisRect.width, meanWidth);
+				int parts = thisRect.width / meanWidth *1.0 > 3.5 ?
+					3 : 2;
 
 				int partionWidth = thisRect.width / parts;
 
@@ -318,9 +306,7 @@ namespace easypr {
 
 					}
 					if (saveFlag == 1)
-					{
 						vecRect.push_back(smallerRect);
-					}
 					thisStartX += partionWidth;
 					if (m_debug && saveFlag == 1)
 					{
@@ -475,7 +461,6 @@ namespace easypr {
 
 		if (newSortedRect.size() == 7){
 			stretchingLastChar(newSortedRect);
-			stretchingLastSeven(img_threshold, newSortedRect);
 		}
 		// 开始截取每个字符
 
@@ -512,13 +497,6 @@ namespace easypr {
 			// 归一化大小
 
 			newRoi = preprocessChar(newRoi);
-
-			//腐蚀膨胀一次
-			element = getStructuringElement(MORPH_RECT,
-				Size(2, 2),
-				Point(1, 1));
-			erode(newRoi, newRoi, element);
-			dilate(newRoi, newRoi, element);
 
 			// 每个字符图块输入到下面的步骤进行处理
 
@@ -557,16 +535,12 @@ namespace easypr {
 
 	int CCharsSegment::GetSpecificRect(const vector<Rect>& vecRect) {
 		vector<int> xpositions;
-		vector<int> indexGate;
-		vector<int> indexValue;
 		int maxHeight = 0;
 		int maxWidth = 0;
 		double maxRatio = 0.0;
 
 		for (size_t i = 0; i < vecRect.size(); i++) {
 			xpositions.push_back(vecRect[i].x);
-			indexValue.push_back(0);
-			indexGate.push_back(-1);
 
 			if (vecRect[i].height > maxHeight) {
 				maxHeight = vecRect[i].height;
@@ -581,7 +555,6 @@ namespace easypr {
 		}
 
 		int specIndex = 0;
-
 		for (size_t i = 0; i < vecRect.size(); i++) {
 			Rect mr = vecRect[i];
 			int midx = mr.x + mr.width / 2;
@@ -591,26 +564,11 @@ namespace easypr {
 
 			if ((mr.width > maxWidth * 0.8 || mr.height > maxHeight * 0.8) &&
 				((1.0*mr.width / mr.height) > 0.25) &&
-				(vecRect.size() - i >= 6) &&
 				(midx < int(m_theMatWidth / 7) * 2 &&
 				midx > int(m_theMatWidth / 7) * 1)) {
 				if (m_debug){
 					cout << "spec ratio" << 1.0*mr.width / mr.height << endl;
 				}
-				//满足以上条件，该字符可能为特殊字符，做以下操作
-				// 1，Gate打开
-				// 2，计算当前index的分数
-
-				indexGate[i] = 1;	// gate打开
-				//index分数——当前Rect中心和特殊字符指定位置的距离
-				indexValue[i] += int(fabs(midx - (m_theMatWidth / 14.0 * 3)));
-				indexValue[i] += 2 * (vecRect.size() - i - 6);
-			}
-		}
-		int maxValue = 0;
-		for (size_t i = 0; i < vecRect.size(); i++){
-			if (indexGate[i] > 0 && indexValue[i] >= maxValue){
-				maxValue = indexValue[i];
 				specIndex = i;
 			}
 		}
@@ -653,19 +611,4 @@ namespace easypr {
 		}
 	}
 
-
-	void CCharsSegment::stretchingLastSeven(Mat img_threshold, vector<Rect>& vecSortedRect){
-		int areanonezero = cv::countNonZero(img_threshold(vecSortedRect.back()));
-		//int allarea = (vecSortedRect.back().height*vecSortedRect.back().width);
-		//cout << "allarea" << allarea << "nonezero" << areanonezero << endl;
-		if (areanonezero < 200){
-			//cout << "stretch last character" << endl;
-			vecSortedRect.back().height += vecSortedRect.back().y;
-			vecSortedRect.back().y = 0;
-
-		}
-	}
-
-
 }
-
