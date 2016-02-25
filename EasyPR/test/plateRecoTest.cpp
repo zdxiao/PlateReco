@@ -17,7 +17,7 @@ int main(int argc, char**argv)
 	{
 		cout << line << endl;
 		//line = "../2015_12_09/" + line;
-		//line = "./resources/image/general_test/" + line;
+		line = "./resources/image/native_test/" + line;
 		Mat img = imread(line);
 		namedWindow("test", 0);
 		imshow("test", img);

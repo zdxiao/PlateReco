@@ -160,9 +160,37 @@ int accuracyTest(const char* test_path) {
 
           vector<string> spilt_plate = Utils::splitString(colorplate, ':');
 
+          int size = spilt_plate.size();
+          if (size == 2 && spilt_plate[1] != "") {
+
+           std::string str1=plateLicense.substr(3);
+           std::string str2=spilt_plate[size - 1].substr(3);
+          // strstr1.substr(3);
+           int diff = utils::levenshtein_distance(str1,str2);
+            cout << kv->get("diff") << ":" << diff << kv->get("char") << endl;
+
+            if (diff == 0) {
+
+              // 完全匹配
+
+              match_count++;
+            }
+            else
+            {
+                reco_error_files.push_back(filepath);
+            }
+
 /////////////////////maogeng////////////////////////////////////////////////////
           char buffer[50];
-          sprintf(buffer, "resources/image/results/%s.jpg", colorplate.c_str());
+
+          if(diff == 0)
+          {
+            sprintf(buffer, "1111_%s_%s.jpg", filepath.c_str(), colorplate.c_str());
+          }
+          else
+          {
+            sprintf(buffer, "0000_%s_%s.jpg", filepath.c_str(), colorplate.c_str());
+          }
 
           Mat src_clone = src.clone();
           Mat plate_resize = plateout.getPlateMat();
@@ -187,25 +215,6 @@ int accuracyTest(const char* test_path) {
           utils::imwrite(buffer, src_clone);
 /////////////////////maogeng////////////////////////////////////////////////////
 
-          int size = spilt_plate.size();
-          if (size == 2 && spilt_plate[1] != "") {
-
-           std::string str1=plateLicense.substr(3);
-           std::string str2=spilt_plate[size - 1].substr(3);
-          // strstr1.substr(3);
-           int diff = utils::levenshtein_distance(str1,str2);
-            cout << kv->get("diff") << ":" << diff << kv->get("char") << endl;
-
-            if (diff == 0) {
-
-              // 完全匹配
-
-              match_count++;
-            }
-            else
-            {
-                reco_error_files.push_back(filepath);
-            }
             diff_all = diff_all + diff;
           }
         }

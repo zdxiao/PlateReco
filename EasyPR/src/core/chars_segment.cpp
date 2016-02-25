@@ -500,6 +500,8 @@ namespace easypr {
 
 			// 每个字符图块输入到下面的步骤进行处理
 
+			//threshold(newRoi, newRoi, 100, 255, THRESH_BINARY);
+
 			resultVec.push_back(newRoi);
 		}
 

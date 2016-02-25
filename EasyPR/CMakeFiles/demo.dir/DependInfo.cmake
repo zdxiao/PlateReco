@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/xiao/Project/PlateReco/EasyPR/test/main.cpp" "/home/xiao/Project/PlateReco/EasyPR/CMakeFiles/demo.dir/test/main.cpp.o"
+  "/home/xiao/Project/PlateReco/EasyPR/test/plateRecoTest.cpp" "/home/xiao/Project/PlateReco/EasyPR/CMakeFiles/demo.dir/test/plateRecoTest.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
